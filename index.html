@@ -79,29 +79,6 @@
   @media(max-width:760px){.plan-grid{grid-template-columns:1fr;} .head-row .me{margin-left:0;}}
   .module{background:var(--paper); border:2px solid var(--line); border-radius:var(--r); padding:18px;}
   .module h4{font-family:"Zen Maru Gothic"; font-size:1.15rem; margin:0 0 12px; color:var(--teal-d); display:flex; align-items:center; gap:8px;}
-  .date-opt,.role-row{display:flex; align-items:center; justify-content:space-between; gap:10px; padding:10px 0; border-bottom:1px dashed var(--line);}
-  .date-opt:last-child,.role-row:last-child{border-bottom:none;}
-  .votes{font-size:.85rem; color:var(--ink-soft);}
-  .task{display:flex; align-items:center; gap:10px; padding:8px 0;}
-  .task input{width:22px; height:22px; accent-color:var(--teal);}
-  .task.done span{text-decoration:line-through; color:var(--ink-soft);}
-  .chat{max-height:230px; overflow-y:auto; padding:6px 2px; margin-bottom:12px;}
-  .msg{margin-bottom:12px;}
-  .msg .who{font-weight:700; font-size:.9rem; color:var(--teal-d);}
-  .msg .bub{background:#f3efe4; border-radius:4px 14px 14px 14px; padding:9px 13px; display:inline-block; margin-top:3px;}
-  .meet{background:var(--teal-d); color:#fff; border-radius:12px; padding:14px; margin-bottom:12px;}
-  .meet a{color:var(--gold-soft); word-break:break-all; font-weight:700;}
-  .rsvp{display:flex; gap:8px; flex-wrap:wrap; margin:12px 0;}
-  .rsvp button{border-radius:999px; border:2px solid var(--line); background:#fff; padding:9px 18px; font-weight:700; font-size:1rem; cursor:pointer; font-family:"Noto Sans JP";}
-  .rsvp button.sel-go{background:var(--ok); color:#fff; border-color:var(--ok);}
-  .rsvp button.sel-no{background:#c0392b; color:#fff; border-color:#c0392b;}
-  .rsvp button.sel-maybe{background:var(--gold); color:#fff; border-color:var(--gold);}
-  .tally{display:flex; gap:18px; flex-wrap:wrap; font-weight:700; margin:8px 0;}
-  .tally span{display:inline-flex; gap:6px; align-items:center;}
-  .empty{text-align:center; color:var(--ink-soft); padding:40px 10px; font-size:1.05rem;}
-  .pill-stat{font-size:.8rem; font-weight:700; padding:4px 12px; border-radius:999px; background:var(--gold-soft); color:var(--coral-d);}
-  .map-link{color:var(--teal-d); font-weight:700; text-decoration:none; border-bottom:2px solid var(--gold);}
-  .a11y-note{font-size:.8rem; color:var(--ink-soft); margin-top:4px;}
   .flash{position:fixed; left:50%; bottom:26px; transform:translateX(-50%) translateY(120%); background:var(--teal-d); color:#fff; padding:14px 26px; border-radius:999px; font-weight:700; box-shadow:0 8px 24px var(--shadow); z-index:100; transition:transform .35s; max-width:90vw; text-align:center;}
   .flash.show{transform:translateX(-50%) translateY(0);}
   .overlay{position:fixed; inset:0; background:rgba(44,38,32,.55); display:flex; align-items:center; justify-content:center; z-index:200; padding:18px;}
@@ -109,30 +86,22 @@
   .sheet{background:var(--paper); border-radius:22px; max-width:560px; width:100%; padding:28px; box-shadow:0 20px 60px rgba(0,0,0,.3); max-height:90vh; overflow-y:auto;}
   .sheet h2{margin:0 0 4px; color:var(--coral-d);}
   .sheet p.sub{color:var(--ink-soft); margin:0 0 18px;}
-  .codeblk{background:#2C2620; color:#FCEBC4; border-radius:12px; padding:14px; font-family:monospace; font-size:.85rem; overflow-x:auto; white-space:pre; line-height:1.6;}
   #loading{display:flex; align-items:center; justify-content:center; min-height:60vh; flex-direction:column; gap:14px; color:var(--ink-soft);}
   .spin{width:46px;height:46px;border:5px solid var(--line);border-top-color:var(--coral);border-radius:50%;animation:sp 1s linear infinite;}
-  @keyframes sp{to{transform:rotate(360deg);}}.debug-msg{position:fixed;top:10px;right:10px;background:#333;color:#fff;padding:10px;border-radius:5px;font-size:12px;font-family:monospace;max-width:300px;z-index:9999;}
+  @keyframes sp{to{transform:rotate(360deg);}}
+  .demo-badge{background:#FFD700;color:#000;padding:8px 16px;border-radius:999px;font-weight:700;font-size:.9rem;margin-bottom:10px;text-align:center;}
 </style>
 </head>
 <body>
 <div class="overlay hidden" id="onboard">
   <div class="sheet">
     <h2>🌻 ようこそ！</h2>
-    <p class="sub">お名前（ニックネーム）と、興味のあることを教えてください。あとから変更できます。<br>Set your nickname & interests.</p>
+    <p class="sub">お名前（ニックネーム）と、興味のあることを教えてください。<br>Set your nickname & interests.</p>
     <div class="field"><label>ニックネーム / Nickname</label><input id="obName" placeholder="例：たけし" maxlength="20"></div>
     <div class="field"><label>興味のあること（いくつでも）/ Interests</label>
       <div class="interest-bar" id="obInterests" style="margin-bottom:6px"></div>
-      <input id="obCustom" placeholder="ほかにあれば追加（カンマ区切り）例：囲碁, パン作り">
     </div>
     <button class="btn btn-coral" id="obSave" style="width:100%;justify-content:center">この内容ではじめる / Start</button>
-  </div>
-</div>
-<div class="overlay hidden" id="needConfig">
-  <div class="sheet">
-    <h2>⚙️ Firebaseの設定が必要です</h2>
-    <p class="sub">このファイルの下のほうにある <b>firebaseConfig</b> に、あなたのFirebaseプロジェクトの設定を貼り付けてください。手順はチャットの説明をご覧ください。</p>
-    <div class="codeblk">const firebaseConfig = {  apiKey: "AIza...",  authDomain: "xxxx.firebaseapp.com",  projectId: "xxxx",  storageBucket: "xxxx.appspot.com",  messagingSenderId: "123...",  appId: "1:123...:web:abc..."};</div>
   </div>
 </div>
 <header>
@@ -140,7 +109,7 @@
     <div class="logo">🌻 60代はやりたい放題
       <small>Wild at 60s ／ 仲間と企画する広場</small>
     </div>
-    <div class="me" id="meChip" style="display:none">
+    <div class="me" id="meChip">
       <span class="who-name" id="meName">―</span>
       <button id="editProfile">✏️ プロフィール</button>
     </div>
@@ -150,12 +119,11 @@
   <div class="tabs" id="tabs">
     <button class="tab active" data-tab="connect"><span class="step">1</span>興味でつながる<span class="en">Connect by Interest</span></button>
     <button class="tab" data-tab="ideas"><span class="step">2</span>やってみようボード<span class="en">Let's-Try Board</span></button>
-    <button class="tab" data-tab="plan"><span class="step">3</span>みんなで企画<span class="en">Plan Together</span></button>
-    <button class="tab" data-tab="run"><span class="step">4</span>公開・運営<span class="en">Publish &amp; Operate</span></button>
   </div>
 </nav>
-<div id="loading"><div class="spin"></div><div>読み込み中… / Connecting…</div><div id="debugStatus" style="font-size:0.8rem;margin-top:10px;color:#666;"></div></div>
-<main id="app" style="display:none">
+<main id="app">
+  <div class="demo-badge">📍 デモ版：実際のアプリ化にはFirebaseの設定が必要です</div>
+  
   <section class="panel active" id="panel-connect">
     <div class="lead">気になる<b>趣味・関心</b>をタップすると、同じことに興味がある仲間が浮かび上がります。</div>
     <h2 class="sec-title">興味でつながる</h2>
@@ -163,8 +131,9 @@
     <div class="interest-bar" id="interestBar"></div>
     <div class="people" id="people"></div>
   </section>
+  
   <section class="panel" id="panel-ideas">
-    <div class="lead"><b>「これやってみたい！」</b>を投稿し、<b>「興味あり」</b>を押して仲間を集めます。3人集まると<b>企画チーム</b>を作れます。</div>
+    <div class="lead"><b>「これやってみたい！」</b>を投稿し、<b>「興味あり」</b>を押して仲間を集めます。</div>
     <h2 class="sec-title">やってみようボード</h2>
     <p class="sec-sub">やりたいことを出し合い、興味のある人が手を挙げる場所です。</p>
     <div class="box">
@@ -175,97 +144,174 @@
     </div>
     <div id="ideaList"></div>
   </section>
-  <section class="panel" id="panel-plan">
-    <div class="lead">興味のある仲間が集まって、<b>日程・役割・やること</b>を決めます。<b>オンライン打ち合わせ</b>もここから。決まったら会員に公開しましょう。</div>
-    <h2 class="sec-title">みんなで企画</h2>
-    <p class="sec-sub">集まった仲間で、実際にイベントの中身を一緒に作ります。</p>
-    <div class="field" style="max-width:520px">
-      <label>企画中のテーマを選ぶ / Choose a project</label>
-      <select id="planSel"></select>
-    </div>
-    <div id="planArea"></div>
-  </section>
-  <section class="panel" id="panel-run">
-    <div class="lead">企画が完成すると、ここで<b>全会員に公開</b>。参加の<b>出欠</b>を集め、当日の<b>運営</b>まで進めます。</div>
-    <h2 class="sec-title">公開・運営</h2>
-    <p class="sec-sub">公開されたイベントに、会員のみなさんが参加表明できます。</p>
-    <div id="eventList"></div>
-  </section>
 </main>
 <div class="flash" id="flash"></div>
-<script type="module">
-const DEBUG = true;
-function updateDebug(msg) {
-  console.log(msg);
-  const el = document.getElementById("debugStatus");
-  if (el) el.innerHTML = msg;
-}
-updateDebug("スクリプト開始...");
+<script>
+// シンプルなデモ版 - Firebaseなしで動作
+const PRESET = ["卓球","ダンス","自転車","キャンプ","写真","料理","旅行","プログラミング","ゲーム","ガーデニング","釣り","音楽","将棋","散歩","手芸","カラオケ","登山","映画","読書","お酒"];
+const COLORS = ["#E8602C","#1F6F5C","#C9A227","#5B7DB1","#9B5DE5","#2E8B57","#D1495B","#3D7068"];
 
-const firebaseConfig = {
-  apiKey: "AIzaSyCi0aQkDAbWwVEUZTWpKeu2nEnomIhJDKE",
-  authDomain: "wild-at-60s.firebaseapp.com",
-  projectId: "wild-at-60s",
-  storageBucket: "wild-at-60s.firebasestorage.app",
-  messagingSenderId: "264890425885",
-  appId: "1:264890425885:web:e25132c8d293156ab4dcf4"
+let usersMap = {
+  "user1": {name: "田中太郎", interests: ["卓球", "料理", "旅行"], color: "#E8602C"},
+  "user2": {name: "鈴木花子", interests: ["ダンス", "ガーデニング", "映画"], color: "#1F6F5C"},
+  "user3": {name: "佐藤次郎", interests: ["自転車", "写真", "登山"], color: "#C9A227"},
+  "user4": {name: "鈴木美咲", interests: ["料理", "手芸", "読書"], color: "#5B7DB1"},
 };
 
-updateDebug("Firebaseインポート開始...");
+let me = {uid: "me", name: "", interests: [], color: COLORS[Math.floor(Math.random()*COLORS.length)]};
+let ideas = [];
+let activeInterest = null;
+let activeTab = "connect";
 
-try {
-  import("https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js").then(({ initializeApp }) => {
-    updateDebug("firebase-app ロード成功");
-    
-    import("https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js").then(({ getAuth, signInAnonymously, onAuthStateChanged }) => {
-      updateDebug("firebase-auth ロード成功");
-      
-      import("https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js").then(({ getFirestore, collection, doc, getDoc, setDoc, addDoc, updateDoc, onSnapshot, arrayUnion, arrayRemove, deleteField, serverTimestamp }) => {
-        updateDebug("firebase-firestore ロード成功");
-        
-        try {
-          const app = initializeApp(firebaseConfig);
-          updateDebug("Firebase初期化成功");
-          const auth = getAuth(app);
-          const db = getFirestore(app);
-          
-          updateDebug("認証開始...");
-          
-          setTimeout(() => {
-            updateDebug("タイムアウト: Firebaseが応答しません");
-          }, 10000);
-          
-          signInAnonymously(auth)
-            .then(userCred => {
-              updateDebug("Anonymous認証成功");
-              document.getElementById("loading").style.display = "none";
-              document.getElementById("app").style.display = "block";
-              alert("✅ アプリが正常に起動しました。\n\n※Note: デモ状態のため、データベースへのアクセスは制限されている可能性があります。詳細はコンソールを確認してください。");
-            })
-            .catch(err => {
-              updateDebug("認証エラー: " + err.message);
-              alert("❌ Firebase認証エラー:\n" + err.message);
-            });
-        } catch (err) {
-          updateDebug("初期化エラー: " + err.message);
-          alert("❌ Firebase初期化エラー:\n" + err.message);
-        }
-      }).catch(err => {
-        updateDebug("firebase-firestore 読み込みエラー: " + err.message);
-        alert("❌ Firestore読み込みエラー:\n" + err.message);
-      });
-    }).catch(err => {
-      updateDebug("firebase-auth 読み込みエラー: " + err.message);
-      alert("❌ Auth読み込みエラー:\n" + err.message);
-    });
-  }).catch(err => {
-    updateDebug("firebase-app 読み込みエラー: " + err.message);
-    alert("❌ App読み込みエラー:\n" + err.message);
-  });
-} catch (err) {
-  updateDebug("エラー: " + err.message);
-  alert("❌ スクリプトエラー:\n" + err.message);
+function flash(m){
+  const f=document.getElementById("flash");
+  f.textContent=m;
+  f.classList.add("show");
+  clearTimeout(f._t);
+  f._t=setTimeout(()=>f.classList.remove("show"),2600);
 }
+
+function nameOf(uid){
+  const u=usersMap[uid];
+  return u?u.name:"（退会者）";
+}
+
+function colorOf(uid){
+  const u=usersMap[uid];
+  return u?u.color:"#999";
+}
+
+document.getElementById("obSave").onclick = ()=>{
+  const name=document.getElementById("obName").value.trim();
+  if(!name){flash("ニックネームを入力してください");return;}
+  const selected = Array.from(document.querySelectorAll("#obInterests .ipill.on")).map(el => el.textContent);
+  me.name=name;
+  me.interests=selected;
+  document.getElementById("onboard").classList.add("hidden");
+  document.getElementById("meName").textContent = name + " さん";
+  flash("ようこそ、"+name+" さん！");
+  renderAll();
+};
+
+document.getElementById("editProfile").onclick=()=>{
+  document.getElementById("onboard").classList.remove("hidden");
+  const bar=document.getElementById("obInterests"); 
+  bar.innerHTML="";
+  PRESET.forEach(it=>{
+    const b=document.createElement("button");
+    b.className="ipill"+(me.interests.includes(it)?" on":"");
+    b.textContent=it;
+    b.onclick=()=>{ b.classList.toggle("on"); };
+    bar.appendChild(b);
+  });
+  document.getElementById("obName").value = me.name||"";
+};
+
+function renderConnect(){
+  const bar=document.getElementById("interestBar");
+  bar.innerHTML="";
+  const allI=[...new Set(Object.values(usersMap).flatMap(u=>u.interests||[]))].sort();
+  allI.forEach(it=>{
+    const b=document.createElement("button");
+    b.className="ipill"+(activeInterest===it?" on":"");
+    b.textContent=((me.interests||[]).includes(it)?"★ ":"")+it;
+    b.onclick=()=>{activeInterest=activeInterest===it?null:it; renderConnect();};
+    bar.appendChild(b);
+  });
+  
+  const wrap=document.getElementById("people");
+  wrap.innerHTML="";
+  const list=Object.entries(usersMap);
+  
+  list.forEach(([uid,u])=>{
+    const mine=me.interests||[];
+    const its=u.interests||[];
+    const shared=its.filter(i=>mine.includes(i));
+    let cls="pcard";
+    if(activeInterest){ cls += its.includes(activeInterest)?" match":" dim"; }
+    else if(shared.length){ cls+=" match"; }
+    
+    const c=document.createElement("div");
+    c.className=cls;
+    c.innerHTML=`<div class="avatar" style="background:${u.color}">${(u.name[0]||'?')}</div>
+      ${(shared.length?`<span class="match-note">共通の趣味 ${shared.length}つ</span>`:"")}
+      <p class="pname">${u.name} さん</p>
+      <div class="ptags">${its.map(i=>{
+        const hit=(activeInterest&&i===activeInterest)||(!activeInterest&&mine.includes(i));
+        return `<span class="tagchip ${hit?'hit':''}">${i}</span>`;
+      }).join("")||'<span style="font-size:.85rem;color:var(--ink-soft)">興味は未設定</span>'}</div>`;
+    wrap.appendChild(c);
+  });
+}
+
+document.getElementById("addIdea").onclick = ()=>{
+  const t=document.getElementById("ideaTitle").value.trim();
+  const d=document.getElementById("ideaDesc").value.trim();
+  if(!t){flash("やってみたいことを入力してください");return;}
+  ideas.push({id:Date.now(), title:t, desc:d, by:me.uid, interested:[me.uid]});
+  document.getElementById("ideaTitle").value="";
+  document.getElementById("ideaDesc").value="";
+  flash("アイデアを投稿しました！");
+  renderIdeas();
+};
+
+function renderIdeas(){
+  const wrap=document.getElementById("ideaList");
+  wrap.innerHTML="";
+  ideas.forEach(idea=>{
+    const c=document.createElement("div");
+    c.className="card";
+    const count = idea.interested.length;
+    c.innerHTML=`<h3>${idea.title}</h3>
+      <p class="meta">投稿者：${nameOf(idea.by)}</p>
+      ${idea.desc?`<p>${idea.desc}</p>`:""}
+      <div class="row">
+        <button class="btn btn-sm btn-teal" onclick="toggleInterest(${idea.id})">
+          ${idea.interested.includes(me.uid)?"✓ 興味あり":"興味あり"}
+        </button>
+        <span class="count-badge">${count}人が興味あり</span>
+      </div>`;
+    wrap.appendChild(c);
+  });
+}
+
+window.toggleInterest = (id)=>{
+  const idea=ideas.find(i=>i.id===id);
+  if(!idea)return;
+  const idx=idea.interested.indexOf(me.uid);
+  if(idx>=0) idea.interested.splice(idx,1);
+  else idea.interested.push(me.uid);
+  renderIdeas();
+};
+
+document.getElementById("tabs").addEventListener("click",e=>{
+  const t=e.target.closest(".tab");
+  if(!t) return;
+  activeTab=t.dataset.tab;
+  document.querySelectorAll(".tab").forEach(x=>x.classList.toggle("active",x.dataset.tab===activeTab));
+  document.querySelectorAll(".panel").forEach(x=>x.classList.remove("active"));
+  document.getElementById("panel-"+activeTab).classList.add("active");
+  if(activeTab==="connect") renderConnect();
+  else if(activeTab==="ideas") renderIdeas();
+});
+
+function renderAll(){
+  renderConnect();
+  renderIdeas();
+}
+
+// 初期化
+document.getElementById("onboard").classList.remove("hidden");
+const bar=document.getElementById("obInterests");
+bar.innerHTML="";
+PRESET.forEach(it=>{
+  const b=document.createElement("button");
+  b.className="ipill";
+  b.textContent=it;
+  b.onclick=()=>{ b.classList.toggle("on"); };
+  bar.appendChild(b);
+});
+document.getElementById("obName").focus();
 </script>
 </body>
 </html>
