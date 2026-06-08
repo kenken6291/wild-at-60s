@@ -305,7 +305,7 @@
 
 <script type="module">
 /* ===================================================================
-   ① ここにFirebaseのWeb設定を貼り付けてください
+   ① Firebaseの設定
 =================================================================== */
 const firebaseConfig = {
   apiKey: "AIzaSyCi0aQkDAbWwVEUZTWpKeu2nEnomIhJDKE",
@@ -317,8 +317,7 @@ const firebaseConfig = {
 };
 /* =================================================================== */
 
-/* ② GAS（メンバー名簿）のウェブアプリURLをここに貼り付け
-   ※ あとで取得するURL（末尾が /exec）に置き換えます */
+/* ② GAS（メンバー名簿）のウェブアプリURL */
 const GAS_URL = "https://script.google.com/macros/s/AKfycbwMdyqPllR_MpheIIez54cYreqSvrknzvjrGjBm_R0Iyd4hH2KDNaoT_Oi1PpLGqZkb-Q/exec";
 
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
@@ -474,10 +473,9 @@ document.getElementById("editProfile").onclick=openOnboard;
 =================================================================== */
 let started=false;
 function startApp(){
-  if(!me||!me.name) return; // need a profile
+  if(!me||!me.name) return;
   document.getElementById("meName").textContent=me.name+" さん";
   document.getElementById("meProv").outerHTML=provBadge(me.provider)||'<span class="prov" id="meProv"></span>';
-  // re-grab (outerHTML replaced node)
   const mp=document.querySelector("#meChip .prov"); if(mp&&!mp.id)mp.id="meProv";
   document.getElementById("meChip").style.display="flex";
   document.getElementById("loading").style.display="none";
@@ -545,7 +543,7 @@ function renderConnect(){
 }
 
 /* ===================================================================
-   2. IDEAS  (with edit/delete for author)
+   2. IDEAS
 =================================================================== */
 document.getElementById("addIdea").onclick=async ()=>{
   const t=document.getElementById("ideaTitle").value.trim();
@@ -782,7 +780,7 @@ function renderPlanArea(){
 }
 
 /* ===================================================================
-   4. RUN  (with edit/delete for organizer)
+   4. RUN
 =================================================================== */
 async function setRsvp(ev,val){
   const ref=doc(db,"events",ev.id); const rsvp=ev.rsvp||{};
