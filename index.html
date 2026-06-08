@@ -477,7 +477,6 @@ function startApp(){
   if(!me||!me.name) return; // need a profile
   document.getElementById("meName").textContent=me.name+" さん";
   document.getElementById("meProv").outerHTML=provBadge(me.provider)||'<span class="prov" id="meProv"></span>';
-  // re-grab (outerHTML replaced node)
   const mp=document.querySelector("#meChip .prov"); if(mp&&!mp.id)mp.id="meProv";
   document.getElementById("meChip").style.display="flex";
   document.getElementById("loading").style.display="none";
@@ -647,6 +646,7 @@ async function delTask(idx){const p=curProj();if(!confirm("このやることを
 async function sendChat(text){await updateDoc(projRef(currentProject),{chat:arrayUnion({id:genId(),by:me.uid,text,at:Date.now()})});}
 async function deleteMsg(msg){const p=curProj();if(!confirm("この発言を削除しますか？"))return;const chat=p.chat.filter(m=>(m.id||m.at)!==(msg.id||msg.at));await updateDoc(projRef(p.id),{chat});}
 async function saveMsgEdit(msg){const p=curProj();const v=document.getElementById("em-"+(msg.id||msg.at)).value.trim();if(!v){flash("内容を入力してください");return;}editingMsgId=null;const chat=p.chat.map(m=>((m.id||m.at)===(msg.id||msg.at))?{...m,text:v,edited:true}:m);await updateDoc(projRef(p.id),{chat});flash("修正しました");}
+async function startMeet(){const link="https://meet.jit.si/Wild60-"+Math.random().toString(36).slice(2,8);await updateDoc(projRef(currentProject),{meetLink:link});flash("打ち合わせ室を作りました");}
 async function publishEvent(){
   const p=curProj();
   const best=p.dates.reduce((a,b)=>b.votes.length>(a?a.votes.length:-1)?b:a,null);
@@ -713,44 +713,11 @@ function renderPlanArea(){
 
   const mb=area.querySelector("#meetBox");
   if(p.meetLink){
-    mb.innerHTML=`<div class="meet">🎥 オンライン打ち合わせ${p.meetType?'（'+esc(p.meetType)+'）':''}<br>この時間に同じリンクをクリックすれば、顔を見て話せます。<br><a href="${esc(p.meetLink)}" target="_blank" rel="noopener">${esc(p.meetLink)}</a><br>
-      <button class="btn btn-sm btn-ghost" id="copyMeet" style="margin-top:8px">リンクをコピー</button>
-      <button class="btn btn-sm btn-ghost" id="clearMeet" style="margin-top:8px">リンクを削除</button></div>`;
+    mb.innerHTML=`<div class="meet">🎥 オンライン打ち合わせ室ができました！<br>この時間に同じリンクをクリックすれば、顔を見て話せます。<br><a href="${esc(p.meetLink)}" target="_blank" rel="noopener">${esc(p.meetLink)}</a><br><button class="btn btn-sm btn-ghost" id="copyMeet" style="margin-top:8px">リンクをコピー</button></div>`;
     mb.querySelector("#copyMeet").onclick=()=>{navigator.clipboard&&navigator.clipboard.writeText(p.meetLink);flash("リンクをコピーしました");};
-    mb.querySelector("#clearMeet").onclick=()=>{ if(confirm("会議リンクを削除しますか？")) updateDoc(projRef(p.id),{meetLink:null,meetType:null}); };
   } else {
-    mb.innerHTML=`<p style="font-weight:700;margin:0 0 8px">🎥 オンライン打ち合わせを設定 / Set up a meeting</p>
-      <div class="row" style="margin-bottom:10px">
-        <button class="btn btn-sm btn-ghost" data-meet="Google Meet">📹 Google Meet</button>
-        <button class="btn btn-sm btn-ghost" data-meet="Zoom">📹 Zoom</button>
-        <button class="btn btn-sm btn-teal" data-meet="Jitsi">⚡ すぐ使える（登録不要）</button>
-      </div>
-      <div id="meetPaste" style="display:none">
-        <p class="a11y-note" id="meetGuide"></p>
-        <div class="row"><input id="meetUrl" placeholder="会議リンクをここに貼り付け" style="flex:1;min-width:160px;padding:10px;border:2px solid var(--line);border-radius:10px;font-size:1rem"><button class="btn btn-sm btn-coral" id="meetSave">保存</button></div>
-      </div>`;
-    let pendingProvider=null;
-    mb.querySelectorAll("[data-meet]").forEach(b=>b.onclick=()=>{
-      const type=b.dataset.meet;
-      if(type==="Jitsi"){
-        const link="https://meet.jit.si/Wild60-"+Math.random().toString(36).slice(2,8);
-        updateDoc(projRef(p.id),{meetLink:link,meetType:"すぐ使える"}); flash("打ち合わせ室を作りました");
-        return;
-      }
-      pendingProvider=type;
-      const url=(type==="Google Meet")?"https://meet.google.com/new":"https://zoom.us/start/videomeeting";
-      window.open(url,"_blank","noopener");
-      mb.querySelector("#meetGuide").textContent=(type==="Google Meet")
-        ? "新しいタブでGoogle Meetの会議が作られます。表示されたURL（meet.google.com/～）をコピーして、下に貼り付けてください。"
-        : "新しいタブでZoomが開きます。会議を開始し、『招待リンクをコピー』で得たURL（zoom.us/～）を下に貼り付けてください。";
-      mb.querySelector("#meetPaste").style.display="block";
-      mb.querySelector("#meetUrl").focus();
-    });
-    mb.querySelector("#meetSave").onclick=()=>{
-      const url=mb.querySelector("#meetUrl").value.trim();
-      if(!/^https?:\/\//.test(url)){flash("正しい会議リンク（https://…）を貼り付けてください");return;}
-      updateDoc(projRef(p.id),{meetLink:url,meetType:pendingProvider||"オンライン会議"}); flash("会議リンクを保存しました");
-    };
+    mb.innerHTML=`<button class="btn btn-sm btn-teal" id="startMeet" style="margin-bottom:12px">🎥 オンライン打ち合わせを始める</button><p class="a11y-note">アプリ不要。リンクを開くだけでビデオ通話ができます。</p>`;
+    mb.querySelector("#startMeet").onclick=startMeet;
   }
 
   const cb=area.querySelector("#chatBox");
