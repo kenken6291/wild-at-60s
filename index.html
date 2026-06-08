@@ -404,15 +404,26 @@ onAuthStateChanged(auth, async user=>{
 document.getElementById("loginGoogle").onclick=async ()=>{
   const provider=new GoogleAuthProvider();
   provider.setCustomParameters({prompt:"select_account"});
-  document.getElementById("login").classList.add("hidden");
-  document.getElementById("loading").style.display="flex";
-  try{ await signInWithRedirect(auth,provider); }
-  catch(e){
-    document.getElementById("loading").style.display="none";
-    document.getElementById("login").classList.remove("hidden");
-    if(e.code==="auth/unauthorized-domain") flash("このサイトのドメインをFirebaseに許可してください");
-    else flash("ログインに失敗しました（"+(e.code||"")+"）");
-    console.error(e);
+  try{
+    await signInWithPopup(auth,provider);   // iPhone/Safari でも確実なポップアップ方式を優先
+  }catch(e){
+    if(["auth/popup-blocked","auth/operation-not-supported-in-this-environment","auth/internal-error"].includes(e.code)){
+      document.getElementById("login").classList.add("hidden");
+      document.getElementById("loading").style.display="flex";
+      try{ await signInWithRedirect(auth,provider); }
+      catch(e2){
+        document.getElementById("loading").style.display="none";
+        document.getElementById("login").classList.remove("hidden");
+        flash("ログインに失敗しました（"+(e2.code||"")+"）");
+      }
+    } else if(e.code==="auth/unauthorized-domain"){
+      flash("このサイトのドメインをFirebaseに許可してください");
+    } else if(e.code==="auth/popup-closed-by-user"||e.code==="auth/cancelled-popup-request"){
+      /* ユーザーが閉じた場合は何もしない */
+    } else {
+      flash("ログインに失敗しました（"+(e.code||"")+"）");
+      console.error(e);
+    }
   }
 };
 document.getElementById("loginGuest").onclick=()=>signInAnonymously(auth).catch(e=>{flash("接続に失敗しました");console.error(e);});
@@ -458,6 +469,7 @@ function startApp(){
   if(!me||!me.name) return; // need a profile
   document.getElementById("meName").textContent=me.name+" さん";
   document.getElementById("meProv").outerHTML=provBadge(me.provider)||'<span class="prov" id="meProv"></span>';
+  // re-grab (outerHTML replaced node)
   const mp=document.querySelector("#meChip .prov"); if(mp&&!mp.id)mp.id="meProv";
   document.getElementById("meChip").style.display="flex";
   document.getElementById("loading").style.display="none";
