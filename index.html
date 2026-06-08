@@ -131,6 +131,17 @@
   #loading{display:flex; align-items:center; justify-content:center; min-height:60vh; flex-direction:column; gap:14px; color:var(--ink-soft);}
   .spin{width:46px;height:46px;border:5px solid var(--line);border-top-color:var(--coral);border-radius:50%;animation:sp 1s linear infinite;}
   @keyframes sp{to{transform:rotate(360deg);}}
+  /* test-site + footer */
+  .test-badge{background:#c0392b; color:#fff; font-size:.72rem; font-weight:700; padding:5px 11px; border-radius:7px; letter-spacing:.3px; white-space:nowrap; align-self:center;}
+  .test-note{background:#fbe3df; color:#c0392b; border:1.5px solid #e8b4ac; border-radius:10px; padding:9px 12px; font-size:.85rem; font-weight:700; margin:0 0 14px;}
+  .en-sub{display:block; font-size:.82rem; font-weight:400; opacity:.8; margin-top:3px;}
+  .lead .en-sub{color:var(--ink-soft);}
+  footer.site-foot{max-width:1100px; margin:0 auto; padding:26px 18px 70px; color:var(--ink-soft); font-size:.92rem; border-top:2px solid var(--line);}
+  footer.site-foot .test-strip{background:#fbe3df; color:#c0392b; border-radius:12px; padding:13px 16px; font-weight:700; margin-bottom:18px;}
+  footer.site-foot h3{font-family:"Zen Maru Gothic"; color:var(--coral-d); font-size:1.12rem; margin:20px 0 8px;}
+  footer.site-foot ul{margin:6px 0; padding-left:1.2em;}
+  footer.site-foot li{margin-bottom:9px;}
+  footer.site-foot .en{display:block; opacity:.7; font-size:.82rem;}
 </style>
 </head>
 <body>
@@ -141,6 +152,7 @@
     <div style="font-size:3rem">🌻</div>
     <h2>60代はやりたい放題</h2>
     <p class="sub">仲間と企画する広場へようこそ。<br>ログイン方法を選んでください。<br><span style="font-size:.85rem">Choose how to sign in.</span></p>
+    <div class="test-note">⚠ これは開発中のテストサイトです<br>This is a test site under development</div>
     <div class="login-btns">
       <button class="btn btn-google" id="loginGoogle">
         <span style="font-weight:900;color:#4285F4">G</span> Googleでログイン / Sign in with Google
@@ -173,11 +185,30 @@
   </div>
 </div>
 
+<!-- ===== DB connection error ===== -->
+<div class="overlay hidden" id="dbError">
+  <div class="sheet">
+    <h2>⚠️ データベースにつながりません</h2>
+    <p class="sub">ログインはできました。ただし保存先（Firestore）に接続できていません。次の3つを確認してください。</p>
+    <ol style="line-height:1.9; padding-left:1.2em; margin:0 0 12px">
+      <li>Firebaseで <b>「Firestore Database」</b> を作成しましたか？（Authenticationとは別の機能です）</li>
+      <li>作成時に <b>「テストモードで開始」</b> を選びましたか？（または公開ルールを設定）</li>
+      <li>ロケーションは <b>asia-northeast1（東京）</b> など、作成済みになっていますか？</li>
+    </ol>
+    <p class="a11y-note" id="dbErrCode"></p>
+    <div class="row" style="margin-top:8px">
+      <button class="btn btn-coral" id="dbReload">再読み込み</button>
+      <button class="btn btn-ghost" id="dbLogout">ログアウトして戻る</button>
+    </div>
+  </div>
+</div>
+
 <header>
   <div class="head-row">
     <div class="logo">🌻 60代はやりたい放題
       <small>Wild at 60s ／ 仲間と企画する広場</small>
     </div>
+    <span class="test-badge">⚠ テストサイト / TEST SITE</span>
     <div class="me" id="meChip" style="display:none">
       <span class="who-name" id="meName">―</span>
       <span class="prov" id="meProv"></span>
@@ -200,17 +231,17 @@
 
 <main id="app" style="display:none">
   <section class="panel active" id="panel-connect">
-    <div class="lead">気になる<b>趣味・関心</b>をタップすると、同じことに興味がある仲間が浮かび上がります。</div>
+    <div class="lead">気になる<b>趣味・関心</b>をタップすると、同じことに興味がある仲間が浮かび上がります。<span class="en-sub">Tap an interest to find members who share it.</span></div>
     <h2 class="sec-title">興味でつながる</h2>
-    <p class="sec-sub">あなたと共通点のある仲間を見つけて、ここから「やってみよう」が生まれます。</p>
+    <p class="sec-sub">あなたと共通点のある仲間を見つけて、ここから「やってみよう」が生まれます。<span class="en-sub">Find members with shared interests — this is where ideas begin.</span></p>
     <div class="interest-bar" id="interestBar"></div>
     <div class="people" id="people"></div>
   </section>
 
   <section class="panel" id="panel-ideas">
-    <div class="lead"><b>「これやってみたい！」</b>を投稿し、<b>「興味あり」</b>を押して仲間を集めます。3人集まると<b>企画チーム</b>を作れます。</div>
+    <div class="lead"><b>「これやってみたい！」</b>を投稿し、<b>「興味あり」</b>を押して仲間を集めます。3人集まると<b>企画チーム</b>を作れます。<span class="en-sub">Post an idea, gather people who are interested, and form a planning team once 3 join.</span></div>
     <h2 class="sec-title">やってみようボード</h2>
-    <p class="sec-sub">やりたいことを出し合い、興味のある人が手を挙げる場所です。自分の投稿は ✏️ で修正・🗑 で削除できます。</p>
+    <p class="sec-sub">やりたいことを出し合い、興味のある人が手を挙げる場所です。自分の投稿は ✏️ で修正・🗑 で削除できます。<span class="en-sub">Share what you'd like to do. You can edit (✏️) or delete (🗑) your own posts.</span></p>
     <div class="box">
       <h3 style="margin-top:0;font-family:'Zen Maru Gothic';color:var(--teal-d)">＋ 新しいアイデアを投稿 / Post a new idea</h3>
       <div class="field"><label>やってみたいこと / Title</label><input id="ideaTitle" placeholder="例：朝の公園でラジオ体操の会"></div>
@@ -221,9 +252,9 @@
   </section>
 
   <section class="panel" id="panel-plan">
-    <div class="lead">興味のある仲間が集まって、<b>日程・役割・やること</b>を決めます。<b>オンライン打ち合わせ</b>もここから。決まったら会員に公開しましょう。</div>
+    <div class="lead">興味のある仲間が集まって、<b>日程・役割・やること</b>を決めます。<b>オンライン打ち合わせ</b>もここから。決まったら会員に公開しましょう。<span class="en-sub">Gather interested members to decide dates, roles and tasks — then publish to everyone.</span></div>
     <h2 class="sec-title">みんなで企画</h2>
-    <p class="sec-sub">集まった仲間で、実際にイベントの中身を一緒に作ります。自分の発言は ✏️ 修正・🗑 削除できます。</p>
+    <p class="sec-sub">集まった仲間で、実際にイベントの中身を一緒に作ります。自分の発言は ✏️ 修正・🗑 削除できます。<span class="en-sub">Build the event together. You can edit (✏️) or delete (🗑) your own comments.</span></p>
     <div class="field" style="max-width:520px">
       <label>企画中のテーマを選ぶ / Choose a project</label>
       <select id="planSel"></select>
@@ -232,12 +263,43 @@
   </section>
 
   <section class="panel" id="panel-run">
-    <div class="lead">企画が完成すると、ここで<b>全会員に公開</b>。参加の<b>出欠</b>を集め、当日の<b>運営</b>まで進めます。</div>
+    <div class="lead">企画が完成すると、ここで<b>全会員に公開</b>。参加の<b>出欠</b>を集め、当日の<b>運営</b>まで進めます。<span class="en-sub">Published events appear here. Collect RSVPs and manage the event on the day.</span></div>
     <h2 class="sec-title">公開・運営</h2>
-    <p class="sec-sub">公開されたイベントに、会員のみなさんが参加表明できます。主催したイベントは ✏️ 修正・🗑 削除できます。</p>
+    <p class="sec-sub">公開されたイベントに、会員のみなさんが参加表明できます。主催したイベントは ✏️ 修正・🗑 削除できます。<span class="en-sub">Members can RSVP to published events. You can edit (✏️) or delete (🗑) events you organize.</span></p>
     <div id="eventList"></div>
   </section>
 </main>
+
+<footer class="site-foot">
+  <div class="test-strip">⚠ これは開発中のテストサイトです。投稿などのデータは予告なく削除・初期化されることがあります。
+    <span class="en">This is a test site under development. Posted data may be deleted or reset without notice.</span></div>
+
+  <h3>📌 注意事項 / Notes</h3>
+  <ul>
+    <li>個人情報（本名・電話番号・住所・口座番号など）は書き込まないでください。
+      <span class="en">Do not post personal information (real name, phone number, address, bank details, etc.).</span></li>
+    <li>投稿・コメント・写真は、ログインした他の参加者に公開されます。
+      <span class="en">Your posts, comments and photos are visible to other signed-in participants.</span></li>
+    <li>動作確認のためのサイトのため、機能やデータは予告なく変更されることがあります。
+      <span class="en">As this is a testing site, features and data may change without notice.</span></li>
+    <li>他者を傷つける内容や、法令・公序良俗に反する投稿はお控えください。
+      <span class="en">Please refrain from harmful, unlawful, or otherwise inappropriate content.</span></li>
+  </ul>
+
+  <h3>⚖ 免責事項 / Disclaimer</h3>
+  <ul>
+    <li>本サイトはテスト目的で提供されており、内容の正確性・継続性・安全性を保証しません。
+      <span class="en">This site is provided for testing purposes only, with no guarantee of accuracy, continuity, or security.</span></li>
+    <li>本サイトの利用により生じたいかなる損害についても、運営者は一切の責任を負いません。
+      <span class="en">The operator assumes no responsibility for any damage arising from use of this site.</span></li>
+    <li>オンライン会議など外部サービスへのリンクは、各自の責任でご利用ください。
+      <span class="en">Use of links to external services, such as online meetings, is at your own risk.</span></li>
+    <li>予告なくサービスを変更・中止する場合があります。
+      <span class="en">The service may be changed or discontinued without prior notice.</span></li>
+  </ul>
+
+  <p style="margin-top:20px;font-size:.82rem">© 2026 60代はやりたい放題（テスト版） / Wild at 60s (Test Version)</p>
+</footer>
 
 <div class="flash" id="flash"></div>
 
@@ -290,6 +352,7 @@ function colorOf(uid){const u=usersMap[uid];return u?u.color:"#999";}
 function avatarHTML(uid,cls){return `<div class="${cls||'mini-av'}" style="background:${colorOf(uid)}" title="${esc(nameOf(uid))}">${esc(nameOf(uid)[0]||'?')}</div>`;}
 const tsVal=o=>o&&o.createdAt&&o.createdAt.seconds?o.createdAt.seconds:0;
 const genId=()=>Math.random().toString(36).slice(2)+Date.now().toString(36);
+function withTimeout(p,ms){return Promise.race([p,new Promise((_,rej)=>setTimeout(()=>rej({code:"timeout（接続できません。Firestore未作成の可能性）"}),ms))]);}
 function providerLabel(pid){return ({"google.com":"Google","facebook.com":"Facebook","twitter.com":"X","apple.com":"Apple","github.com":"GitHub","anonymous":"ゲスト"})[pid]||"ログイン済み";}
 function provClass(label){return label==="Google"?"google":(label==="ゲスト"?"guest":"");}
 function provBadge(label){return label?`<span class="prov ${provClass(label)}">${label==="Google"?'<span style="color:#4285F4;font-weight:900">G</span>':''}${esc(label)}</span>`:"";}
@@ -297,7 +360,12 @@ function provBadge(label){return label?`<span class="prov ${provClass(label)}">$
 /* ===================================================================
    AUTH
 =================================================================== */
-getRedirectResult(auth).catch(e=>console.warn("redirect:",e.code));
+getRedirectResult(auth).catch(e=>{
+  console.warn("redirect:",e.code,e.message);
+  document.getElementById("loading").style.display="none";
+  if(e.code==="auth/unauthorized-domain") flash("このサイトのドメインをFirebaseに許可してください");
+  else flash("ログインに失敗しました（"+(e.code||"")+"）");
+});
 
 onAuthStateChanged(auth, async user=>{
   if(!user){
@@ -309,34 +377,48 @@ onAuthStateChanged(auth, async user=>{
     return;
   }
   document.getElementById("login").classList.add("hidden");
+  document.getElementById("loading").style.display="flex";
   const pid = user.isAnonymous ? "anonymous" : (user.providerData[0]?.providerId || "");
   const provider = providerLabel(pid);
-  const uref = doc(db,"users",user.uid);
-  const snap = await getDoc(uref);
-  if(snap.exists()){
-    me={uid:user.uid, ...snap.data(), provider};
-    if(snap.data().provider!==provider) updateDoc(uref,{provider}).catch(()=>{});
-    startApp();
-  } else {
-    me={uid:user.uid, color:COLORS[Math.floor(Math.random()*COLORS.length)], interests:[], provider, _suggest:user.displayName||""};
-    openOnboard();
+  try{
+    const uref = doc(db,"users",user.uid);
+    const snap = await withTimeout(getDoc(uref), 10000);
+    if(snap.exists()){
+      me={uid:user.uid, ...snap.data(), provider};
+      if(snap.data().provider!==provider) updateDoc(uref,{provider}).catch(()=>{});
+      startApp();
+    } else {
+      me={uid:user.uid, color:COLORS[Math.floor(Math.random()*COLORS.length)], interests:[], provider, _suggest:user.displayName||""};
+      openOnboard();
+    }
+  }catch(err){
+    console.error("firestore:",err);
+    document.getElementById("loading").style.display="none";
+    const code=(err&&err.code)?err.code:((err&&err.message)?err.message:"unknown");
+    document.getElementById("dbErrCode").textContent="エラー内容: "+code;
+    document.getElementById("dbError").classList.remove("hidden");
   }
 });
 
 /* ---- login buttons ---- */
 document.getElementById("loginGoogle").onclick=async ()=>{
   const provider=new GoogleAuthProvider();
-  try{ await signInWithPopup(auth,provider); }
+  provider.setCustomParameters({prompt:"select_account"});
+  document.getElementById("login").classList.add("hidden");
+  document.getElementById("loading").style.display="flex";
+  try{ await signInWithRedirect(auth,provider); }
   catch(e){
-    if(e.code==="auth/popup-blocked"||e.code==="auth/cancelled-popup-request"||e.code==="auth/popup-closed-by-user"){
-      try{ await signInWithRedirect(auth,provider); }catch(_){ flash("ログインに失敗しました"); }
-    } else if(e.code==="auth/unauthorized-domain"){
-      flash("このサイトのドメインをFirebaseに許可してください");
-    } else { flash("ログインに失敗しました"); console.error(e); }
+    document.getElementById("loading").style.display="none";
+    document.getElementById("login").classList.remove("hidden");
+    if(e.code==="auth/unauthorized-domain") flash("このサイトのドメインをFirebaseに許可してください");
+    else flash("ログインに失敗しました（"+(e.code||"")+"）");
+    console.error(e);
   }
 };
 document.getElementById("loginGuest").onclick=()=>signInAnonymously(auth).catch(e=>{flash("接続に失敗しました");console.error(e);});
 document.getElementById("logoutBtn").onclick=()=>{ if(confirm("ログアウトしますか？")) signOut(auth); };
+document.getElementById("dbReload").onclick=()=>location.reload();
+document.getElementById("dbLogout").onclick=()=>{ document.getElementById("dbError").classList.add("hidden"); signOut(auth); };
 
 /* ---- onboarding ---- */
 let obSelected=new Set();
@@ -376,17 +458,16 @@ function startApp(){
   if(!me||!me.name) return; // need a profile
   document.getElementById("meName").textContent=me.name+" さん";
   document.getElementById("meProv").outerHTML=provBadge(me.provider)||'<span class="prov" id="meProv"></span>';
-  // re-grab (outerHTML replaced node)
   const mp=document.querySelector("#meChip .prov"); if(mp&&!mp.id)mp.id="meProv";
   document.getElementById("meChip").style.display="flex";
   document.getElementById("loading").style.display="none";
   document.getElementById("app").style.display="block";
   if(started){renderAll();return;}
   started=true;
-  onSnapshot(collection(db,"users"),s=>{usersMap={};s.forEach(d=>usersMap[d.id]={...d.data()});if(me&&usersMap[me.uid])me={...me,...usersMap[me.uid]};refreshChip();renderAll();});
-  onSnapshot(collection(db,"ideas"),s=>{ideas=[];s.forEach(d=>ideas.push({id:d.id,...d.data()}));ideas.sort((a,b)=>tsVal(b)-tsVal(a));renderAll();});
-  onSnapshot(collection(db,"projects"),s=>{projects=[];s.forEach(d=>projects.push({id:d.id,...d.data()}));projects.sort((a,b)=>tsVal(a)-tsVal(b));renderAll();});
-  onSnapshot(collection(db,"events"),s=>{events=[];s.forEach(d=>events.push({id:d.id,...d.data()}));events.sort((a,b)=>tsVal(b)-tsVal(a));renderAll();});
+  onSnapshot(collection(db,"users"),s=>{usersMap={};s.forEach(d=>usersMap[d.id]={...d.data()});if(me&&usersMap[me.uid])me={...me,...usersMap[me.uid]};refreshChip();renderAll();},err=>{console.error("users:",err);flash("データの読み込みに失敗（"+err.code+"）");});
+  onSnapshot(collection(db,"ideas"),s=>{ideas=[];s.forEach(d=>ideas.push({id:d.id,...d.data()}));ideas.sort((a,b)=>tsVal(b)-tsVal(a));renderAll();},err=>console.error("ideas:",err));
+  onSnapshot(collection(db,"projects"),s=>{projects=[];s.forEach(d=>projects.push({id:d.id,...d.data()}));projects.sort((a,b)=>tsVal(a)-tsVal(b));renderAll();},err=>console.error("projects:",err));
+  onSnapshot(collection(db,"events"),s=>{events=[];s.forEach(d=>events.push({id:d.id,...d.data()}));events.sort((a,b)=>tsVal(b)-tsVal(a));renderAll();},err=>console.error("events:",err));
 }
 function refreshChip(){
   if(!me)return;
