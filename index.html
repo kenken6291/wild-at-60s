@@ -140,21 +140,18 @@
   footer.site-foot ul{margin:6px 0; padding-left:1.2em;}
   footer.site-foot li{margin-bottom:9px;}
   footer.site-foot .en{display:block; opacity:.7; font-size:.82rem;}
-  /* 会員番号 */
   .member-num{font-family:"Zen Maru Gothic"; font-size:2.6rem; font-weight:900; color:var(--coral-d); letter-spacing:.18em; background:var(--gold-soft); border-radius:14px; padding:16px 24px; margin:14px 0; display:inline-block; border:3px solid var(--gold);}
   .mem-note{background:#eaf6f1; border:2px solid var(--teal); border-radius:10px; padding:10px 14px; font-size:.9rem; color:var(--teal-d); margin:10px 0;}
   .num-input{width:100%; font-family:"Zen Maru Gothic"; font-size:1.3rem; font-weight:700; text-align:center; letter-spacing:.2em; padding:13px 14px; border:2px solid var(--line); border-radius:12px; background:#fff;}
   .num-input:focus{outline:none; border-color:var(--coral);}
   .divider{display:flex; align-items:center; gap:10px; margin:14px 0; color:var(--ink-soft); font-size:.85rem;}
   .divider::before,.divider::after{content:""; flex:1; height:1px; background:var(--line);}
-  /* ===== UX改善: 3Dボタン ===== */
   .btn{box-shadow:0 5px 0 rgba(0,0,0,.18), 0 8px 18px var(--shadow); transition:transform .08s, box-shadow .08s;}
   .btn:active{transform:translateY(4px) !important; box-shadow:0 1px 0 rgba(0,0,0,.15), 0 2px 6px var(--shadow) !important;}
   .btn-coral{background:linear-gradient(180deg,#f07038 0%,var(--coral) 100%); box-shadow:0 5px 0 var(--coral-d), 0 8px 18px var(--shadow);}
   .btn-coral:active{box-shadow:0 1px 0 var(--coral-d) !important;}
   .btn-teal{background:linear-gradient(180deg,#2c8a6a 0%,var(--teal) 100%); box-shadow:0 5px 0 var(--teal-d), 0 8px 18px var(--shadow);}
   .btn-teal:active{box-shadow:0 1px 0 var(--teal-d) !important;}
-  /* ===== 文字サイズ切替 ===== */
   .font-btn{border:none; background:rgba(255,255,255,.28); color:#fff; border-radius:999px; padding:7px 13px; font-weight:700; cursor:pointer; font-family:"Noto Sans JP"; font-size:.9rem; align-self:center; white-space:nowrap;}
   .font-btn:hover{background:rgba(255,255,255,.42);}
   html.font-large body{font-size:21px;}
@@ -163,18 +160,15 @@
   html.font-large .logo{font-size:1.7rem;}
   html.font-large .card h3{font-size:1.4rem;}
   html.font-large .field input,html.font-large .field textarea{font-size:1.15rem; padding:14px;}
-  /* ===== テンプレートカテゴリー ===== */
   .tmpl-bar{display:flex; flex-wrap:wrap; gap:8px; margin-bottom:6px;}
   .tmpl-btn{border:2px solid var(--line); background:#fff; border-radius:999px; padding:8px 14px; font-size:.95rem; font-weight:700; cursor:pointer; transition:.15s; color:var(--ink-soft);}
   .tmpl-btn:hover{border-color:var(--coral); color:var(--coral-d);}
   .tmpl-btn.on{background:var(--coral); color:#fff; border-color:var(--coral);}
-  /* ===== ライトなリアクション ===== */
   .reactions{display:flex; gap:8px; flex-wrap:wrap; margin-top:10px; padding-top:10px; border-top:1px dashed var(--line);}
   .react-btn{border:2px solid var(--line); background:#fff; border-radius:999px; padding:7px 14px; font-size:.95rem; cursor:pointer; transition:.15s; display:inline-flex; align-items:center; gap:5px; font-family:"Noto Sans JP"; font-weight:700;}
   .react-btn:hover{border-color:var(--coral); background:#fff8f4;}
   .react-btn.on{background:var(--gold-soft); border-color:var(--gold); color:var(--coral-d);}
   .react-count{font-size:.82rem; color:var(--ink-soft);}
-  /* ===== AIひらめきアシスト ===== */
   .ai-box{background:linear-gradient(135deg,#f0f8ff,#e8f4f0); border:2px solid #b0d8c8; border-radius:var(--r); padding:18px; margin-bottom:16px;}
   .ai-box-title{font-family:"Zen Maru Gothic"; font-weight:900; color:var(--teal-d); font-size:1.1rem; margin:0 0 4px; display:flex; align-items:center; gap:8px;}
   .ai-box-sub{color:var(--ink-soft); font-size:.88rem; margin:0 0 12px;}
@@ -183,7 +177,6 @@
   .ai-num{background:var(--teal); color:#fff; border-radius:50%; width:26px; height:26px; min-width:26px; display:flex; align-items:center; justify-content:center; font-weight:900; font-size:.9rem;}
   .ai-text{flex:1; font-size:.97rem; line-height:1.6; color:var(--ink);}
   .ai-loading{text-align:center; padding:14px; color:var(--teal-d); font-weight:700; font-size:1rem;}
-  /* ===== 逆引きマッチング掲示板 ===== */
   .helper-type-bar{display:flex; gap:10px; flex-wrap:wrap; margin-bottom:14px;}
   .htype-btn{flex:1; min-width:180px; border:3px solid var(--line); background:#fff; border-radius:14px; padding:13px 16px; font-family:"Zen Maru Gothic"; font-weight:700; font-size:1rem; cursor:pointer; transition:.15s; text-align:center;}
   .htype-btn.on-need{background:#fff0eb; border-color:var(--coral); color:var(--coral-d);}
@@ -203,7 +196,6 @@
   .match-title{font-size:.85rem; font-weight:700; color:var(--teal-d); margin:0 0 6px;}
   .match-item{font-size:.9rem; padding:5px 0; border-bottom:1px dashed var(--line); color:var(--ink);}
   .match-item:last-child{border-bottom:none;}
-  /* ===== 大人数対応: 検索・ソート・ページネーション ===== */
   .connect-controls{background:var(--paper); border:2px solid var(--line); border-radius:var(--r); padding:16px 18px; margin-bottom:16px;}
   .connect-search{width:100%; font-family:inherit; font-size:1.05rem; padding:12px 16px; border:2px solid var(--line); border-radius:12px; background:#fff; margin-bottom:12px;}
   .connect-search:focus{outline:none; border-color:var(--coral);}
@@ -228,7 +220,6 @@
   .page-btn:hover{border-color:var(--coral); color:var(--coral-d);}
   .page-btn.on{background:var(--coral); color:#fff; border-color:var(--coral);}
   .page-btn:disabled{opacity:.35; cursor:not-allowed;}
-  /* ===== 管理者パネル ===== */
   .tab-admin{background:rgba(192,57,43,.15) !important; color:#c0392b !important;}
   .tab-admin.active{border-bottom-color:#c0392b !important; color:#c0392b !important;}
   .tab-admin.active .step{background:#c0392b !important;}
@@ -303,7 +294,7 @@
 <div class="overlay hidden" id="needConfig">
   <div class="sheet">
     <h2>⚙️ Firebaseの設定が必要です</h2>
-    <p class="sub">このファイルの下のほうにある <b>firebaseConfig</b> に設定を貼り付けてください。</p>
+    <p class="sub">GitHub Secrets と GitHub Actions ワークフローの設定を確認してください。</p>
   </div>
 </div>
 
@@ -313,7 +304,7 @@
     <p class="sub">ログインはできました。ただし保存先（Firestore）に接続できていません。次の3つを確認してください。</p>
     <ol style="line-height:1.9; padding-left:1.2em; margin:0 0 12px">
       <li>Firebaseで <b>「Firestore Database」</b> を作成しましたか？</li>
-      <li>作成時に <b>「テストモードで開始」</b> を選びましたか？（または公開ルールを設定）</li>
+      <li>作成時に <b>「テストモードで開始」</b> を選びましたか？</li>
       <li>ロケーションは <b>asia-northeast1（東京）</b> など、作成済みになっていますか？</li>
     </ol>
     <p class="a11y-note" id="dbErrCode"></p>
@@ -367,8 +358,8 @@
           <button class="sort-btn" data-sort="name">🔤 名前順</button>
         </div>
         <div class="view-bar">
-          <button class="view-btn on" data-view="card" title="カード表示">⊞ カード</button>
-          <button class="view-btn" data-view="list" title="リスト表示">☰ リスト</button>
+          <button class="view-btn on" data-view="card">⊞ カード</button>
+          <button class="view-btn" data-view="list">☰ リスト</button>
         </div>
       </div>
     </div>
@@ -457,8 +448,8 @@
       <p>ユーザー削除後、そのユーザーの投稿は「（退会者）」として残ります。</p>
     </div>
     <div class="box">
-      <p style="font-weight:700;margin:0 0 6px">あなたのUID（管理者設定に使用）</p>
-      <p class="a11y-note" style="margin:0 0 8px">このIDをコードの <b>ADMIN_UIDS</b> に追加すると管理者になれます。タップでコピー。</p>
+      <p style="font-weight:700;margin:0 0 6px">あなたのUID（Firestore adminList 設定用）</p>
+      <p class="a11y-note" style="margin:0 0 8px">このIDを Firestore の <b>config/adminList</b> の <b>uids 配列</b>に追加すると管理者になれます。タップでコピー。</p>
       <span class="admin-uid" id="myUidDisplay" onclick="navigator.clipboard&&navigator.clipboard.writeText(this.textContent);this.textContent='コピーしました！';setTimeout(()=>this.textContent=me&&me.uid||'',1500)">―</span>
     </div>
     <input class="admin-search" id="adminSearch" placeholder="🔍 名前・UIDで絞り込み…">
@@ -498,24 +489,29 @@
 <div class="flash" id="flash"></div>
 
 <script type="module">
+/* ===================================================================
+   Firebase 設定 — 実際の値は GitHub Secrets → GitHub Actions で注入
+   このファイルを直接 GitHub にコミットしても APIキーは含まれません
+=================================================================== */
 const firebaseConfig = {
-  apiKey: "AIzaSyCi0aQkDAbWwVEUZTWpKeu2nEnomIhJDKE",
-  authDomain: "wild-at-60s.firebaseapp.com",
-  projectId: "wild-at-60s",
-  storageBucket: "wild-at-60s.firebasestorage.app",
-  messagingSenderId: "264890425885",
-  appId: "1:264890425885:web:e25132c8d293156ab4dcf4"
+  apiKey:            "%%FIREBASE_API_KEY%%",
+  authDomain:        "%%FIREBASE_AUTH_DOMAIN%%",
+  projectId:         "%%FIREBASE_PROJECT_ID%%",
+  storageBucket:     "%%FIREBASE_STORAGE_BUCKET%%",
+  messagingSenderId: "%%FIREBASE_MESSAGING_SENDER_ID%%",
+  appId:             "%%FIREBASE_APP_ID%%"
 };
 
-const GAS_URL = "https://script.google.com/macros/s/AKfycbwMdyqPllR_MpheIIez54cYreqSvrknzvjrGjBm_R0Iyd4hH2KDNaoT_Oi1PpLGqZkb-Q/exec";
+/* GAS URL — GitHub Secrets → GitHub Actions で注入 */
+const GAS_URL = "%%GAS_URL%%";
 
 /* ===================================================================
-   管理者UID設定
-   ログイン後に「管理者」タブ → あなたのUID欄に表示されるIDをここに貼り付けてください。
+   管理者設定: コードに書かず Firestore から取得します（セキュリティ向上）
+   設定方法: Firebase Console → Firestore → コレクション「config」→
+             ドキュメントID「adminList」→ フィールド「uids」(配列) に
+             管理者の Firebase UID を追加してください。
 =================================================================== */
-const ADMIN_UIDS = [
-  'PASTE_YOUR_FIREBASE_UID_HERE'
-];
+let ADMIN_UIDS = []; // Firestoreから実行時に読み込みます
 
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
 import { getAuth, onAuthStateChanged, signInAnonymously, signOut,
@@ -529,10 +525,10 @@ import {
 const PRESET = ["卓球","ダンス","自転車","キャンプ","写真","料理","旅行","プログラミング","ゲーム","ガーデニング","釣り","音楽","将棋","散歩","手芸","カラオケ","登山","映画","読書","お酒"];
 const COLORS = ["#E8602C","#1F6F5C","#C9A227","#5B7DB1","#9B5DE5","#2E8B57","#D1495B","#3D7068"];
 
-if(firebaseConfig.apiKey.startsWith("PASTE")){
+if(firebaseConfig.apiKey.startsWith("%%")){
   document.getElementById("needConfig").classList.remove("hidden");
   document.getElementById("loading").style.display="none";
-  throw new Error("Firebase config not set");
+  throw new Error("Firebase config not injected — check GitHub Secrets and Actions workflow");
 }
 
 const app = initializeApp(firebaseConfig);
@@ -559,13 +555,22 @@ function providerLabel(pid){return ({"google.com":"Google","facebook.com":"Faceb
 function provClass(label){return label==="Google"?"google":(label==="ゲスト"?"guest":"");}
 function provBadge(label){return label?`<span class="prov ${provClass(label)}">${label==="Google"?'<span style="color:#4285F4;font-weight:900">G</span>':''}${esc(label)}</span>`:"";}
 async function logToSheet(){
-  if(!GAS_URL||GAS_URL.indexOf("PASTE")>=0)return;
+  if(!GAS_URL || GAS_URL.startsWith("%%") || GAS_URL.indexOf("PASTE")>=0) return;
   try{
     await fetch(GAS_URL,{method:"POST",mode:"no-cors",headers:{"Content-Type":"text/plain;charset=utf-8"},
       body:JSON.stringify({uid:me.uid,name:me.name,provider:me.provider,interests:(me.interests||[]).join("、")})});
   }catch(err){console.warn("sheet log:",err);}
 }
 function formatMemberNum(n){return String(n).slice(0,4)+"-"+String(n).slice(4);}
+
+/* 管理者リストを Firestore から取得（コードに UID を書かない） */
+async function loadAdminConfig(db){
+  try{
+    const snap=await getDoc(doc(db,"config","adminList"));
+    if(snap.exists()) ADMIN_UIDS=snap.data().uids||[];
+  }catch(e){console.warn("admin config:",e);}
+}
+
 async function generateMemberNumber(uid){
   try{
     const snap=await getDoc(doc(db,"users",uid));
@@ -803,7 +808,11 @@ function startApp(){
   document.getElementById("meChip").style.display="flex";
   document.getElementById("loading").style.display="none";
   document.getElementById("app").style.display="block";
-  document.getElementById("adminTab").style.display=ADMIN_UIDS.includes(me.uid)?"flex":"none";
+  /* 管理者タブ: Firestore config/adminList から取得してから表示判定 */
+  loadAdminConfig(db).then(()=>{
+    document.getElementById("adminTab").style.display=isAdmin()?"flex":"none";
+    if(activeTab==="admin") renderAdmin();
+  });
   if(started){renderAll();return;}
   started=true;
   onSnapshot(collection(db,"users"),s=>{usersMap={};s.forEach(d=>usersMap[d.id]={...d.data()});if(me&&usersMap[me.uid])me={...me,...usersMap[me.uid]};refreshChip();renderAll();},err=>{console.error("users:",err);flash("データの読み込みに失敗（"+err.code+"）");});
@@ -1232,7 +1241,7 @@ document.getElementById("aiBtn").onclick=async ()=>{
         sug.appendChild(card);
       });
     }else{
-      sug.innerHTML='<p class="a11y-note">⚠ 提案を取得できませんでした。GASにGemini APIキーが設定されているか確認してください。</p>';
+      sug.innerHTML='<p class="a11y-note">⚠ 提案を取得できませんでした。GASのScript PropertiesにGEMINI_API_KEYが設定されているか確認してください。</p>';
     }
   }catch(e){
     sug.innerHTML='<p class="a11y-note">⚠ 通信エラーが発生しました。GASのURLと設定を確認してください。</p>';
