@@ -147,11 +147,109 @@
   .num-input:focus{outline:none; border-color:var(--coral);}
   .divider{display:flex; align-items:center; gap:10px; margin:14px 0; color:var(--ink-soft); font-size:.85rem;}
   .divider::before,.divider::after{content:""; flex:1; height:1px; background:var(--line);}
+  /* ===== UX改善: 3Dボタン ===== */
+  .btn{box-shadow:0 5px 0 rgba(0,0,0,.18), 0 8px 18px var(--shadow); transition:transform .08s, box-shadow .08s;}
+  .btn:active{transform:translateY(4px) !important; box-shadow:0 1px 0 rgba(0,0,0,.15), 0 2px 6px var(--shadow) !important;}
+  .btn-coral{background:linear-gradient(180deg,#f07038 0%,var(--coral) 100%); box-shadow:0 5px 0 var(--coral-d), 0 8px 18px var(--shadow);}
+  .btn-coral:active{box-shadow:0 1px 0 var(--coral-d) !important;}
+  .btn-teal{background:linear-gradient(180deg,#2c8a6a 0%,var(--teal) 100%); box-shadow:0 5px 0 var(--teal-d), 0 8px 18px var(--shadow);}
+  .btn-teal:active{box-shadow:0 1px 0 var(--teal-d) !important;}
+  /* ===== 文字サイズ切替 ===== */
+  .font-btn{border:none; background:rgba(255,255,255,.28); color:#fff; border-radius:999px; padding:7px 13px; font-weight:700; cursor:pointer; font-family:"Noto Sans JP"; font-size:.9rem; align-self:center; white-space:nowrap;}
+  .font-btn:hover{background:rgba(255,255,255,.42);}
+  html.font-large body{font-size:21px;}
+  html.font-large .btn{font-size:1.15rem; padding:15px 24px;}
+  html.font-large .tab{font-size:1.1rem; padding:18px 10px 15px;}
+  html.font-large .logo{font-size:1.7rem;}
+  html.font-large .card h3{font-size:1.4rem;}
+  html.font-large .field input,html.font-large .field textarea{font-size:1.15rem; padding:14px;}
+  /* ===== テンプレートカテゴリー ===== */
+  .tmpl-bar{display:flex; flex-wrap:wrap; gap:8px; margin-bottom:6px;}
+  .tmpl-btn{border:2px solid var(--line); background:#fff; border-radius:999px; padding:8px 14px; font-size:.95rem; font-weight:700; cursor:pointer; transition:.15s; color:var(--ink-soft);}
+  .tmpl-btn:hover{border-color:var(--coral); color:var(--coral-d);}
+  .tmpl-btn.on{background:var(--coral); color:#fff; border-color:var(--coral);}
+  /* ===== ライトなリアクション ===== */
+  .reactions{display:flex; gap:8px; flex-wrap:wrap; margin-top:10px; padding-top:10px; border-top:1px dashed var(--line);}
+  .react-btn{border:2px solid var(--line); background:#fff; border-radius:999px; padding:7px 14px; font-size:.95rem; cursor:pointer; transition:.15s; display:inline-flex; align-items:center; gap:5px; font-family:"Noto Sans JP"; font-weight:700;}
+  .react-btn:hover{border-color:var(--coral); background:#fff8f4;}
+  .react-btn.on{background:var(--gold-soft); border-color:var(--gold); color:var(--coral-d);}
+  .react-count{font-size:.82rem; color:var(--ink-soft);}
+  /* ===== AIひらめきアシスト ===== */
+  .ai-box{background:linear-gradient(135deg,#f0f8ff,#e8f4f0); border:2px solid #b0d8c8; border-radius:var(--r); padding:18px; margin-bottom:16px;}
+  .ai-box-title{font-family:"Zen Maru Gothic"; font-weight:900; color:var(--teal-d); font-size:1.1rem; margin:0 0 4px; display:flex; align-items:center; gap:8px;}
+  .ai-box-sub{color:var(--ink-soft); font-size:.88rem; margin:0 0 12px;}
+  .ai-card{background:#fff; border:2px solid var(--line); border-radius:12px; padding:12px 14px; margin-top:10px; display:flex; align-items:flex-start; gap:10px; transition:.15s;}
+  .ai-card:hover{border-color:var(--teal); background:#f0faf6;}
+  .ai-num{background:var(--teal); color:#fff; border-radius:50%; width:26px; height:26px; min-width:26px; display:flex; align-items:center; justify-content:center; font-weight:900; font-size:.9rem;}
+  .ai-text{flex:1; font-size:.97rem; line-height:1.6; color:var(--ink);}
+  .ai-loading{text-align:center; padding:14px; color:var(--teal-d); font-weight:700; font-size:1rem;}
+  /* ===== 逆引きマッチング掲示板 ===== */
+  .helper-type-bar{display:flex; gap:10px; flex-wrap:wrap; margin-bottom:14px;}
+  .htype-btn{flex:1; min-width:180px; border:3px solid var(--line); background:#fff; border-radius:14px; padding:13px 16px; font-family:"Zen Maru Gothic"; font-weight:700; font-size:1rem; cursor:pointer; transition:.15s; text-align:center;}
+  .htype-btn.on-need{background:#fff0eb; border-color:var(--coral); color:var(--coral-d);}
+  .htype-btn.on-skill{background:#eaf6f1; border-color:var(--teal); color:var(--teal-d);}
+  .htag-bar{display:flex; flex-wrap:wrap; gap:7px; margin-bottom:8px;}
+  .htag{border:2px solid var(--line); background:#fff; border-radius:999px; padding:7px 13px; font-size:.9rem; font-weight:700; cursor:pointer; transition:.15s; color:var(--ink-soft);}
+  .htag:hover{border-color:var(--coral);} .htag.on{background:var(--coral); color:#fff; border-color:var(--coral);}
+  .hcard{background:var(--paper); border:2px solid var(--line); border-radius:var(--r); padding:18px; margin-bottom:14px; box-shadow:0 3px 10px var(--shadow);}
+  .hcard.need{border-left:5px solid var(--coral);}
+  .hcard.skill{border-left:5px solid var(--teal);}
+  .hbadge{display:inline-block; border-radius:8px; padding:3px 12px; font-size:.82rem; font-weight:700; margin-bottom:8px;}
+  .hbadge.need{background:#fff0eb; color:var(--coral-d);}
+  .hbadge.skill{background:#eaf6f1; color:var(--teal-d);}
+  .htag-list{display:flex; flex-wrap:wrap; gap:6px; margin:8px 0;}
+  .htag-chip{background:var(--gold-soft); color:var(--coral-d); border-radius:8px; padding:3px 10px; font-size:.82rem; font-weight:700;}
+  .match-section{background:#f3faf6; border:1.5px dashed var(--teal); border-radius:10px; padding:10px 14px; margin-top:10px;}
+  .match-title{font-size:.85rem; font-weight:700; color:var(--teal-d); margin:0 0 6px;}
+  .match-item{font-size:.9rem; padding:5px 0; border-bottom:1px dashed var(--line); color:var(--ink);}
+  .match-item:last-child{border-bottom:none;}
+  /* ===== 大人数対応: 検索・ソート・ページネーション ===== */
+  .connect-controls{background:var(--paper); border:2px solid var(--line); border-radius:var(--r); padding:16px 18px; margin-bottom:16px;}
+  .connect-search{width:100%; font-family:inherit; font-size:1.05rem; padding:12px 16px; border:2px solid var(--line); border-radius:12px; background:#fff; margin-bottom:12px;}
+  .connect-search:focus{outline:none; border-color:var(--coral);}
+  .ctrl-row{display:flex; flex-wrap:wrap; gap:10px; align-items:center; justify-content:space-between;}
+  .ctrl-label{font-size:.88rem; font-weight:700; color:var(--ink-soft); white-space:nowrap;}
+  .sort-bar,.view-bar{display:flex; align-items:center; gap:6px; flex-wrap:wrap;}
+  .sort-btn,.view-btn{border:2px solid var(--line); background:#fff; border-radius:999px; padding:7px 14px; font-size:.9rem; font-weight:700; cursor:pointer; transition:.12s; color:var(--ink-soft); font-family:"Noto Sans JP";}
+  .sort-btn:hover,.view-btn:hover{border-color:var(--coral); color:var(--coral-d);}
+  .sort-btn.on,.view-btn.on{background:var(--teal); color:#fff; border-color:var(--teal);}
+  .connect-meta{font-size:.88rem; color:var(--ink-soft); margin:0 0 12px; font-weight:700;}
+  .people-list{display:flex; flex-direction:column; gap:8px;}
+  .pcard-list{background:var(--paper); border:2px solid var(--line); border-radius:14px; padding:12px 16px; display:flex; align-items:center; gap:12px; transition:.15s;}
+  .pcard-list.match{border-color:var(--coral); background:#fffaf7;}
+  .pcard-list.is-me{border-color:var(--teal); background:#f0faf6;}
+  .list-av{width:42px; height:42px; min-width:42px; font-size:1.2rem; margin:0;}
+  .list-info{flex:1; min-width:0;}
+  .list-name{font-family:"Zen Maru Gothic"; font-weight:700; font-size:1rem; display:flex; align-items:center; gap:6px; flex-wrap:wrap;}
+  .list-match{font-size:.78rem; font-weight:700; background:var(--teal); color:#fff; border-radius:8px; padding:2px 8px; white-space:nowrap;}
+  .list-tags{display:flex; flex-wrap:wrap; gap:5px; margin-top:4px;}
+  .pagination{display:flex; flex-wrap:wrap; gap:6px; justify-content:center; margin-top:20px; padding-bottom:10px;}
+  .page-btn{border:2px solid var(--line); background:#fff; border-radius:10px; padding:9px 14px; font-size:.95rem; font-weight:700; cursor:pointer; transition:.12s; font-family:"Noto Sans JP"; color:var(--ink-soft);}
+  .page-btn:hover{border-color:var(--coral); color:var(--coral-d);}
+  .page-btn.on{background:var(--coral); color:#fff; border-color:var(--coral);}
+  .page-btn:disabled{opacity:.35; cursor:not-allowed;}
+  /* ===== 管理者パネル ===== */
+  .tab-admin{background:rgba(192,57,43,.15) !important; color:#c0392b !important;}
+  .tab-admin.active{border-bottom-color:#c0392b !important; color:#c0392b !important;}
+  .tab-admin.active .step{background:#c0392b !important;}
+  .admin-warn{background:#fbe3df; border:2px solid #e8b4ac; border-radius:12px; padding:14px 18px; margin-bottom:20px; color:#c0392b; font-weight:700;}
+  .admin-warn p{margin:4px 0; font-size:.9rem;}
+  .admin-uid{background:#2C2620; color:#FCEBC4; border-radius:8px; padding:6px 12px; font-family:monospace; font-size:.85rem; user-select:all; cursor:pointer; display:inline-block; margin-top:6px;}
+  .admin-search{width:100%; font-family:inherit; font-size:1rem; padding:11px 14px; border:2px solid var(--line); border-radius:12px; margin-bottom:14px;}
+  .admin-search:focus{outline:none; border-color:#c0392b;}
+  .admin-count{font-size:.9rem; color:var(--ink-soft); font-weight:700; margin-bottom:12px;}
+  .urow{background:var(--paper); border:2px solid var(--line); border-radius:14px; padding:14px 16px; margin-bottom:10px; display:flex; align-items:center; gap:12px; flex-wrap:wrap;}
+  .urow.is-me{border-color:var(--teal); background:#f0faf6;}
+  .urow-info{flex:1; min-width:0;}
+  .urow-name{font-family:"Zen Maru Gothic"; font-weight:700; font-size:1.05rem; display:flex; align-items:center; gap:8px; flex-wrap:wrap;}
+  .urow-sub{font-size:.82rem; color:var(--ink-soft); margin-top:3px; display:flex; gap:10px; flex-wrap:wrap;}
+  .uid-chip{background:#f0ece0; border-radius:6px; padding:2px 8px; font-family:monospace; font-size:.78rem; color:var(--ink-soft); cursor:pointer; user-select:all;}
+  .btn-danger{background:#c0392b; color:#fff; border:none;} .btn-danger:hover{background:#a93226;}
+  .btn-danger:active{box-shadow:0 1px 0 #7b241c !important;}
 </style>
 </head>
 <body>
 
-<!-- ===== Member number reveal ===== -->
 <div class="overlay hidden" id="memberNumOverlay">
   <div class="sheet" style="text-align:center">
     <div style="font-size:2.5rem">🎫</div>
@@ -163,7 +261,6 @@
   </div>
 </div>
 
-<!-- ===== Login overlay ===== -->
 <div class="overlay hidden" id="login">
   <div class="sheet" style="text-align:center">
     <div style="font-size:3rem">🎪</div>
@@ -189,7 +286,6 @@
   </div>
 </div>
 
-<!-- ===== Onboarding / Profile overlay ===== -->
 <div class="overlay hidden" id="onboard">
   <div class="sheet">
     <h2>🌻 プロフィール</h2>
@@ -204,7 +300,6 @@
   </div>
 </div>
 
-<!-- ===== Config-missing notice ===== -->
 <div class="overlay hidden" id="needConfig">
   <div class="sheet">
     <h2>⚙️ Firebaseの設定が必要です</h2>
@@ -212,7 +307,6 @@
   </div>
 </div>
 
-<!-- ===== DB connection error ===== -->
 <div class="overlay hidden" id="dbError">
   <div class="sheet">
     <h2>⚠️ データベースにつながりません</h2>
@@ -236,6 +330,7 @@
       <small>～「みんなであそぼー！」がすぐ形になる、大人のイベント企画ツール～</small>
     </div>
     <span class="test-badge">⚠ テストサイト / TEST SITE</span>
+    <button class="font-btn" id="fontToggle">🔤 文字を大きく</button>
     <div class="me" id="meChip" style="display:none">
       <span class="who-name" id="meName">―</span>
       <span class="prov" id="meProv"></span>
@@ -251,6 +346,8 @@
     <button class="tab" data-tab="ideas"><span class="step">2</span>やってみようボード<span class="en">Let's-Try Board</span></button>
     <button class="tab" data-tab="plan"><span class="step">3</span>みんなで企画<span class="en">Plan Together</span></button>
     <button class="tab" data-tab="run"><span class="step">4</span>公開・運営<span class="en">Publish &amp; Operate</span></button>
+    <button class="tab" data-tab="helpers"><span class="step">5</span>助け合い掲示板<span class="en">Help &amp; Match</span></button>
+    <button class="tab tab-admin" data-tab="admin" id="adminTab" style="display:none"><span class="step">⚙</span>管理者<span class="en">Admin</span></button>
   </div>
 </nav>
 
@@ -261,8 +358,24 @@
     <div class="lead">気になる<b>趣味・関心</b>をタップすると、同じことに興味がある仲間が浮かび上がります。<span class="en-sub">Tap an interest to find members who share it.</span></div>
     <h2 class="sec-title">興味でつながる</h2>
     <p class="sec-sub">あなたと共通点のある仲間を見つけて、ここから「やってみよう」が生まれます。<span class="en-sub">Find members with shared interests — this is where ideas begin.</span></p>
+    <div class="connect-controls">
+      <input class="connect-search" id="connectSearch" placeholder="🔍 名前や趣味で検索… / Search by name or interest">
+      <div class="ctrl-row">
+        <div class="sort-bar">
+          <span class="ctrl-label">並び替え：</span>
+          <button class="sort-btn on" data-sort="match">⭐ マッチ度順</button>
+          <button class="sort-btn" data-sort="name">🔤 名前順</button>
+        </div>
+        <div class="view-bar">
+          <button class="view-btn on" data-view="card" title="カード表示">⊞ カード</button>
+          <button class="view-btn" data-view="list" title="リスト表示">☰ リスト</button>
+        </div>
+      </div>
+    </div>
     <div class="interest-bar" id="interestBar"></div>
+    <p class="connect-meta" id="connectMeta"></p>
     <div class="people" id="people"></div>
+    <div class="pagination" id="connectPager"></div>
   </section>
 
   <section class="panel" id="panel-ideas">
@@ -271,6 +384,27 @@
     <p class="sec-sub">やりたいことを出し合い、興味のある人が手を挙げる場所です。自分の投稿は ✏️ で修正・🗑 で削除できます。<span class="en-sub">Share what you'd like to do. You can edit (✏️) or delete (🗑) your own posts.</span></p>
     <div class="box">
       <h3 style="margin-top:0;font-family:'Zen Maru Gothic';color:var(--teal-d)">＋ 新しいアイデアを投稿 / Post a new idea</h3>
+      <div class="ai-box">
+        <p class="ai-box-title">✨ AIひらめきアシスト</p>
+        <p class="ai-box-sub">キーワードを1つ入れると、AIが説明文を3パターン作ってくれます。タップして選ぶだけ！</p>
+        <div class="row">
+          <input id="aiKeyword" placeholder="例：流しそうめん、囲碁大会、温泉" style="flex:1;min-width:160px;padding:11px 14px;border:2px solid var(--line);border-radius:12px;font-size:1.05rem;font-family:inherit">
+          <button class="btn btn-teal btn-sm" id="aiBtn">✨ 提案してもらう</button>
+        </div>
+        <div id="aiSuggestions"></div>
+      </div>
+      <div class="field">
+        <label>カテゴリーを選ぶと説明文が自動で入ります / Pick a category</label>
+        <div class="tmpl-bar" id="tmplBar">
+          <button class="tmpl-btn" data-cat="食事">🍜 食事</button>
+          <button class="tmpl-btn" data-cat="アウトドア">⛺ 屋外</button>
+          <button class="tmpl-btn" data-cat="スポーツ">🎾 運動</button>
+          <button class="tmpl-btn" data-cat="旅行">✈️ 旅行</button>
+          <button class="tmpl-btn" data-cat="学び">📚 学び</button>
+          <button class="tmpl-btn" data-cat="趣味">🎨 趣味</button>
+          <button class="tmpl-btn" data-cat="助け合い">🤝 助け合い</button>
+        </div>
+      </div>
       <div class="field"><label>やってみたいこと / Title</label><input id="ideaTitle" placeholder="例：朝の公園でラジオ体操の会"></div>
       <div class="field"><label>ひとこと説明 / Description</label><textarea id="ideaDesc" rows="2" placeholder="どんなことをしたいか、自由に書いてください"></textarea></div>
       <button class="btn btn-coral" id="addIdea">この指とまれ！で投稿 / Post</button>
@@ -294,6 +428,42 @@
     <h2 class="sec-title">公開・運営</h2>
     <p class="sec-sub">公開されたイベントに、会員のみなさんが参加表明できます。主催したイベントは ✏️ 修正・🗑 削除できます。<span class="en-sub">Members can RSVP to published events. You can edit (✏️) or delete (🗑) events you organize.</span></p>
     <div id="eventList"></div>
+  </section>
+
+  <section class="panel" id="panel-helpers">
+    <div class="lead"><b>「車を出してほしい」「スマホを教えてほしい」</b>などのニーズと、<b>「運転なら任せて」「PC得意です」</b>などのスキルをつなぎます。<span class="en-sub">Match your needs with others' skills, and vice versa.</span></div>
+    <h2 class="sec-title">🤝 助け合い掲示板</h2>
+    <p class="sec-sub">「困っていること」と「できること」を投稿して、ぴったりの相手を見つけましょう。</p>
+    <div class="box">
+      <h3 style="margin-top:0;font-family:'Zen Maru Gothic';color:var(--teal-d)">投稿する</h3>
+      <div class="helper-type-bar">
+        <button class="htype-btn on-need" data-htype="need" id="htypeNeed">🙋 困っていること・やってほしいこと</button>
+        <button class="htype-btn" data-htype="skill" id="htypeSkill">💪 できること・得意なこと</button>
+      </div>
+      <div class="field"><label>ひとこと / Title</label><input id="helperTitle" placeholder="例：スマホの写真の整理を教えてほしい"></div>
+      <div class="field">
+        <label>タグを選んでください（複数OK）/ Tags</label>
+        <div class="htag-bar" id="helperTagBar"></div>
+      </div>
+      <button class="btn btn-coral" id="addHelper">投稿する</button>
+    </div>
+    <div id="helperList"></div>
+  </section>
+
+  <section class="panel" id="panel-admin">
+    <h2 class="sec-title" style="color:#c0392b">⚙️ 管理者パネル / Admin Panel</h2>
+    <div class="admin-warn">
+      <p>⚠ このページは管理者専用です。操作は取り消せません。</p>
+      <p>ユーザー削除後、そのユーザーの投稿は「（退会者）」として残ります。</p>
+    </div>
+    <div class="box">
+      <p style="font-weight:700;margin:0 0 6px">あなたのUID（管理者設定に使用）</p>
+      <p class="a11y-note" style="margin:0 0 8px">このIDをコードの <b>ADMIN_UIDS</b> に追加すると管理者になれます。タップでコピー。</p>
+      <span class="admin-uid" id="myUidDisplay" onclick="navigator.clipboard&&navigator.clipboard.writeText(this.textContent);this.textContent='コピーしました！';setTimeout(()=>this.textContent=me&&me.uid||'',1500)">―</span>
+    </div>
+    <input class="admin-search" id="adminSearch" placeholder="🔍 名前・UIDで絞り込み…">
+    <p class="admin-count" id="adminCount"></p>
+    <div id="adminUserList"></div>
   </section>
 </main>
 
@@ -336,7 +506,16 @@ const firebaseConfig = {
   messagingSenderId: "264890425885",
   appId: "1:264890425885:web:e25132c8d293156ab4dcf4"
 };
+
 const GAS_URL = "https://script.google.com/macros/s/AKfycbwMdyqPllR_MpheIIez54cYreqSvrknzvjrGjBm_R0Iyd4hH2KDNaoT_Oi1PpLGqZkb-Q/exec";
+
+/* ===================================================================
+   管理者UID設定
+   ログイン後に「管理者」タブ → あなたのUID欄に表示されるIDをここに貼り付けてください。
+=================================================================== */
+const ADMIN_UIDS = [
+  'PASTE_YOUR_FIREBASE_UID_HERE'
+];
 
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
 import { getAuth, onAuthStateChanged, signInAnonymously, signOut,
@@ -360,10 +539,13 @@ const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const db = getFirestore(app);
 
-let usersMap={}, ideas=[], projects=[], events=[];
+let usersMap={}, ideas=[], projects=[], events=[], helpers=[];
 let me=null, currentProject=null, activeInterest=null, activeTab="connect";
 let editingIdeaId=null, editingMsgId=null, editingEventId=null;
 let pendingMemberRestore=null;
+let helperType="need", helperTags=new Set();
+const PAGE_SIZE=24;
+let connectSearch='', connectSort='match', connectView='card', connectPage=1;
 
 function flash(m){const f=document.getElementById("flash");f.textContent=m;f.classList.add("show");clearTimeout(f._t);f._t=setTimeout(()=>f.classList.remove("show"),2600);}
 function esc(s){return String(s==null?"":s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));}
@@ -385,22 +567,17 @@ async function logToSheet(){
 }
 function formatMemberNum(n){return String(n).slice(0,4)+"-"+String(n).slice(4);}
 async function generateMemberNumber(uid){
-  /* 既存の番号があれば再利用 */
   try{
     const snap=await getDoc(doc(db,"users",uid));
     if(snap.exists()&&snap.data().memberNumber) return snap.data().memberNumber;
   }catch(e){}
-  /* トランザクションでアトミックに番号を確保（重複絶対なし） */
   for(let i=0;i<10;i++){
     const n=String(Math.floor(10000000+Math.random()*90000000));
     try{
       const result=await runTransaction(db,async tx=>{
         const ref=doc(db,"guestMembers",n);
         const s=await tx.get(ref);
-        if(!s.exists()){
-          tx.set(ref,{uid,createdAt:serverTimestamp()});
-          return n;
-        }
+        if(!s.exists()){tx.set(ref,{uid,createdAt:serverTimestamp()});return n;}
         if(s.data()?.uid===uid) return n;
         return null;
       });
@@ -410,9 +587,6 @@ async function generateMemberNumber(uid){
   return String(Math.floor(10000000+Math.random()*90000000));
 }
 
-/* ===================================================================
-   AUTH
-=================================================================== */
 getRedirectResult(auth).catch(e=>{
   console.warn("redirect:",e.code,e.message);
   document.getElementById("loading").style.display="none";
@@ -433,8 +607,6 @@ onAuthStateChanged(auth, async user=>{
   document.getElementById("loading").style.display="flex";
   const pid=user.isAnonymous?"anonymous":(user.providerData[0]?.providerId||"");
   const provider=providerLabel(pid);
-
-  /* ---- 会員番号で復元ログイン ---- */
   if(pendingMemberRestore){
     const r=pendingMemberRestore; pendingMemberRestore=null;
     me={uid:user.uid,name:r.name||"",interests:r.interests||[],
@@ -449,7 +621,6 @@ onAuthStateChanged(auth, async user=>{
     if(me.name) startApp(); else openOnboard();
     return;
   }
-
   try{
     const uref=doc(db,"users",user.uid);
     const snap=await withTimeout(getDoc(uref),10000);
@@ -571,6 +742,58 @@ document.getElementById("obSave").onclick=async ()=>{
 };
 document.getElementById("editProfile").onclick=openOnboard;
 
+(function(){
+  if(localStorage.getItem('fontLarge')==='1'){
+    document.documentElement.classList.add('font-large');
+    document.getElementById('fontToggle').textContent='🔤 文字を標準に';
+  }
+})();
+document.getElementById('fontToggle').onclick=()=>{
+  const large=document.documentElement.classList.toggle('font-large');
+  localStorage.setItem('fontLarge',large?'1':'0');
+  document.getElementById('fontToggle').textContent=large?'🔤 文字を標準に':'🔤 文字を大きく';
+};
+
+const TEMPLATES={
+  "食事":"一緒においしいものを食べませんか？おすすめのお店を探して、ゆっくり食事と会話を楽しみましょう！",
+  "アウトドア":"外に出て自然を楽しみましょう！のんびり歩いたり景色を眺めたり。参加しやすい気軽な企画です。",
+  "スポーツ":"みんなで体を動かしてリフレッシュしましょう！経験不問、楽しむことが第一。一緒に汗を流しませんか？",
+  "旅行":"日帰りまたはプチ旅行で非日常を楽しみませんか？行き先はみんなで相談しながら決めましょう！",
+  "学び":"新しいことを一緒に学びませんか？知識を深めながら、同じ興味を持つ仲間と出会いましょう！",
+  "趣味":"共通の趣味で楽しい時間を過ごしませんか？初心者大歓迎！まずは気軽に集まりましょう。",
+  "助け合い":"お互いの得意なことを活かして助け合いませんか？一人では難しいことも、みんなで楽しくできます！"
+};
+document.getElementById('tmplBar').addEventListener('click',e=>{
+  const b=e.target.closest('.tmpl-btn'); if(!b) return;
+  document.querySelectorAll('.tmpl-btn').forEach(x=>x.classList.remove('on'));
+  b.classList.add('on');
+  const desc=document.getElementById('ideaDesc');
+  if(!desc.value||confirm('説明文をテンプレートで上書きしますか？')){desc.value=TEMPLATES[b.dataset.cat]||'';}
+});
+
+async function toggleReaction(idea,emoji){
+  const ref=doc(db,"ideas",idea.id);
+  const field='reactions.'+emoji;
+  const cur=(idea.reactions&&idea.reactions[emoji])||[];
+  await updateDoc(ref,{[field]:cur.includes(me.uid)?arrayRemove(me.uid):arrayUnion(me.uid)});
+}
+
+document.getElementById('connectSearch').addEventListener('input',e=>{
+  connectSearch=e.target.value; connectPage=1; renderConnect();
+});
+document.addEventListener('click',e=>{
+  const sb=e.target.closest('.sort-btn');
+  if(sb&&document.getElementById('panel-connect').classList.contains('active')){
+    document.querySelectorAll('.sort-btn').forEach(x=>x.classList.remove('on'));
+    sb.classList.add('on'); connectSort=sb.dataset.sort; connectPage=1; renderConnect();
+  }
+  const vb=e.target.closest('.view-btn');
+  if(vb&&document.getElementById('panel-connect').classList.contains('active')){
+    document.querySelectorAll('.view-btn').forEach(x=>x.classList.remove('on'));
+    vb.classList.add('on'); connectView=vb.dataset.view; renderConnect();
+  }
+});
+
 let started=false;
 function startApp(){
   if(!me||!me.name)return;
@@ -580,12 +803,14 @@ function startApp(){
   document.getElementById("meChip").style.display="flex";
   document.getElementById("loading").style.display="none";
   document.getElementById("app").style.display="block";
+  document.getElementById("adminTab").style.display=ADMIN_UIDS.includes(me.uid)?"flex":"none";
   if(started){renderAll();return;}
   started=true;
   onSnapshot(collection(db,"users"),s=>{usersMap={};s.forEach(d=>usersMap[d.id]={...d.data()});if(me&&usersMap[me.uid])me={...me,...usersMap[me.uid]};refreshChip();renderAll();},err=>{console.error("users:",err);flash("データの読み込みに失敗（"+err.code+"）");});
   onSnapshot(collection(db,"ideas"),s=>{ideas=[];s.forEach(d=>ideas.push({id:d.id,...d.data()}));ideas.sort((a,b)=>tsVal(b)-tsVal(a));renderAll();},err=>console.error("ideas:",err));
   onSnapshot(collection(db,"projects"),s=>{projects=[];s.forEach(d=>projects.push({id:d.id,...d.data()}));projects.sort((a,b)=>tsVal(a)-tsVal(b));renderAll();},err=>console.error("projects:",err));
   onSnapshot(collection(db,"events"),s=>{events=[];s.forEach(d=>events.push({id:d.id,...d.data()}));events.sort((a,b)=>tsVal(b)-tsVal(a));renderAll();},err=>console.error("events:",err));
+  onSnapshot(collection(db,"helpers"),s=>{helpers=[];s.forEach(d=>helpers.push({id:d.id,...d.data()}));helpers.sort((a,b)=>tsVal(b)-tsVal(a));renderAll();},err=>console.error("helpers:",err));
 }
 function refreshChip(){
   if(!me)return;
@@ -607,33 +832,85 @@ function renderConnect(){
   if(!me)return;
   const bar=document.getElementById("interestBar");bar.innerHTML="";
   const allI=[...new Set(Object.values(usersMap).flatMap(u=>u.interests||[]))].sort();
+  const allBtn=document.createElement("button");
+  allBtn.className="ipill"+(activeInterest===null?" on":"");
+  allBtn.textContent="✦ すべて";
+  allBtn.onclick=()=>{activeInterest=null;connectPage=1;renderConnect();};
+  bar.appendChild(allBtn);
   allI.forEach(it=>{
     const b=document.createElement("button");
     b.className="ipill"+(activeInterest===it?" on":"");
     b.textContent=((me.interests||[]).includes(it)?"★ ":"")+it;
-    b.onclick=()=>{activeInterest=activeInterest===it?null:it;renderConnect();};
+    b.onclick=()=>{activeInterest=activeInterest===it?null:it;connectPage=1;renderConnect();};
     bar.appendChild(b);
   });
-  const wrap=document.getElementById("people");wrap.innerHTML="";
-  const list=Object.entries(usersMap);
-  if(list.length<=1){
-    wrap.innerHTML='<div class="empty">まだ仲間が登録されていません。<br>このページのリンクをお友だちに送って、参加してもらいましょう。</div>';
-    return;
-  }
-  list.forEach(([uid,u])=>{
-    const mine=me.interests||[],its=u.interests||[];
-    const shared=its.filter(i=>mine.includes(i));
-    let cls="pcard";
-    if(activeInterest)cls+=its.includes(activeInterest)?" match":" dim";
-    else if(uid!==me.uid&&shared.length)cls+=" match";
-    const isMe=uid===me.uid;
-    const c=document.createElement("div");c.className=cls;
-    c.innerHTML=`<div class="avatar" style="background:${u.color}">${esc(u.name[0]||'?')}</div>
-      ${isMe?'<span class="match-note" style="background:var(--coral)">あなた / You</span>':(shared.length?`<span class="match-note">共通の趣味 ${shared.length}つ</span>`:"")}
-      <p class="pname">${esc(u.name)} さん ${provBadge(u.provider)}</p>
-      <div class="ptags">${its.map(i=>{const hit=(activeInterest&&i===activeInterest)||(!activeInterest&&!isMe&&mine.includes(i));return `<span class="tagchip ${hit?'hit':''}">${esc(i)}</span>`;}).join("")||'<span class="votes">興味は未設定</span>'}</div>`;
-    wrap.appendChild(c);
+  const myI=me.interests||[];
+  const q=connectSearch.toLowerCase();
+  let filtered=Object.entries(usersMap).filter(([uid,u])=>{
+    if(activeInterest&&!(u.interests||[]).includes(activeInterest)) return false;
+    if(q){const nm=(u.name||"").toLowerCase().includes(q);const tg=(u.interests||[]).some(i=>i.toLowerCase().includes(q));if(!nm&&!tg) return false;}
+    return true;
   });
+  if(connectSort==="match"){
+    filtered.sort(([ua,a],[ub,b])=>{
+      if(ua===me.uid) return -1; if(ub===me.uid) return 1;
+      return (b.interests||[]).filter(i=>myI.includes(i)).length-(a.interests||[]).filter(i=>myI.includes(i)).length;
+    });
+  } else {
+    filtered.sort(([ua,a],[ub,b])=>{if(ua===me.uid)return -1;if(ub===me.uid)return 1;return (a.name||"").localeCompare(b.name||"","ja");});
+  }
+  const total=filtered.length;
+  const totalPages=Math.max(1,Math.ceil(total/PAGE_SIZE));
+  if(connectPage>totalPages) connectPage=totalPages;
+  const start=(connectPage-1)*PAGE_SIZE;
+  const paged=filtered.slice(start,start+PAGE_SIZE);
+  const meta=document.getElementById("connectMeta");
+  meta.textContent=total===0?"該当するメンバーが見つかりません":`全${total}人中  ${start+1}〜${Math.min(start+PAGE_SIZE,total)}人を表示`;
+  const wrap=document.getElementById("people");
+  wrap.innerHTML="";
+  wrap.className=connectView==="list"?"people-list":"people";
+  if(!total){wrap.innerHTML='<div class="empty">該当するメンバーが見つかりません。<br>検索条件を変えてみてください。</div>';renderPager(totalPages);return;}
+  paged.forEach(([uid,u])=>{
+    const its=u.interests||[],shared=its.filter(i=>myI.includes(i)),isMe=uid===me.uid;
+    if(connectView==="list"){
+      const c=document.createElement("div");
+      c.className="pcard-list"+(isMe?" is-me":shared.length?" match":"");
+      c.innerHTML=`${avatarHTML(uid,"mini-av list-av")}
+        <div class="list-info">
+          <div class="list-name">${esc(u.name)} さん ${provBadge(u.provider)}</div>
+          <div class="list-tags">${its.slice(0,5).map(i=>`<span class="tagchip${shared.includes(i)?' hit':''}"> ${esc(i)}</span>`).join("")}${its.length>5?`<span class="tagchip">+${its.length-5}</span>`:""}</div>
+        </div>
+        ${isMe?'<span class="match-note" style="background:var(--coral)">あなた</span>':(shared.length?`<span class="list-match">共通 ${shared.length}つ</span>`:"")}`;
+      wrap.appendChild(c);
+    } else {
+      let cls="pcard";
+      if(activeInterest)cls+=its.includes(activeInterest)?" match":" dim";
+      else if(!isMe&&shared.length)cls+=" match";
+      const c=document.createElement("div");c.className=cls;
+      c.innerHTML=`<div class="avatar" style="background:${u.color}">${esc(u.name[0]||'?')}</div>
+        ${isMe?'<span class="match-note" style="background:var(--coral)">あなた / You</span>':(shared.length?`<span class="match-note">共通の趣味 ${shared.length}つ</span>`:"")}
+        <p class="pname">${esc(u.name)} さん ${provBadge(u.provider)}</p>
+        <div class="ptags">${its.map(i=>{const hit=(activeInterest&&i===activeInterest)||(!activeInterest&&!isMe&&myI.includes(i));return `<span class="tagchip ${hit?'hit':''}"> ${esc(i)}</span>`;}).join("")||'<span class="votes">興味は未設定</span>'}</div>`;
+      wrap.appendChild(c);
+    }
+  });
+  renderPager(totalPages);
+}
+function renderPager(totalPages){
+  const pager=document.getElementById("connectPager");pager.innerHTML="";
+  if(totalPages<=1) return;
+  const btn=(label,pg,dis,on)=>{
+    const b=document.createElement("button");b.className="page-btn"+(on?" on":"");
+    b.textContent=label;b.disabled=dis;
+    b.onclick=()=>{connectPage=pg;renderConnect();const t=document.getElementById("panel-connect");if(t)t.scrollIntoView({behavior:"smooth",block:"start"});};
+    pager.appendChild(b);
+  };
+  btn("< 前へ",connectPage-1,connectPage<=1,false);
+  for(let p=1;p<=totalPages;p++){
+    if(p===1||p===totalPages||Math.abs(p-connectPage)<=1){btn(String(p),p,false,p===connectPage);}
+    else if(Math.abs(p-connectPage)===2){const sp=document.createElement("span");sp.textContent="…";sp.style.padding="0 4px";sp.style.alignSelf="center";pager.appendChild(sp);}
+  }
+  btn("次へ >",connectPage+1,connectPage>=totalPages,false);
 }
 
 document.getElementById("addIdea").onclick=async ()=>{
@@ -689,7 +966,11 @@ function renderIdeas(){
       c.querySelector('[data-act="cancel"]').onclick=()=>{editingIdeaId=null;renderIdeas();};
       return;
     }
-    c.innerHTML=`<div class="card-head"><h3>💡 ${esc(idea.title)}</h3>
+    const rx=idea.reactions||{};
+    const REMOJIS=[{k:'smile',label:'😊 いいね！'},{k:'fun',label:'🎉 面白そう！'},{k:'go',label:'✋ 行きたい！'}];
+    const rxHTML=REMOJIS.map(r=>{const list=rx[r.k]||[];const on=list.includes(me.uid);return `<button class="react-btn${on?' on':''}" data-r="${r.k}">${r.label}<span class="react-count">${list.length||''}</span></button>`;}).join('');
+    c.innerHTML=`<div class="card-head">
+        <h3>💡 ${esc(idea.title)}</h3>
         ${mineOwn?`<span class="owner-actions"><button class="iconbtn" data-act="edit" title="修正">✏️</button><button class="iconbtn del" data-act="del" title="削除">🗑</button></span>`:''}
       </div>
       <p class="meta">言い出しっぺ / Proposed by ${esc(nameOf(idea.by))} さん</p>
@@ -699,12 +980,14 @@ function renderIdeas(){
         <button class="btn btn-sm ${joined?'btn-ghost':'btn-coral'}" data-act="int">${joined?'✓ 興味あり（取消）':'✋ 興味あり！'}</button>
         ${proj?`<button class="btn btn-sm btn-teal" data-act="goplan">企画チームを見る →</button>`:(ready?`<button class="btn btn-sm btn-teal" data-act="team">👥 企画チームを作る</button>`:`<span class="pill-stat">あと${3-idea.interested.length}人で企画開始</span>`)}
       </div>
-      ${ready&&!proj?'<div class="ready">🎉 3人集まりました！「企画チームを作る」で具体的に動き出せます。</div>':''}`;
+      ${ready&&!proj?'<div class="ready">🎉 3人集まりました！「企画チームを作る」で具体的に動き出せます。</div>':''}
+      <div class="reactions">${rxHTML}</div>`;
     c.querySelector('[data-act="int"]').onclick=()=>toggleInterest(idea);
     const tb=c.querySelector('[data-act="team"]');if(tb)tb.onclick=()=>makeTeam(idea);
     const gb=c.querySelector('[data-act="goplan"]');if(gb)gb.onclick=()=>{currentProject=proj.id;switchTab("plan");};
     const eb=c.querySelector('[data-act="edit"]');if(eb)eb.onclick=()=>{editingIdeaId=idea.id;renderIdeas();};
     const db_=c.querySelector('[data-act="del"]');if(db_)db_.onclick=()=>deleteIdea(idea);
+    c.querySelectorAll('.react-btn').forEach(b=>b.onclick=()=>toggleReaction(idea,b.dataset.r));
     wrap.appendChild(c);
   });
 }
@@ -813,7 +1096,7 @@ function renderPlanArea(){
     mb.querySelectorAll("[data-meet]").forEach(b=>b.onclick=()=>{
       const type=b.dataset.meet;
       if(type==="Jitsi"){
-        const link="https://meet.jit.si/Minaso-"+Math.random().toString(36).slice(2,8);
+        const link="https://meet.jit.si/Wild60-"+Math.random().toString(36).slice(2,8);
         updateDoc(projRef(p.id),{meetLink:link,meetType:"すぐ使える"});flash("打ち合わせ室を作りました");
         return;
       }
@@ -925,12 +1208,157 @@ function renderRun(){
   });
 }
 
+document.getElementById("aiBtn").onclick=async ()=>{
+  const kw=document.getElementById("aiKeyword").value.trim();
+  if(!kw){flash("キーワードを入力してください");return;}
+  const btn=document.getElementById("aiBtn");
+  btn.disabled=true;btn.textContent="考え中…✨";
+  const sug=document.getElementById("aiSuggestions");
+  sug.innerHTML='<div class="ai-loading">✨ AIが3パターン考えています…</div>';
+  try{
+    const url=GAS_URL+"?action=ai&keyword="+encodeURIComponent(kw);
+    const res=await fetch(url);
+    const data=await res.json();
+    if(data.suggestions&&data.suggestions.length){
+      sug.innerHTML="";
+      data.suggestions.forEach((s,i)=>{
+        const card=document.createElement("div");
+        card.className="ai-card";
+        card.innerHTML=`<span class="ai-num">${i+1}</span><span class="ai-text">${esc(s)}</span><button class="btn btn-sm btn-ghost ai-use">これを使う</button>`;
+        card.querySelector(".ai-use").onclick=()=>{
+          document.getElementById("ideaDesc").value=s;
+          sug.innerHTML='<p class="a11y-note" style="color:var(--teal-d);font-weight:700">✅ 説明文に入力しました。自由に編集してください。</p>';
+        };
+        sug.appendChild(card);
+      });
+    }else{
+      sug.innerHTML='<p class="a11y-note">⚠ 提案を取得できませんでした。GASにGemini APIキーが設定されているか確認してください。</p>';
+    }
+  }catch(e){
+    sug.innerHTML='<p class="a11y-note">⚠ 通信エラーが発生しました。GASのURLと設定を確認してください。</p>';
+    console.error(e);
+  }
+  btn.disabled=false;btn.textContent="✨ 提案してもらう";
+};
+
+const HELPER_TAGS=["運転・車","PC・スマホ","料理・料理教室","DIY・修繕","語学・翻訳","音楽・楽器","写真・カメラ","スポーツ・体操","健康・相談","子育て・孫育て","ペット","お買い物同行","教えること全般","その他"];
+(function initHelperUI(){
+  const bar=document.getElementById("helperTagBar");
+  HELPER_TAGS.forEach(t=>{
+    const b=document.createElement("button");
+    b.className="htag";b.textContent=t;
+    b.onclick=()=>{if(helperTags.has(t)){helperTags.delete(t);b.classList.remove("on");}else{helperTags.add(t);b.classList.add("on");}};
+    bar.appendChild(b);
+  });
+  document.querySelectorAll(".htype-btn").forEach(b=>b.onclick=()=>{
+    helperType=b.dataset.htype;
+    document.querySelectorAll(".htype-btn").forEach(x=>x.className="htype-btn");
+    b.classList.add("on-"+helperType);
+    document.getElementById("helperTitle").placeholder=helperType==="need"?"例：スマホの写真の整理を教えてほしい":"例：車の運転なら任せてください！";
+  });
+})();
+document.getElementById("addHelper").onclick=async ()=>{
+  const title=document.getElementById("helperTitle").value.trim();
+  if(!title){flash("ひとことを入力してください");return;}
+  await addDoc(collection(db,"helpers"),{type:helperType,title,tags:[...helperTags],by:me.uid,createdAt:serverTimestamp()});
+  document.getElementById("helperTitle").value="";
+  helperTags.clear();
+  document.querySelectorAll(".htag").forEach(b=>b.classList.remove("on"));
+  flash(helperType==="need"?"「困っていること」を投稿しました！":"「できること」を投稿しました！");
+};
+async function deleteHelper(h){
+  if(!confirm("この投稿を削除しますか？"))return;
+  await deleteDoc(doc(db,"helpers",h.id));flash("削除しました");
+}
+function renderHelpers(){
+  const wrap=document.getElementById("helperList");wrap.innerHTML="";
+  if(!helpers.length){wrap.innerHTML='<div class="empty">まだ投稿がありません。<br>「困っていること」や「できること」を書いてみましょう。</div>';return;}
+  helpers.forEach(h=>{
+    const isOwn=h.by===me.uid;
+    const label=h.type==="need"?"🙋 困っていること・やってほしいこと":"💪 できること・得意なこと";
+    const oppType=h.type==="need"?"skill":"need";
+    const matches=helpers.filter(x=>x.type===oppType&&x.tags&&h.tags&&x.tags.some(t=>h.tags.includes(t)));
+    const matchHTML=matches.length?`<div class="match-section"><p class="match-title">${h.type==="need"?"✨ こんな方が力になれそうです":"✨ こんなことを求めている方がいます"}</p>${matches.slice(0,3).map(m=>`<div class="match-item">💬 <b>${esc(nameOf(m.by))}</b> さん：${esc(m.title)}</div>`).join("")}</div>`:"";
+    const c=document.createElement("div");c.className="hcard "+h.type;
+    c.innerHTML=`<span class="hbadge ${h.type}">${label}</span>
+      ${isOwn?`<span class="owner-actions" style="float:right"><button class="iconbtn del" data-act="del">🗑</button></span>`:''}
+      <p style="font-family:'Zen Maru Gothic';font-weight:700;font-size:1.1rem;margin:0 0 6px">${esc(h.title)}</p>
+      <p class="meta">${esc(nameOf(h.by))} さん</p>
+      ${h.tags&&h.tags.length?`<div class="htag-list">${h.tags.map(t=>`<span class="htag-chip">${esc(t)}</span>`).join("")}</div>`:""}
+      ${matchHTML}`;
+    const db2=c.querySelector('[data-act="del"]');if(db2)db2.onclick=()=>deleteHelper(h);
+    wrap.appendChild(c);
+  });
+}
+
+function isAdmin(){return ADMIN_UIDS.includes(me?.uid);}
+let adminSearchQ='';
+(function(){
+  const inp=document.getElementById('adminSearch');
+  if(inp)inp.addEventListener('input',e=>{adminSearchQ=e.target.value.toLowerCase();renderAdmin();});
+})();
+async function adminDeleteUser(uid,userData){
+  if(uid===me.uid){flash("自分自身は削除できません");return;}
+  const name=userData.name||"（名前なし）";
+  if(!confirm(`【確認】ユーザーを削除します。\n\n名前：${name}\nUID：${uid}\n\n・プロフィールと会員番号が削除されます。\n・投稿・コメントは「（退会者）」として残ります。\n\n本当に削除しますか？`))return;
+  try{
+    await deleteDoc(doc(db,"users",uid));
+    if(userData.memberNumber){await deleteDoc(doc(db,"guestMembers",userData.memberNumber)).catch(()=>{});}
+    flash(`${name} さんを削除しました`);
+  }catch(e){
+    flash("削除に失敗しました: "+(e.message||e.code||""));
+    console.error(e);
+  }
+}
+function renderAdmin(){
+  if(!isAdmin())return;
+  const udp=document.getElementById("myUidDisplay");
+  if(udp)udp.textContent=me.uid;
+  const wrap=document.getElementById("adminUserList");if(!wrap)return;
+  wrap.innerHTML="";
+  const q=adminSearchQ;
+  const list=Object.entries(usersMap).filter(([uid,u])=>{
+    if(!q)return true;
+    return (u.name||"").toLowerCase().includes(q)||uid.toLowerCase().includes(q)||(u.memberNumber||"").includes(q);
+  }).sort(([,a],[,b])=>(a.name||"").localeCompare(b.name||"","ja"));
+  const cnt=document.getElementById("adminCount");
+  if(cnt)cnt.textContent=`登録ユーザー ${Object.keys(usersMap).length}人 / 表示 ${list.length}人`;
+  if(!list.length){wrap.innerHTML='<div class="empty">該当するユーザーがいません。</div>';return;}
+  list.forEach(([uid,u])=>{
+    const isMe=uid===me.uid;
+    const row=document.createElement("div");
+    row.className="urow"+(isMe?" is-me":"");
+    row.innerHTML=`
+      ${avatarHTML(uid,"mini-av")}
+      <div class="urow-info">
+        <div class="urow-name">
+          ${esc(u.name||"（名前なし）")} さん
+          ${provBadge(u.provider)}
+          ${isMe?'<span class="match-note" style="background:var(--teal)">あなた</span>':''}
+        </div>
+        <div class="urow-sub">
+          <span>UID: <span class="uid-chip" title="クリックでコピー" onclick="navigator.clipboard&&navigator.clipboard.writeText('${uid}');flash('UIDをコピーしました')">${uid.slice(0,12)}…</span></span>
+          ${u.memberNumber?`<span>会員番号: ${esc(u.memberNumber.slice(0,4)+'-'+u.memberNumber.slice(4))}</span>`:''}
+          <span>興味: ${(u.interests||[]).length}件</span>
+        </div>
+      </div>
+      ${isMe
+        ?'<span style="color:var(--ink-soft);font-size:.85rem">（自分）</span>'
+        :`<button class="btn btn-sm btn-danger" data-uid="${uid}">🗑 削除</button>`}`;
+    const delBtn=row.querySelector('[data-uid]');
+    if(delBtn)delBtn.onclick=()=>adminDeleteUser(uid,u);
+    wrap.appendChild(row);
+  });
+}
+
 function renderAll(){
   if(!me||!started)return;
   if(activeTab==="connect")renderConnect();
   else if(activeTab==="ideas")renderIdeas();
   else if(activeTab==="plan")renderPlan();
   else if(activeTab==="run")renderRun();
+  else if(activeTab==="helpers")renderHelpers();
+  else if(activeTab==="admin")renderAdmin();
 }
 </script>
 </body>
