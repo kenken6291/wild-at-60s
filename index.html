@@ -127,9 +127,11 @@
   .sheet p.sub{color:var(--ink-soft); margin:0 0 18px;}
   .login-btns{display:flex; flex-direction:column; gap:12px; margin-top:10px;}
   .login-btns .btn{width:100%; justify-content:center;}
+  .codeblk{background:#2C2620; color:#FCEBC4; border-radius:12px; padding:14px; font-family:monospace; font-size:.85rem; overflow-x:auto; white-space:pre; line-height:1.6;}
   #loading{display:flex; align-items:center; justify-content:center; min-height:60vh; flex-direction:column; gap:14px; color:var(--ink-soft);}
   .spin{width:46px;height:46px;border:5px solid var(--line);border-top-color:var(--coral);border-radius:50%;animation:sp 1s linear infinite;}
   @keyframes sp{to{transform:rotate(360deg);}}
+  /* test-site + footer */
   .test-badge{background:#c0392b; color:#fff; font-size:.72rem; font-weight:700; padding:5px 11px; border-radius:7px; letter-spacing:.3px; white-space:nowrap; align-self:center;}
   .test-note{background:#fbe3df; color:#c0392b; border:1.5px solid #e8b4ac; border-radius:10px; padding:9px 12px; font-size:.85rem; font-weight:700; margin:0 0 14px;}
   .en-sub{display:block; font-size:.82rem; font-weight:400; opacity:.8; margin-top:3px;}
@@ -140,18 +142,21 @@
   footer.site-foot ul{margin:6px 0; padding-left:1.2em;}
   footer.site-foot li{margin-bottom:9px;}
   footer.site-foot .en{display:block; opacity:.7; font-size:.82rem;}
+  /* 会員番号 */
   .member-num{font-family:"Zen Maru Gothic"; font-size:2.6rem; font-weight:900; color:var(--coral-d); letter-spacing:.18em; background:var(--gold-soft); border-radius:14px; padding:16px 24px; margin:14px 0; display:inline-block; border:3px solid var(--gold);}
   .mem-note{background:#eaf6f1; border:2px solid var(--teal); border-radius:10px; padding:10px 14px; font-size:.9rem; color:var(--teal-d); margin:10px 0;}
   .num-input{width:100%; font-family:"Zen Maru Gothic"; font-size:1.3rem; font-weight:700; text-align:center; letter-spacing:.2em; padding:13px 14px; border:2px solid var(--line); border-radius:12px; background:#fff;}
   .num-input:focus{outline:none; border-color:var(--coral);}
   .divider{display:flex; align-items:center; gap:10px; margin:14px 0; color:var(--ink-soft); font-size:.85rem;}
   .divider::before,.divider::after{content:""; flex:1; height:1px; background:var(--line);}
+  /* ===== UX改善: 3Dボタン ===== */
   .btn{box-shadow:0 5px 0 rgba(0,0,0,.18), 0 8px 18px var(--shadow); transition:transform .08s, box-shadow .08s;}
   .btn:active{transform:translateY(4px) !important; box-shadow:0 1px 0 rgba(0,0,0,.15), 0 2px 6px var(--shadow) !important;}
   .btn-coral{background:linear-gradient(180deg,#f07038 0%,var(--coral) 100%); box-shadow:0 5px 0 var(--coral-d), 0 8px 18px var(--shadow);}
   .btn-coral:active{box-shadow:0 1px 0 var(--coral-d) !important;}
   .btn-teal{background:linear-gradient(180deg,#2c8a6a 0%,var(--teal) 100%); box-shadow:0 5px 0 var(--teal-d), 0 8px 18px var(--shadow);}
   .btn-teal:active{box-shadow:0 1px 0 var(--teal-d) !important;}
+  /* ===== 文字サイズ切替 ===== */
   .font-btn{border:none; background:rgba(255,255,255,.28); color:#fff; border-radius:999px; padding:7px 13px; font-weight:700; cursor:pointer; font-family:"Noto Sans JP"; font-size:.9rem; align-self:center; white-space:nowrap;}
   .font-btn:hover{background:rgba(255,255,255,.42);}
   html.font-large body{font-size:21px;}
@@ -160,15 +165,18 @@
   html.font-large .logo{font-size:1.7rem;}
   html.font-large .card h3{font-size:1.4rem;}
   html.font-large .field input,html.font-large .field textarea{font-size:1.15rem; padding:14px;}
+  /* ===== テンプレートカテゴリー ===== */
   .tmpl-bar{display:flex; flex-wrap:wrap; gap:8px; margin-bottom:6px;}
   .tmpl-btn{border:2px solid var(--line); background:#fff; border-radius:999px; padding:8px 14px; font-size:.95rem; font-weight:700; cursor:pointer; transition:.15s; color:var(--ink-soft);}
   .tmpl-btn:hover{border-color:var(--coral); color:var(--coral-d);}
   .tmpl-btn.on{background:var(--coral); color:#fff; border-color:var(--coral);}
+  /* ===== ライトなリアクション ===== */
   .reactions{display:flex; gap:8px; flex-wrap:wrap; margin-top:10px; padding-top:10px; border-top:1px dashed var(--line);}
   .react-btn{border:2px solid var(--line); background:#fff; border-radius:999px; padding:7px 14px; font-size:.95rem; cursor:pointer; transition:.15s; display:inline-flex; align-items:center; gap:5px; font-family:"Noto Sans JP"; font-weight:700;}
   .react-btn:hover{border-color:var(--coral); background:#fff8f4;}
   .react-btn.on{background:var(--gold-soft); border-color:var(--gold); color:var(--coral-d);}
   .react-count{font-size:.82rem; color:var(--ink-soft);}
+  /* ===== AIひらめきアシスト ===== */
   .ai-box{background:linear-gradient(135deg,#f0f8ff,#e8f4f0); border:2px solid #b0d8c8; border-radius:var(--r); padding:18px; margin-bottom:16px;}
   .ai-box-title{font-family:"Zen Maru Gothic"; font-weight:900; color:var(--teal-d); font-size:1.1rem; margin:0 0 4px; display:flex; align-items:center; gap:8px;}
   .ai-box-sub{color:var(--ink-soft); font-size:.88rem; margin:0 0 12px;}
@@ -177,6 +185,7 @@
   .ai-num{background:var(--teal); color:#fff; border-radius:50%; width:26px; height:26px; min-width:26px; display:flex; align-items:center; justify-content:center; font-weight:900; font-size:.9rem;}
   .ai-text{flex:1; font-size:.97rem; line-height:1.6; color:var(--ink);}
   .ai-loading{text-align:center; padding:14px; color:var(--teal-d); font-weight:700; font-size:1rem;}
+  /* ===== 逆引きマッチング掲示板 ===== */
   .helper-type-bar{display:flex; gap:10px; flex-wrap:wrap; margin-bottom:14px;}
   .htype-btn{flex:1; min-width:180px; border:3px solid var(--line); background:#fff; border-radius:14px; padding:13px 16px; font-family:"Zen Maru Gothic"; font-weight:700; font-size:1rem; cursor:pointer; transition:.15s; text-align:center;}
   .htype-btn.on-need{background:#fff0eb; border-color:var(--coral); color:var(--coral-d);}
@@ -196,6 +205,7 @@
   .match-title{font-size:.85rem; font-weight:700; color:var(--teal-d); margin:0 0 6px;}
   .match-item{font-size:.9rem; padding:5px 0; border-bottom:1px dashed var(--line); color:var(--ink);}
   .match-item:last-child{border-bottom:none;}
+  /* ===== 大人数対応: 検索・ソート・ページネーション ===== */
   .connect-controls{background:var(--paper); border:2px solid var(--line); border-radius:var(--r); padding:16px 18px; margin-bottom:16px;}
   .connect-search{width:100%; font-family:inherit; font-size:1.05rem; padding:12px 16px; border:2px solid var(--line); border-radius:12px; background:#fff; margin-bottom:12px;}
   .connect-search:focus{outline:none; border-color:var(--coral);}
@@ -206,6 +216,7 @@
   .sort-btn:hover,.view-btn:hover{border-color:var(--coral); color:var(--coral-d);}
   .sort-btn.on,.view-btn.on{background:var(--teal); color:#fff; border-color:var(--teal);}
   .connect-meta{font-size:.88rem; color:var(--ink-soft); margin:0 0 12px; font-weight:700;}
+  /* リスト表示 */
   .people-list{display:flex; flex-direction:column; gap:8px;}
   .pcard-list{background:var(--paper); border:2px solid var(--line); border-radius:14px; padding:12px 16px; display:flex; align-items:center; gap:12px; transition:.15s;}
   .pcard-list.match{border-color:var(--coral); background:#fffaf7;}
@@ -215,11 +226,13 @@
   .list-name{font-family:"Zen Maru Gothic"; font-weight:700; font-size:1rem; display:flex; align-items:center; gap:6px; flex-wrap:wrap;}
   .list-match{font-size:.78rem; font-weight:700; background:var(--teal); color:#fff; border-radius:8px; padding:2px 8px; white-space:nowrap;}
   .list-tags{display:flex; flex-wrap:wrap; gap:5px; margin-top:4px;}
+  /* ページネーション */
   .pagination{display:flex; flex-wrap:wrap; gap:6px; justify-content:center; margin-top:20px; padding-bottom:10px;}
   .page-btn{border:2px solid var(--line); background:#fff; border-radius:10px; padding:9px 14px; font-size:.95rem; font-weight:700; cursor:pointer; transition:.12s; font-family:"Noto Sans JP"; color:var(--ink-soft);}
   .page-btn:hover{border-color:var(--coral); color:var(--coral-d);}
   .page-btn.on{background:var(--coral); color:#fff; border-color:var(--coral);}
   .page-btn:disabled{opacity:.35; cursor:not-allowed;}
+  /* ===== 管理者パネル ===== */
   .tab-admin{background:rgba(192,57,43,.15) !important; color:#c0392b !important;}
   .tab-admin.active{border-bottom-color:#c0392b !important; color:#c0392b !important;}
   .tab-admin.active .step{background:#c0392b !important;}
@@ -241,6 +254,7 @@
 </head>
 <body>
 
+<!-- ===== Member number reveal ===== -->
 <div class="overlay hidden" id="memberNumOverlay">
   <div class="sheet" style="text-align:center">
     <div style="font-size:2.5rem">🎫</div>
@@ -252,6 +266,7 @@
   </div>
 </div>
 
+<!-- ===== Login overlay ===== -->
 <div class="overlay hidden" id="login">
   <div class="sheet" style="text-align:center">
     <div style="font-size:3rem">🎪</div>
@@ -277,6 +292,7 @@
   </div>
 </div>
 
+<!-- ===== Onboarding / Profile overlay ===== -->
 <div class="overlay hidden" id="onboard">
   <div class="sheet">
     <h2>🌻 プロフィール</h2>
@@ -291,20 +307,22 @@
   </div>
 </div>
 
+<!-- ===== Config-missing notice ===== -->
 <div class="overlay hidden" id="needConfig">
   <div class="sheet">
     <h2>⚙️ Firebaseの設定が必要です</h2>
-    <p class="sub">このファイルの firebaseConfig に正しい値が設定されているか確認してください。</p>
+    <p class="sub">このファイルの下のほうにある <b>firebaseConfig</b> に設定を貼り付けてください。</p>
   </div>
 </div>
 
+<!-- ===== DB connection error ===== -->
 <div class="overlay hidden" id="dbError">
   <div class="sheet">
     <h2>⚠️ データベースにつながりません</h2>
     <p class="sub">ログインはできました。ただし保存先（Firestore）に接続できていません。次の3つを確認してください。</p>
     <ol style="line-height:1.9; padding-left:1.2em; margin:0 0 12px">
-      <li>Firebaseで <b>「Firestore Database」</b> を作成しましたか？</li>
-      <li>作成時に <b>「テストモードで開始」</b> を選びましたか？</li>
+      <li>Firebaseで <b>「Firestore Database」</b> を作成しましたか？（Authenticationとは別の機能です）</li>
+      <li>作成時に <b>「テストモードで開始」</b> を選びましたか？（または公開ルールを設定）</li>
       <li>ロケーションは <b>asia-northeast1（東京）</b> など、作成済みになっていますか？</li>
     </ol>
     <p class="a11y-note" id="dbErrCode"></p>
@@ -358,8 +376,8 @@
           <button class="sort-btn" data-sort="name">🔤 名前順</button>
         </div>
         <div class="view-bar">
-          <button class="view-btn on" data-view="card">⊞ カード</button>
-          <button class="view-btn" data-view="list">☰ リスト</button>
+          <button class="view-btn on" data-view="card" title="カード表示">⊞ カード</button>
+          <button class="view-btn" data-view="list" title="リスト表示">☰ リスト</button>
         </div>
       </div>
     </div>
@@ -441,6 +459,7 @@
     <div id="helperList"></div>
   </section>
 
+  <!-- ===== 管理者パネル ===== -->
   <section class="panel" id="panel-admin">
     <h2 class="sec-title" style="color:#c0392b">⚙️ 管理者パネル / Admin Panel</h2>
     <div class="admin-warn">
@@ -448,9 +467,9 @@
       <p>ユーザー削除後、そのユーザーの投稿は「（退会者）」として残ります。</p>
     </div>
     <div class="box">
-      <p style="font-weight:700;margin:0 0 6px">あなたのUID（Firestore adminList 設定用）</p>
-      <p class="a11y-note" style="margin:0 0 8px">このIDを Firestore の <b>config/adminList</b> の <b>uids 配列</b>に追加すると管理者になれます。タップでコピー。</p>
-      <span class="admin-uid" id="myUidDisplay" onclick="navigator.clipboard&&navigator.clipboard.writeText(this.textContent);this.textContent='コピーしました！';setTimeout(()=>this.textContent=me&&me.uid||'',1500)">―</span>
+      <p style="font-weight:700;margin:0 0 6px">あなたのUID（管理者設定に使用）</p>
+      <p class="a11y-note" style="margin:0 0 8px">このIDをコードの <b>ADMIN_UIDS</b> に追加すると管理者になれます。タップでコピー。</p>
+      <span class="admin-uid" id="myUidDisplay" onclick="navigator.clipboard&&navigator.clipboard.writeText(this.textContent);this.textContent='コピーしました！';setTimeout(()=>this.textContent=document.getElementById('meChip')&&'',1500)">―</span>
     </div>
     <input class="admin-search" id="adminSearch" placeholder="🔍 名前・UIDで絞り込み…">
     <p class="admin-count" id="adminCount"></p>
@@ -461,6 +480,7 @@
 <footer class="site-foot">
   <div class="test-strip">⚠ これは開発中のテストサイトです。投稿などのデータは予告なく削除・初期化されることがあります。
     <span class="en">This is a test site under development. Posted data may be deleted or reset without notice.</span></div>
+
   <h3>📌 注意事項 / Notes</h3>
   <ul>
     <li>個人情報（本名・電話番号・住所・口座番号など）は書き込まないでください。
@@ -472,6 +492,7 @@
     <li>他者を傷つける内容や、法令・公序良俗に反する投稿はお控えください。
       <span class="en">Please refrain from harmful, unlawful, or otherwise inappropriate content.</span></li>
   </ul>
+
   <h3>⚖ 免責事項 / Disclaimer</h3>
   <ul>
     <li>本サイトはテスト目的で提供されており、内容の正確性・継続性・安全性を保証しません。
@@ -483,12 +504,16 @@
     <li>予告なくサービスを変更・中止する場合があります。
       <span class="en">The service may be changed or discontinued without prior notice.</span></li>
   </ul>
+
   <p style="margin-top:20px;font-size:.82rem">© 2026 みんあそくん（テスト版）</p>
 </footer>
 
 <div class="flash" id="flash"></div>
 
 <script type="module">
+/* ===================================================================
+   ① ここにFirebaseのWeb設定を貼り付けてください
+=================================================================== */
 const firebaseConfig = {
   apiKey:            "AIzaSyCi0aQkDAbWwVEUZTWpKeu2nEnomIhJDKE",
   authDomain:        "wild-at-60s.firebaseapp.com",
@@ -497,14 +522,19 @@ const firebaseConfig = {
   messagingSenderId: "264890425885",
   appId:             "1:264890425885:web:e25132c8d293156ab4dcf4"
 };
+/* =================================================================== */
 
+/* ② GAS（メンバー名簿）のウェブアプリURLをここに貼り付け
+   ※ あとで取得するURL（末尾が /exec）に置き換えます */
 const GAS_URL = "https://script.google.com/macros/s/AKfycbwMdyqPllR_MpheIIez54cYreqSvrknzvjrGjBm_R0Iyd4hH2KDNaoT_Oi1PpLGqZkb-Q/exec";
 
 /* ===================================================================
-   管理者設定: コードに書かず Firestore から取得します
-   Firebase Console → Firestore → config/adminList → uids 配列に追加
+   管理者設定: コードに書かず Firestore から取得します（セキュリティ向上）
+   設定方法: Firebase Console → Firestore → コレクション「config」→
+             ドキュメントID「adminList」→ フィールド「uids」(配列) に
+             管理者の Firebase UID を追加してください。
 =================================================================== */
-let ADMIN_UIDS = [];
+let ADMIN_UIDS = []; // Firestoreから実行時に読み込みます
 
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
 import { getAuth, onAuthStateChanged, signInAnonymously, signOut,
@@ -528,6 +558,7 @@ const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const db = getFirestore(app);
 
+/* ---- state ---- */
 let usersMap={}, ideas=[], projects=[], events=[], helpers=[];
 let me=null, currentProject=null, activeInterest=null, activeTab="connect";
 let editingIdeaId=null, editingMsgId=null, editingEventId=null;
@@ -536,6 +567,7 @@ let helperType="need", helperTags=new Set();
 const PAGE_SIZE=24;
 let connectSearch='', connectSort='match', connectView='card', connectPage=1;
 
+/* ---- helpers ---- */
 function flash(m){const f=document.getElementById("flash");f.textContent=m;f.classList.add("show");clearTimeout(f._t);f._t=setTimeout(()=>f.classList.remove("show"),2600);}
 function esc(s){return String(s==null?"":s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));}
 function nameOf(uid){const u=usersMap[uid];return u?u.name:"（退会者）";}
@@ -543,7 +575,7 @@ function colorOf(uid){const u=usersMap[uid];return u?u.color:"#999";}
 function avatarHTML(uid,cls){return `<div class="${cls||'mini-av'}" style="background:${colorOf(uid)}" title="${esc(nameOf(uid))}">${esc(nameOf(uid)[0]||'?')}</div>`;}
 const tsVal=o=>o&&o.createdAt&&o.createdAt.seconds?o.createdAt.seconds:0;
 const genId=()=>Math.random().toString(36).slice(2)+Date.now().toString(36);
-function withTimeout(p,ms){return Promise.race([p,new Promise((_,rej)=>setTimeout(()=>rej({code:"timeout（Firestore未作成の可能性）"}),ms))]);}
+function withTimeout(p,ms){return Promise.race([p,new Promise((_,rej)=>setTimeout(()=>rej({code:"timeout（接続できません。Firestore未作成の可能性）"}),ms))]);}
 function providerLabel(pid){return ({"google.com":"Google","facebook.com":"Facebook","twitter.com":"X","apple.com":"Apple","github.com":"GitHub","anonymous":"ゲスト"})[pid]||"ログイン済み";}
 function provClass(label){return label==="Google"?"google":(label==="ゲスト"?"guest":"");}
 function provBadge(label){return label?`<span class="prov ${provClass(label)}">${label==="Google"?'<span style="color:#4285F4;font-weight:900">G</span>':''}${esc(label)}</span>`:"";}
@@ -552,9 +584,11 @@ async function logToSheet(){
   try{
     await fetch(GAS_URL,{method:"POST",mode:"no-cors",headers:{"Content-Type":"text/plain;charset=utf-8"},
       body:JSON.stringify({uid:me.uid,name:me.name,provider:me.provider,interests:(me.interests||[]).join("、")})});
-  }catch(err){console.warn("sheet log:",err);}
+  }catch(err){ console.warn("sheet log:",err); }
 }
 function formatMemberNum(n){return String(n).slice(0,4)+"-"+String(n).slice(4);}
+
+/* 管理者リストを Firestore から取得（コードに UID を書かない） */
 async function loadAdminConfig(db){
   try{
     const snap=await getDoc(doc(db,"config","adminList"));
@@ -562,17 +596,22 @@ async function loadAdminConfig(db){
   }catch(e){console.warn("admin config:",e);}
 }
 async function generateMemberNumber(uid){
+  /* 既存の番号があれば再利用 */
   try{
     const snap=await getDoc(doc(db,"users",uid));
     if(snap.exists()&&snap.data().memberNumber) return snap.data().memberNumber;
   }catch(e){}
+  /* トランザクションでアトミックに番号を確保（重複絶対なし） */
   for(let i=0;i<10;i++){
     const n=String(Math.floor(10000000+Math.random()*90000000));
     try{
       const result=await runTransaction(db,async tx=>{
         const ref=doc(db,"guestMembers",n);
         const s=await tx.get(ref);
-        if(!s.exists()){tx.set(ref,{uid,createdAt:serverTimestamp()});return n;}
+        if(!s.exists()){
+          tx.set(ref,{uid,createdAt:serverTimestamp()});
+          return n;
+        }
         if(s.data()?.uid===uid) return n;
         return null;
       });
@@ -582,6 +621,9 @@ async function generateMemberNumber(uid){
   return String(Math.floor(10000000+Math.random()*90000000));
 }
 
+/* ===================================================================
+   AUTH
+=================================================================== */
 getRedirectResult(auth).catch(e=>{
   console.warn("redirect:",e.code,e.message);
   document.getElementById("loading").style.display="none";
@@ -600,13 +642,15 @@ onAuthStateChanged(auth, async user=>{
   }
   document.getElementById("login").classList.add("hidden");
   document.getElementById("loading").style.display="flex";
-  const pid=user.isAnonymous?"anonymous":(user.providerData[0]?.providerId||"");
-  const provider=providerLabel(pid);
+  const pid = user.isAnonymous ? "anonymous" : (user.providerData[0]?.providerId || "");
+  const provider = providerLabel(pid);
+
+  /* ---- 会員番号で復元ログイン ---- */
   if(pendingMemberRestore){
     const r=pendingMemberRestore; pendingMemberRestore=null;
-    me={uid:user.uid,name:r.name||"",interests:r.interests||[],
+    me={uid:user.uid, name:r.name||"", interests:r.interests||[],
         color:r.color||COLORS[Math.floor(Math.random()*COLORS.length)],
-        provider:"ゲスト",memberNumber:r.memberNumber};
+        provider:"ゲスト", memberNumber:r.memberNumber};
     try{
       await setDoc(doc(db,"users",user.uid),{name:me.name,interests:me.interests,color:me.color,
         provider:me.provider,memberNumber:me.memberNumber,createdAt:serverTimestamp()},{merge:true});
@@ -616,15 +660,17 @@ onAuthStateChanged(auth, async user=>{
     if(me.name) startApp(); else openOnboard();
     return;
   }
+
   try{
-    const uref=doc(db,"users",user.uid);
-    const snap=await withTimeout(getDoc(uref),10000);
+    const uref = doc(db,"users",user.uid);
+    const snap = await withTimeout(getDoc(uref), 10000);
     if(snap.exists()){
-      me={uid:user.uid,...snap.data(),provider};
+      me={uid:user.uid, ...snap.data(), provider};
       if(snap.data().provider!==provider) updateDoc(uref,{provider}).catch(()=>{});
       startApp();
-    }else{
-      me={uid:user.uid,color:COLORS[Math.floor(Math.random()*COLORS.length)],interests:[],provider,_suggest:user.displayName||"",_isFirst:true};
+    } else {
+      me={uid:user.uid, color:COLORS[Math.floor(Math.random()*COLORS.length)], interests:[], provider, _suggest:user.displayName||"", _isFirst:true};
+      /* 匿名ユーザーには会員番号を発行 */
       if(user.isAnonymous){
         try{
           const num=await generateMemberNumber(user.uid);
@@ -643,12 +689,13 @@ onAuthStateChanged(auth, async user=>{
   }
 });
 
+/* ---- login buttons ---- */
 document.getElementById("loginGoogle").onclick=async ()=>{
   const provider=new GoogleAuthProvider();
   provider.setCustomParameters({prompt:"select_account"});
   document.getElementById("login").classList.add("hidden");
   document.getElementById("loading").style.display="flex";
-  try{await signInWithRedirect(auth,provider);}
+  try{ await signInWithRedirect(auth,provider); }
   catch(e){
     document.getElementById("loading").style.display="none";
     document.getElementById("login").classList.remove("hidden");
@@ -665,9 +712,9 @@ document.getElementById("loginGuest").onclick=()=>signInAnonymously(auth).catch(
   else flash("接続に失敗しました（"+(e.code||"")+"）");
   console.error(e);
 });
-document.getElementById("logoutBtn").onclick=()=>{if(confirm("ログアウトしますか？"))signOut(auth);};
+document.getElementById("logoutBtn").onclick=()=>{ if(confirm("ログアウトしますか？")) signOut(auth); };
 document.getElementById("dbReload").onclick=()=>location.reload();
-document.getElementById("dbLogout").onclick=()=>{document.getElementById("dbError").classList.add("hidden");signOut(auth);};
+document.getElementById("dbLogout").onclick=()=>{ document.getElementById("dbError").classList.add("hidden"); signOut(auth); };
 document.getElementById("memberLogin").onclick=async ()=>{
   const raw=document.getElementById("memberInput").value;
   const num=raw.replace(/\D/g,"");
@@ -692,18 +739,19 @@ document.getElementById("memberLogin").onclick=async ()=>{
 };
 document.getElementById("memberNumOK").onclick=()=>document.getElementById("memberNumOverlay").classList.add("hidden");
 
+/* ---- onboarding ---- */
 let obSelected=new Set();
 function openOnboard(){
   document.getElementById("loading").style.display="none";
   document.getElementById("onboard").classList.remove("hidden");
-  document.getElementById("obName").value=me.name||me._suggest||"";
+  document.getElementById("obName").value = me.name || me._suggest || "";
   obSelected=new Set(me.interests||[]);
   const mnDiv=document.getElementById("ob-membernum");
   if(mnDiv){
-    if(me.memberNumber&&!me._isFirst){mnDiv.textContent="🎫 あなたの会員番号："+formatMemberNum(me.memberNumber);mnDiv.style.display="block";}
+    if(me.memberNumber && !me._isFirst){ mnDiv.textContent="🎫 あなたの会員番号："+formatMemberNum(me.memberNumber); mnDiv.style.display="block"; }
     else mnDiv.style.display="none";
   }
-  const bar=document.getElementById("obInterests");bar.innerHTML="";
+  const bar=document.getElementById("obInterests"); bar.innerHTML="";
   PRESET.forEach(it=>{
     const b=document.createElement("button");
     b.className="ipill"+(obSelected.has(it)?" on":"");
@@ -717,8 +765,8 @@ document.getElementById("obSave").onclick=async ()=>{
   if(!name){flash("ニックネームを入力してください");return;}
   const custom=document.getElementById("obCustom").value.split(/[,、]/).map(s=>s.trim()).filter(Boolean);
   const interests=[...new Set([...obSelected,...custom])];
-  const isNewGuest=me._isFirst&&me.memberNumber;
-  me.name=name;me.interests=interests;me._isFirst=false;
+  const isNewGuest=me._isFirst && me.memberNumber;
+  me.name=name; me.interests=interests; me._isFirst=false;
   const saveData={name,interests,color:me.color,provider:me.provider,createdAt:serverTimestamp()};
   if(me.memberNumber) saveData.memberNumber=me.memberNumber;
   await setDoc(doc(db,"users",me.uid),saveData,{merge:true});
@@ -737,6 +785,7 @@ document.getElementById("obSave").onclick=async ()=>{
 };
 document.getElementById("editProfile").onclick=openOnboard;
 
+/* ===== 文字サイズ切替 ===== */
 (function(){
   if(localStorage.getItem('fontLarge')==='1'){
     document.documentElement.classList.add('font-large');
@@ -749,6 +798,7 @@ document.getElementById('fontToggle').onclick=()=>{
   document.getElementById('fontToggle').textContent=large?'🔤 文字を標準に':'🔤 文字を大きく';
 };
 
+/* ===== テンプレートカテゴリー ===== */
 const TEMPLATES={
   "食事":"一緒においしいものを食べませんか？おすすめのお店を探して、ゆっくり食事と会話を楽しみましょう！",
   "アウトドア":"外に出て自然を楽しみましょう！のんびり歩いたり景色を眺めたり。参加しやすい気軽な企画です。",
@@ -763,9 +813,12 @@ document.getElementById('tmplBar').addEventListener('click',e=>{
   document.querySelectorAll('.tmpl-btn').forEach(x=>x.classList.remove('on'));
   b.classList.add('on');
   const desc=document.getElementById('ideaDesc');
-  if(!desc.value||confirm('説明文をテンプレートで上書きしますか？')){desc.value=TEMPLATES[b.dataset.cat]||'';}
+  if(!desc.value || confirm('説明文をテンプレートで上書きしますか？')){
+    desc.value=TEMPLATES[b.dataset.cat]||'';
+  }
 });
 
+/* ===== ライトなリアクション ===== */
 async function toggleReaction(idea,emoji){
   const ref=doc(db,"ideas",idea.id);
   const field='reactions.'+emoji;
@@ -773,6 +826,7 @@ async function toggleReaction(idea,emoji){
   await updateDoc(ref,{[field]:cur.includes(me.uid)?arrayRemove(me.uid):arrayUnion(me.uid)});
 }
 
+/* ===== 大人数対応: 検索・ソート・ビュー切替 ===== */
 document.getElementById('connectSearch').addEventListener('input',e=>{
   connectSearch=e.target.value; connectPage=1; renderConnect();
 });
@@ -789,15 +843,20 @@ document.addEventListener('click',e=>{
   }
 });
 
+/* ===================================================================
+   LISTENERS
+=================================================================== */
 let started=false;
 function startApp(){
-  if(!me||!me.name)return;
+  if(!me||!me.name) return; // need a profile
   document.getElementById("meName").textContent=me.name+" さん";
   document.getElementById("meProv").outerHTML=provBadge(me.provider)||'<span class="prov" id="meProv"></span>';
-  const mp=document.querySelector("#meChip .prov");if(mp&&!mp.id)mp.id="meProv";
+  // re-grab (outerHTML replaced node)
+  const mp=document.querySelector("#meChip .prov"); if(mp&&!mp.id)mp.id="meProv";
   document.getElementById("meChip").style.display="flex";
   document.getElementById("loading").style.display="none";
   document.getElementById("app").style.display="block";
+  /* 管理者タブ: Firestore config/adminList から取得してから表示判定 */
   loadAdminConfig(db).then(()=>{
     document.getElementById("adminTab").style.display=isAdmin()?"flex":"none";
     if(activeTab==="admin") renderAdmin();
@@ -813,22 +872,29 @@ function startApp(){
 function refreshChip(){
   if(!me)return;
   document.getElementById("meName").textContent=me.name+" さん";
-  const mp=document.querySelector("#meChip .prov");if(mp)mp.outerHTML=provBadge(me.provider);
-  const mp2=document.querySelector("#meChip .prov");if(mp2&&!mp2.id)mp2.id="meProv";
+  const mp=document.querySelector("#meChip .prov"); if(mp)mp.outerHTML=provBadge(me.provider);
+  const mp2=document.querySelector("#meChip .prov"); if(mp2&&!mp2.id)mp2.id="meProv";
 }
 
+/* ===================================================================
+   TABS
+=================================================================== */
 document.getElementById("tabs").addEventListener("click",e=>{const t=e.target.closest(".tab");if(t)switchTab(t.dataset.tab);});
 function switchTab(name){
-  activeTab=name;editingIdeaId=editingMsgId=editingEventId=null;
+  activeTab=name; editingIdeaId=editingMsgId=editingEventId=null;
   document.querySelectorAll(".tab").forEach(x=>x.classList.toggle("active",x.dataset.tab===name));
   document.querySelectorAll(".panel").forEach(x=>x.classList.remove("active"));
   document.getElementById("panel-"+name).classList.add("active");
-  renderAll();window.scrollTo({top:0,behavior:"smooth"});
+  renderAll(); window.scrollTo({top:0,behavior:"smooth"});
 }
 
+/* ===================================================================
+   1. CONNECT
+=================================================================== */
 function renderConnect(){
   if(!me)return;
-  const bar=document.getElementById("interestBar");bar.innerHTML="";
+  /* ---- 興味タグフィルターバー ---- */
+  const bar=document.getElementById("interestBar"); bar.innerHTML="";
   const allI=[...new Set(Object.values(usersMap).flatMap(u=>u.interests||[]))].sort();
   const allBtn=document.createElement("button");
   allBtn.className="ipill"+(activeInterest===null?" on":"");
@@ -842,6 +908,7 @@ function renderConnect(){
     b.onclick=()=>{activeInterest=activeInterest===it?null:it;connectPage=1;renderConnect();};
     bar.appendChild(b);
   });
+  /* ---- フィルター + 検索 + ソート ---- */
   const myI=me.interests||[];
   const q=connectSearch.toLowerCase();
   let filtered=Object.entries(usersMap).filter(([uid,u])=>{
@@ -857,6 +924,7 @@ function renderConnect(){
   } else {
     filtered.sort(([ua,a],[ub,b])=>{if(ua===me.uid)return -1;if(ub===me.uid)return 1;return (a.name||"").localeCompare(b.name||"","ja");});
   }
+  /* ---- ページネーション ---- */
   const total=filtered.length;
   const totalPages=Math.max(1,Math.ceil(total/PAGE_SIZE));
   if(connectPage>totalPages) connectPage=totalPages;
@@ -864,19 +932,20 @@ function renderConnect(){
   const paged=filtered.slice(start,start+PAGE_SIZE);
   const meta=document.getElementById("connectMeta");
   meta.textContent=total===0?"該当するメンバーが見つかりません":`全${total}人中  ${start+1}〜${Math.min(start+PAGE_SIZE,total)}人を表示`;
+  /* ---- 描画 ---- */
   const wrap=document.getElementById("people");
   wrap.innerHTML="";
   wrap.className=connectView==="list"?"people-list":"people";
   if(!total){wrap.innerHTML='<div class="empty">該当するメンバーが見つかりません。<br>検索条件を変えてみてください。</div>';renderPager(totalPages);return;}
   paged.forEach(([uid,u])=>{
-    const its=u.interests||[],shared=its.filter(i=>myI.includes(i)),isMe=uid===me.uid;
+    const its=u.interests||[], shared=its.filter(i=>myI.includes(i)), isMe=uid===me.uid;
     if(connectView==="list"){
       const c=document.createElement("div");
       c.className="pcard-list"+(isMe?" is-me":shared.length?" match":"");
       c.innerHTML=`${avatarHTML(uid,"mini-av list-av")}
         <div class="list-info">
           <div class="list-name">${esc(u.name)} さん ${provBadge(u.provider)}</div>
-          <div class="list-tags">${its.slice(0,5).map(i=>`<span class="tagchip${shared.includes(i)?' hit':''}"> ${esc(i)}</span>`).join("")}${its.length>5?`<span class="tagchip">+${its.length-5}</span>`:""}</div>
+          <div class="list-tags">${its.slice(0,5).map(i=>`<span class="tagchip${shared.includes(i)?' hit':''}">${esc(i)}</span>`).join("")}${its.length>5?`<span class="tagchip">+${its.length-5}</span>`:""}</div>
         </div>
         ${isMe?'<span class="match-note" style="background:var(--coral)">あなた</span>':(shared.length?`<span class="list-match">共通 ${shared.length}つ</span>`:"")}`;
       wrap.appendChild(c);
@@ -884,22 +953,22 @@ function renderConnect(){
       let cls="pcard";
       if(activeInterest)cls+=its.includes(activeInterest)?" match":" dim";
       else if(!isMe&&shared.length)cls+=" match";
-      const c=document.createElement("div");c.className=cls;
+      const c=document.createElement("div"); c.className=cls;
       c.innerHTML=`<div class="avatar" style="background:${u.color}">${esc(u.name[0]||'?')}</div>
         ${isMe?'<span class="match-note" style="background:var(--coral)">あなた / You</span>':(shared.length?`<span class="match-note">共通の趣味 ${shared.length}つ</span>`:"")}
         <p class="pname">${esc(u.name)} さん ${provBadge(u.provider)}</p>
-        <div class="ptags">${its.map(i=>{const hit=(activeInterest&&i===activeInterest)||(!activeInterest&&!isMe&&myI.includes(i));return `<span class="tagchip ${hit?'hit':''}"> ${esc(i)}</span>`;}).join("")||'<span class="votes">興味は未設定</span>'}</div>`;
+        <div class="ptags">${its.map(i=>{const hit=(activeInterest&&i===activeInterest)||(!activeInterest&&!isMe&&myI.includes(i));return `<span class="tagchip ${hit?'hit':''}">${esc(i)}</span>`;}).join("")||'<span class="votes">興味は未設定</span>'}</div>`;
       wrap.appendChild(c);
     }
   });
   renderPager(totalPages);
 }
 function renderPager(totalPages){
-  const pager=document.getElementById("connectPager");pager.innerHTML="";
+  const pager=document.getElementById("connectPager"); pager.innerHTML="";
   if(totalPages<=1) return;
   const btn=(label,pg,dis,on)=>{
-    const b=document.createElement("button");b.className="page-btn"+(on?" on":"");
-    b.textContent=label;b.disabled=dis;
+    const b=document.createElement("button"); b.className="page-btn"+(on?" on":"");
+    b.textContent=label; b.disabled=dis;
     b.onclick=()=>{connectPage=pg;renderConnect();const t=document.getElementById("panel-connect");if(t)t.scrollIntoView({behavior:"smooth",block:"start"});};
     pager.appendChild(b);
   };
@@ -911,47 +980,51 @@ function renderPager(totalPages){
   btn("次へ >",connectPage+1,connectPage>=totalPages,false);
 }
 
+/* ===================================================================
+   2. IDEAS  (with edit/delete for author)
+=================================================================== */
 document.getElementById("addIdea").onclick=async ()=>{
   const t=document.getElementById("ideaTitle").value.trim();
   const d=document.getElementById("ideaDesc").value.trim();
   if(!t){flash("やってみたいことを入力してください");return;}
   await addDoc(collection(db,"ideas"),{title:t,desc:d,by:me.uid,interested:[me.uid],createdAt:serverTimestamp()});
-  document.getElementById("ideaTitle").value="";document.getElementById("ideaDesc").value="";
+  document.getElementById("ideaTitle").value=""; document.getElementById("ideaDesc").value="";
   flash("アイデアを投稿しました！");
 };
 async function toggleInterest(idea){
-  await updateDoc(doc(db,"ideas",idea.id),{interested:idea.interested.includes(me.uid)?arrayRemove(me.uid):arrayUnion(me.uid)});
+  const ref=doc(db,"ideas",idea.id);
+  await updateDoc(ref,{interested: idea.interested.includes(me.uid)?arrayRemove(me.uid):arrayUnion(me.uid)});
 }
 async function deleteIdea(idea){
   if(!confirm("このアイデアを削除しますか？\n「"+idea.title+"」"))return;
-  await deleteDoc(doc(db,"ideas",idea.id));flash("削除しました");
+  await deleteDoc(doc(db,"ideas",idea.id)); flash("削除しました");
 }
 async function saveIdeaEdit(idea){
   const t=document.getElementById("ei-t-"+idea.id).value.trim();
   const d=document.getElementById("ei-d-"+idea.id).value.trim();
   if(!t){flash("タイトルを入力してください");return;}
   editingIdeaId=null;
-  await updateDoc(doc(db,"ideas",idea.id),{title:t,desc:d});flash("修正しました");
+  await updateDoc(doc(db,"ideas",idea.id),{title:t,desc:d}); flash("修正しました");
 }
 async function makeTeam(idea){
   const ref=await addDoc(collection(db,"projects"),{
-    ideaId:idea.id,title:idea.title,team:[...idea.interested],dates:[],
+    ideaId:idea.id, title:idea.title, team:[...idea.interested], dates:[],
     roles:[{name:"幹事 / リーダー",who:idea.by},{name:"会計 / お金担当",who:null},{name:"連絡係",who:null},{name:"記録・写真係",who:null}],
     tasks:[{t:"日程を決める",done:false},{t:"集合場所を決める",done:false},{t:"役割を分担する",done:false}],
     chat:[{id:genId(),by:idea.by,text:"企画チームを作りました！みんなで決めていきましょう。",at:Date.now()}],
-    meetLink:null,createdAt:serverTimestamp()
+    meetLink:null, createdAt:serverTimestamp()
   });
-  currentProject=ref.id;flash("企画チームを作成しました！『みんなで企画』へ");switchTab("plan");
+  currentProject=ref.id; flash("企画チームを作成しました！『みんなで企画』へ"); switchTab("plan");
 }
 function renderIdeas(){
-  const wrap=document.getElementById("ideaList");wrap.innerHTML="";
+  const wrap=document.getElementById("ideaList"); wrap.innerHTML="";
   if(!ideas.length){wrap.innerHTML='<div class="empty">まだアイデアがありません。最初の一歩を投稿してみましょう。</div>';return;}
   ideas.forEach(idea=>{
     const joined=idea.interested.includes(me.uid);
     const ready=idea.interested.length>=3;
     const proj=projects.find(p=>p.ideaId===idea.id);
     const mineOwn=idea.by===me.uid;
-    const c=document.createElement("div");c.className="card";
+    const c=document.createElement("div"); c.className="card";
     if(editingIdeaId===idea.id){
       c.innerHTML=`<div class="field"><label>やってみたいこと</label><input id="ei-t-${idea.id}"></div>
         <div class="field"><label>ひとこと説明</label><textarea id="ei-d-${idea.id}" rows="2"></textarea></div>
@@ -981,15 +1054,18 @@ function renderIdeas(){
       ${ready&&!proj?'<div class="ready">🎉 3人集まりました！「企画チームを作る」で具体的に動き出せます。</div>':''}
       <div class="reactions">${rxHTML}</div>`;
     c.querySelector('[data-act="int"]').onclick=()=>toggleInterest(idea);
-    const tb=c.querySelector('[data-act="team"]');if(tb)tb.onclick=()=>makeTeam(idea);
-    const gb=c.querySelector('[data-act="goplan"]');if(gb)gb.onclick=()=>{currentProject=proj.id;switchTab("plan");};
-    const eb=c.querySelector('[data-act="edit"]');if(eb)eb.onclick=()=>{editingIdeaId=idea.id;renderIdeas();};
-    const db_=c.querySelector('[data-act="del"]');if(db_)db_.onclick=()=>deleteIdea(idea);
+    const tb=c.querySelector('[data-act="team"]'); if(tb)tb.onclick=()=>makeTeam(idea);
+    const gb=c.querySelector('[data-act="goplan"]'); if(gb)gb.onclick=()=>{currentProject=proj.id;switchTab("plan");};
+    const eb=c.querySelector('[data-act="edit"]'); if(eb)eb.onclick=()=>{editingIdeaId=idea.id;renderIdeas();};
+    const db_=c.querySelector('[data-act="del"]'); if(db_)db_.onclick=()=>deleteIdea(idea);
     c.querySelectorAll('.react-btn').forEach(b=>b.onclick=()=>toggleReaction(idea,b.dataset.r));
     wrap.appendChild(c);
   });
 }
 
+/* ===================================================================
+   3. PLAN
+=================================================================== */
 const planSel=document.getElementById("planSel");
 planSel.addEventListener("change",()=>{currentProject=planSel.value;editingMsgId=null;renderPlanArea();});
 function renderPlan(){
@@ -997,7 +1073,7 @@ function renderPlan(){
   if(!projects.length){document.getElementById("planArea").innerHTML='<div class="empty">まだ企画チームがありません。<br>「やってみようボード」で3人集めて、企画チームを作りましょう。</div>';return;}
   projects.forEach(p=>{const o=document.createElement("option");o.value=p.id;o.textContent=p.title;planSel.appendChild(o);});
   if(!projects.some(p=>p.id===currentProject))currentProject=projects[0].id;
-  planSel.value=currentProject;renderPlanArea();
+  planSel.value=currentProject; renderPlanArea();
 }
 const projRef=id=>doc(db,"projects",id);
 function curProj(){return projects.find(p=>p.id===currentProject);}
@@ -1017,13 +1093,13 @@ async function publishEvent(){
   const best=p.dates.reduce((a,b)=>b.votes.length>(a?a.votes.length:-1)?b:a,null);
   const lead=p.roles.find(r=>r.name.includes("幹事"));
   await addDoc(collection(db,"events"),{title:p.title,organizer:(lead&&lead.who)?lead.who:p.team[0],when:best?best.label:"日程調整中",place:"（場所は調整中）",mapUrl:null,desc:"企画チームでまとめたイベントです。ぜひご参加ください！",rsvp:{},ops:p.tasks.map(t=>({t:t.t,done:t.done})),createdAt:serverTimestamp()});
-  flash("イベントを公開しました！「公開・運営」へ");switchTab("run");
+  flash("イベントを公開しました！「公開・運営」へ"); switchTab("run");
 }
 function renderPlanArea(){
-  const p=curProj();const area=document.getElementById("planArea");
+  const p=curProj(); const area=document.getElementById("planArea");
   if(!p){area.innerHTML="";return;}
   const inTeam=p.team.includes(me.uid);
-  let best=null;p.dates.forEach(d=>{if(!best||d.votes.length>best.votes.length)best=d;});
+  let best=null; p.dates.forEach(d=>{if(!best||d.votes.length>best.votes.length)best=d;});
   area.innerHTML=`
     <div class="card"><div class="row" style="justify-content:space-between">
         <h3 style="margin:0">📋 ${esc(p.title)}</h3>
@@ -1041,45 +1117,49 @@ function renderPlanArea(){
     </div>
     <div class="box" style="margin-top:18px;text-align:center"><h3 style="margin-top:0;font-family:'Zen Maru Gothic';color:var(--coral-d)">企画がまとまったら…</h3>
       <p>日程と内容が決まったら、全会員に公開して参加者を募りましょう。</p><button class="btn btn-coral" id="publishBtn">📣 このイベントを会員に公開する</button></div>`;
-  const jt=area.querySelector("#joinTeam");if(jt)jt.onclick=joinTeam;
+  const jt=area.querySelector("#joinTeam"); if(jt)jt.onclick=joinTeam;
+
   const dl=area.querySelector("#dateList");
   if(!p.dates.length)dl.innerHTML='<p class="votes">候補日がまだありません。下から追加してください。</p>';
   p.dates.forEach((d,idx)=>{
     const voted=d.votes.includes(me.uid);
-    const row=document.createElement("div");row.className="date-opt";
+    const row=document.createElement("div"); row.className="date-opt";
     row.innerHTML=`<div style="flex:1"><div style="font-weight:700">${esc(d.label)}</div><div class="votes">${d.votes.map(nameOf).map(esc).join("・")||"まだ票なし"}</div></div>
       <button class="btn btn-sm ${voted?'btn-teal':'btn-ghost'}">${voted?'✓ '+d.votes.length:'行ける '+d.votes.length}</button>
       <button class="x-btn" title="削除">×</button>`;
     const btns=row.querySelectorAll("button");
-    btns[0].onclick=()=>voteDate(idx);btns[1].onclick=()=>delDate(idx);
+    btns[0].onclick=()=>voteDate(idx); btns[1].onclick=()=>delDate(idx);
     dl.appendChild(row);
   });
   area.querySelector("#addDate").onclick=()=>{const v=area.querySelector("#newDate").value.trim();if(!v){flash("候補日を入力してください");return;}addDate(v);};
+
   const rl=area.querySelector("#roleList");
   p.roles.forEach((r,idx)=>{
-    const row=document.createElement("div");row.className="role-row";
+    const row=document.createElement("div"); row.className="role-row";
     row.innerHTML=`<div><div style="font-weight:700">${esc(r.name)}</div><div class="votes">${r.who?esc(nameOf(r.who))+" さん":"未定 / 募集中"}</div></div>
       ${r.who===me.uid?'<button class="btn btn-sm btn-ghost">やめる</button>':'<button class="btn btn-sm btn-teal">担当する</button>'}`;
     row.querySelector("button").onclick=()=>setRole(idx);
     rl.appendChild(row);
   });
+
   const tl=area.querySelector("#taskList");
   p.tasks.forEach((tk,idx)=>{
-    const row=document.createElement("div");row.className="task"+(tk.done?" done":"");
+    const row=document.createElement("div"); row.className="task"+(tk.done?" done":"");
     row.innerHTML=`<input type="checkbox" ${tk.done?"checked":""}><span class="tasktext">${esc(tk.t)}</span><button class="x-btn" title="削除">×</button>`;
     row.querySelector("input").onchange=()=>toggleTask(idx);
     row.querySelector(".x-btn").onclick=()=>delTask(idx);
     tl.appendChild(row);
   });
   area.querySelector("#addTask").onclick=()=>{const v=area.querySelector("#newTask").value.trim();if(!v){flash("やることを入力してください");return;}addTask(v);};
+
   const mb=area.querySelector("#meetBox");
   if(p.meetLink){
     mb.innerHTML=`<div class="meet">🎥 オンライン打ち合わせ${p.meetType?'（'+esc(p.meetType)+'）':''}<br>この時間に同じリンクをクリックすれば、顔を見て話せます。<br><a href="${esc(p.meetLink)}" target="_blank" rel="noopener">${esc(p.meetLink)}</a><br>
       <button class="btn btn-sm btn-ghost" id="copyMeet" style="margin-top:8px">リンクをコピー</button>
       <button class="btn btn-sm btn-ghost" id="clearMeet" style="margin-top:8px">リンクを削除</button></div>`;
     mb.querySelector("#copyMeet").onclick=()=>{navigator.clipboard&&navigator.clipboard.writeText(p.meetLink);flash("リンクをコピーしました");};
-    mb.querySelector("#clearMeet").onclick=()=>{if(confirm("会議リンクを削除しますか？"))updateDoc(projRef(p.id),{meetLink:null,meetType:null});};
-  }else{
+    mb.querySelector("#clearMeet").onclick=()=>{ if(confirm("会議リンクを削除しますか？")) updateDoc(projRef(p.id),{meetLink:null,meetType:null}); };
+  } else {
     mb.innerHTML=`<p style="font-weight:700;margin:0 0 8px">🎥 オンライン打ち合わせを設定 / Set up a meeting</p>
       <div class="row" style="margin-bottom:10px">
         <button class="btn btn-sm btn-ghost" data-meet="Google Meet">📹 Google Meet</button>
@@ -1095,28 +1175,29 @@ function renderPlanArea(){
       const type=b.dataset.meet;
       if(type==="Jitsi"){
         const link="https://meet.jit.si/Wild60-"+Math.random().toString(36).slice(2,8);
-        updateDoc(projRef(p.id),{meetLink:link,meetType:"すぐ使える"});flash("打ち合わせ室を作りました");
+        updateDoc(projRef(p.id),{meetLink:link,meetType:"すぐ使える"}); flash("打ち合わせ室を作りました");
         return;
       }
       pendingProvider=type;
       const url=(type==="Google Meet")?"https://meet.google.com/new":"https://zoom.us/start/videomeeting";
       window.open(url,"_blank","noopener");
       mb.querySelector("#meetGuide").textContent=(type==="Google Meet")
-        ?"新しいタブでGoogle Meetの会議が作られます。表示されたURL（meet.google.com/～）をコピーして、下に貼り付けてください。"
-        :"新しいタブでZoomが開きます。会議を開始し、『招待リンクをコピー』で得たURL（zoom.us/～）を下に貼り付けてください。";
+        ? "新しいタブでGoogle Meetの会議が作られます。表示されたURL（meet.google.com/～）をコピーして、下に貼り付けてください。"
+        : "新しいタブでZoomが開きます。会議を開始し、『招待リンクをコピー』で得たURL（zoom.us/～）を下に貼り付けてください。";
       mb.querySelector("#meetPaste").style.display="block";
       mb.querySelector("#meetUrl").focus();
     });
     mb.querySelector("#meetSave").onclick=()=>{
       const url=mb.querySelector("#meetUrl").value.trim();
       if(!/^https?:\/\//.test(url)){flash("正しい会議リンク（https://…）を貼り付けてください");return;}
-      updateDoc(projRef(p.id),{meetLink:url,meetType:pendingProvider||"オンライン会議"});flash("会議リンクを保存しました");
+      updateDoc(projRef(p.id),{meetLink:url,meetType:pendingProvider||"オンライン会議"}); flash("会議リンクを保存しました");
     };
   }
+
   const cb=area.querySelector("#chatBox");
   [...p.chat].sort((a,b)=>(a.at||0)-(b.at||0)).forEach(m=>{
-    const key=m.id||m.at;const mineOwn=m.by===me.uid;
-    const d=document.createElement("div");d.className="msg";
+    const key=m.id||m.at; const mineOwn=m.by===me.uid;
+    const d=document.createElement("div"); d.className="msg";
     if(editingMsgId===key){
       d.innerHTML=`<div class="head-line"><span class="who">${avatarHTML(m.by)} ${esc(nameOf(m.by))} さん</span></div>
         <div class="editrow"><input id="em-${key}" style="flex:1;min-width:160px;padding:9px;border:2px solid var(--line);border-radius:10px;font-size:1rem">
@@ -1130,8 +1211,8 @@ function renderPlanArea(){
     d.innerHTML=`<div class="head-line"><span class="who">${avatarHTML(m.by)} ${esc(nameOf(m.by))} さん</span>
         ${mineOwn?`<span class="owner-actions"><button class="iconbtn" data-act="edit" title="修正">✏️</button><button class="iconbtn del" data-act="del" title="削除">🗑</button></span>`:''}</div>
       <div class="bub">${esc(m.text)}${m.edited?' <span class="votes">(修正済)</span>':''}</div>`;
-    const eb=d.querySelector('[data-act="edit"]');if(eb)eb.onclick=()=>{editingMsgId=key;renderPlanArea();};
-    const xb=d.querySelector('[data-act="del"]');if(xb)xb.onclick=()=>deleteMsg(m);
+    const eb=d.querySelector('[data-act="edit"]'); if(eb)eb.onclick=()=>{editingMsgId=key;renderPlanArea();};
+    const xb=d.querySelector('[data-act="del"]'); if(xb)xb.onclick=()=>deleteMsg(m);
     cb.appendChild(d);
   });
   cb.scrollTop=cb.scrollHeight;
@@ -1141,9 +1222,12 @@ function renderPlanArea(){
   area.querySelector("#publishBtn").onclick=publishEvent;
 }
 
+/* ===================================================================
+   4. RUN  (with edit/delete for organizer)
+=================================================================== */
 async function setRsvp(ev,val){
-  const ref=doc(db,"events",ev.id);const rsvp=ev.rsvp||{};
-  await updateDoc(ref,{["rsvp."+me.uid]:rsvp[me.uid]===val?deleteField():val});
+  const ref=doc(db,"events",ev.id); const rsvp=ev.rsvp||{};
+  await updateDoc(ref,{["rsvp."+me.uid]: rsvp[me.uid]===val?deleteField():val});
 }
 async function toggleOp(ev,idx){const ops=(ev.ops||[]).map(o=>({...o}));ops[idx].done=!ops[idx].done;await updateDoc(doc(db,"events",ev.id),{ops});}
 async function deleteEvent(ev){if(!confirm("このイベントを削除しますか？\n「"+ev.title+"」"))return;await deleteDoc(doc(db,"events",ev.id));flash("削除しました");}
@@ -1154,17 +1238,17 @@ async function saveEventEdit(ev){
   const ds=document.getElementById("ee-d-"+ev.id).value.trim();
   if(!t){flash("タイトルを入力してください");return;}
   editingEventId=null;
-  await updateDoc(doc(db,"events",ev.id),{title:t,when:w,place:pl,desc:ds});flash("修正しました");
+  await updateDoc(doc(db,"events",ev.id),{title:t,when:w,place:pl,desc:ds}); flash("修正しました");
 }
 function renderRun(){
-  const wrap=document.getElementById("eventList");wrap.innerHTML="";
+  const wrap=document.getElementById("eventList"); wrap.innerHTML="";
   if(!events.length){wrap.innerHTML='<div class="empty">公開されたイベントはまだありません。</div>';return;}
   events.forEach(ev=>{
-    const rsvp=ev.rsvp||{},mine=rsvp[me.uid],vals=Object.values(rsvp);
-    const go=vals.filter(v=>v==="go").length,maybe=vals.filter(v=>v==="maybe").length,no=vals.filter(v=>v==="no").length;
+    const rsvp=ev.rsvp||{}, mine=rsvp[me.uid], vals=Object.values(rsvp);
+    const go=vals.filter(v=>v==="go").length, maybe=vals.filter(v=>v==="maybe").length, no=vals.filter(v=>v==="no").length;
     const goList=Object.keys(rsvp).filter(k=>rsvp[k]==="go");
     const isOrg=ev.organizer===me.uid;
-    const c=document.createElement("div");c.className="card";
+    const c=document.createElement("div"); c.className="card";
     if(editingEventId===ev.id){
       c.innerHTML=`<div class="field"><label>イベント名</label><input id="ee-t-${ev.id}"></div>
         <div class="field"><label>日時</label><input id="ee-w-${ev.id}"></div>
@@ -1191,12 +1275,12 @@ function renderRun(){
       <div class="interested"><span style="display:flex">${goList.map(id=>avatarHTML(id)).join("")}</span>${goList.length?`<span class="votes">${goList.map(nameOf).map(esc).join("・")} さんが参加</span>`:'<span class="votes">まだ参加者がいません</span>'}</div>
       ${isOrg?`<div class="module" style="margin-top:14px;background:#fffaf2"><h4>🛠 当日運営チェック（主催者向け）/ Operation</h4><div class="oplist"></div></div>`:''}`;
     c.querySelectorAll(".rsvp button").forEach(b=>b.onclick=()=>setRsvp(ev,b.dataset.v));
-    const eb=c.querySelector('[data-act="edit"]');if(eb)eb.onclick=()=>{editingEventId=ev.id;renderRun();};
-    const xb=c.querySelector('[data-act="del"]');if(xb)xb.onclick=()=>deleteEvent(ev);
+    const eb=c.querySelector('[data-act="edit"]'); if(eb)eb.onclick=()=>{editingEventId=ev.id;renderRun();};
+    const xb=c.querySelector('[data-act="del"]'); if(xb)xb.onclick=()=>deleteEvent(ev);
     if(isOrg){
       const ol=c.querySelector(".oplist");
       (ev.ops||[]).forEach((op,idx)=>{
-        const row=document.createElement("label");row.className="task"+(op.done?" done":"");
+        const row=document.createElement("label"); row.className="task"+(op.done?" done":"");
         row.innerHTML=`<input type="checkbox" ${op.done?"checked":""}><span class="tasktext">${esc(op.t)}</span>`;
         row.querySelector("input").onchange=()=>toggleOp(ev,idx);
         ol.appendChild(row);
@@ -1206,17 +1290,35 @@ function renderRun(){
   });
 }
 
+/* ===================================================================
+   AI ASSIST
+=================================================================== */
 document.getElementById("aiBtn").onclick=async ()=>{
   const kw=document.getElementById("aiKeyword").value.trim();
   if(!kw){flash("キーワードを入力してください");return;}
   const btn=document.getElementById("aiBtn");
-  btn.disabled=true;btn.textContent="考え中…✨";
+  btn.disabled=true; btn.textContent="考え中…✨";
   const sug=document.getElementById("aiSuggestions");
   sug.innerHTML='<div class="ai-loading">✨ AIが3パターン考えています…</div>';
   try{
-    const url=GAS_URL+"?action=ai&keyword="+encodeURIComponent(kw);
-    const res=await fetch(url);
+    /* POST方式でGASを呼び出す（CORS問題を回避） */
+    const res=await fetch(GAS_URL,{
+      method:'POST',
+      mode:'cors',
+      headers:{'Content-Type':'text/plain;charset=utf-8'},
+      body:JSON.stringify({action:'ai',keyword:kw})
+    });
+    if(!res.ok){
+      sug.innerHTML=`<p class="a11y-note">⚠ GASがエラーを返しました（HTTP ${res.status}）。<br>GASスクリプトの更新・再デプロイを確認してください。</p>`;
+      btn.disabled=false; btn.textContent="✨ 提案してもらう";
+      return;
+    }
     const data=await res.json();
+    if(data.error){
+      sug.innerHTML=`<p class="a11y-note">⚠ ${esc(data.error)}</p>`;
+      btn.disabled=false; btn.textContent="✨ 提案してもらう";
+      return;
+    }
     if(data.suggestions&&data.suggestions.length){
       sug.innerHTML="";
       data.suggestions.forEach((s,i)=>{
@@ -1233,94 +1335,120 @@ document.getElementById("aiBtn").onclick=async ()=>{
       sug.innerHTML='<p class="a11y-note">⚠ 提案を取得できませんでした。GASのScript PropertiesにGEMINI_API_KEYが設定されているか確認してください。</p>';
     }
   }catch(e){
-    sug.innerHTML='<p class="a11y-note">⚠ 通信エラーが発生しました。GASのURLと設定を確認してください。</p>';
-    console.error(e);
+    sug.innerHTML='<p class="a11y-note">⚠ 通信エラーが発生しました。<br>① GASスクリプトを最新版に更新・再デプロイしてください。<br>② GEMINI_API_KEYがScript Propertiesに設定されているか確認してください。</p>';
+    console.error('AI assist error:',e);
   }
-  btn.disabled=false;btn.textContent="✨ 提案してもらう";
+  btn.disabled=false; btn.textContent="✨ 提案してもらう";
 };
-
+/* ===================================================================
+   5. HELPERS
+=================================================================== */
 const HELPER_TAGS=["運転・車","PC・スマホ","料理・料理教室","DIY・修繕","語学・翻訳","音楽・楽器","写真・カメラ","スポーツ・体操","健康・相談","子育て・孫育て","ペット","お買い物同行","教えること全般","その他"];
+
 (function initHelperUI(){
   const bar=document.getElementById("helperTagBar");
   HELPER_TAGS.forEach(t=>{
     const b=document.createElement("button");
-    b.className="htag";b.textContent=t;
-    b.onclick=()=>{if(helperTags.has(t)){helperTags.delete(t);b.classList.remove("on");}else{helperTags.add(t);b.classList.add("on");}};
+    b.className="htag"; b.textContent=t;
+    b.onclick=()=>{
+      if(helperTags.has(t)){helperTags.delete(t);b.classList.remove("on");}
+      else{helperTags.add(t);b.classList.add("on");}
+    };
     bar.appendChild(b);
   });
   document.querySelectorAll(".htype-btn").forEach(b=>b.onclick=()=>{
     helperType=b.dataset.htype;
     document.querySelectorAll(".htype-btn").forEach(x=>x.className="htype-btn");
     b.classList.add("on-"+helperType);
-    document.getElementById("helperTitle").placeholder=helperType==="need"?"例：スマホの写真の整理を教えてほしい":"例：車の運転なら任せてください！";
+    document.getElementById("helperTitle").placeholder=
+      helperType==="need"?"例：スマホの写真の整理を教えてほしい":"例：車の運転なら任せてください！";
   });
 })();
+
 document.getElementById("addHelper").onclick=async ()=>{
   const title=document.getElementById("helperTitle").value.trim();
   if(!title){flash("ひとことを入力してください");return;}
-  await addDoc(collection(db,"helpers"),{type:helperType,title,tags:[...helperTags],by:me.uid,createdAt:serverTimestamp()});
+  await addDoc(collection(db,"helpers"),{
+    type:helperType,title,tags:[...helperTags],by:me.uid,createdAt:serverTimestamp()
+  });
   document.getElementById("helperTitle").value="";
   helperTags.clear();
   document.querySelectorAll(".htag").forEach(b=>b.classList.remove("on"));
   flash(helperType==="need"?"「困っていること」を投稿しました！":"「できること」を投稿しました！");
 };
+
 async function deleteHelper(h){
   if(!confirm("この投稿を削除しますか？"))return;
-  await deleteDoc(doc(db,"helpers",h.id));flash("削除しました");
+  await deleteDoc(doc(db,"helpers",h.id)); flash("削除しました");
 }
+
 function renderHelpers(){
-  const wrap=document.getElementById("helperList");wrap.innerHTML="";
-  if(!helpers.length){wrap.innerHTML='<div class="empty">まだ投稿がありません。<br>「困っていること」や「できること」を書いてみましょう。</div>';return;}
+  const wrap=document.getElementById("helperList"); wrap.innerHTML="";
+  if(!helpers.length){
+    wrap.innerHTML='<div class="empty">まだ投稿がありません。<br>「困っていること」や「できること」を書いてみましょう。</div>';
+    return;
+  }
   helpers.forEach(h=>{
     const isOwn=h.by===me.uid;
     const label=h.type==="need"?"🙋 困っていること・やってほしいこと":"💪 できること・得意なこと";
+    // Find matches from the opposite type
     const oppType=h.type==="need"?"skill":"need";
     const matches=helpers.filter(x=>x.type===oppType&&x.tags&&h.tags&&x.tags.some(t=>h.tags.includes(t)));
     const matchHTML=matches.length?`<div class="match-section"><p class="match-title">${h.type==="need"?"✨ こんな方が力になれそうです":"✨ こんなことを求めている方がいます"}</p>${matches.slice(0,3).map(m=>`<div class="match-item">💬 <b>${esc(nameOf(m.by))}</b> さん：${esc(m.title)}</div>`).join("")}</div>`:"";
-    const c=document.createElement("div");c.className="hcard "+h.type;
+    const c=document.createElement("div"); c.className="hcard "+h.type;
     c.innerHTML=`<span class="hbadge ${h.type}">${label}</span>
       ${isOwn?`<span class="owner-actions" style="float:right"><button class="iconbtn del" data-act="del">🗑</button></span>`:''}
       <p style="font-family:'Zen Maru Gothic';font-weight:700;font-size:1.1rem;margin:0 0 6px">${esc(h.title)}</p>
       <p class="meta">${esc(nameOf(h.by))} さん</p>
       ${h.tags&&h.tags.length?`<div class="htag-list">${h.tags.map(t=>`<span class="htag-chip">${esc(t)}</span>`).join("")}</div>`:""}
       ${matchHTML}`;
-    const db2=c.querySelector('[data-act="del"]');if(db2)db2.onclick=()=>deleteHelper(h);
+    const db2=c.querySelector('[data-act="del"]'); if(db2)db2.onclick=()=>deleteHelper(h);
     wrap.appendChild(c);
   });
 }
 
-function isAdmin(){return ADMIN_UIDS.includes(me?.uid);}
+/* ===================================================================
+   ADMIN
+=================================================================== */
+function isAdmin(){ return ADMIN_UIDS.includes(me?.uid); }
+
 let adminSearchQ='';
 (function(){
   const inp=document.getElementById('adminSearch');
-  if(inp)inp.addEventListener('input',e=>{adminSearchQ=e.target.value.toLowerCase();renderAdmin();});
+  if(inp) inp.addEventListener('input',e=>{adminSearchQ=e.target.value.toLowerCase();renderAdmin();});
 })();
-async function adminDeleteUser(uid,userData){
+
+async function adminDeleteUser(uid, userData){
   if(uid===me.uid){flash("自分自身は削除できません");return;}
   const name=userData.name||"（名前なし）";
-  if(!confirm(`【確認】ユーザーを削除します。\n\n名前：${name}\nUID：${uid}\n\n・プロフィールと会員番号が削除されます。\n・投稿・コメントは「（退会者）」として残ります。\n\n本当に削除しますか？`))return;
+  if(!confirm(`【確認】ユーザーを削除します。\n\n名前：${name}\nUID：${uid}\n\n・プロフィールと会員番号が削除されます。\n・投稿・コメントは「（退会者）」として残ります。\n\n本当に削除しますか？`)) return;
   try{
     await deleteDoc(doc(db,"users",uid));
-    if(userData.memberNumber){await deleteDoc(doc(db,"guestMembers",userData.memberNumber)).catch(()=>{});}
+    if(userData.memberNumber){
+      await deleteDoc(doc(db,"guestMembers",userData.memberNumber)).catch(()=>{});
+    }
     flash(`${name} さんを削除しました`);
   }catch(e){
     flash("削除に失敗しました: "+(e.message||e.code||""));
     console.error(e);
   }
 }
+
 function renderAdmin(){
-  if(!isAdmin())return;
+  if(!isAdmin()) return;
+  /* UID表示 */
   const udp=document.getElementById("myUidDisplay");
-  if(udp)udp.textContent=me.uid;
-  const wrap=document.getElementById("adminUserList");if(!wrap)return;
+  if(udp) udp.textContent=me.uid;
+  /* ユーザー一覧 */
+  const wrap=document.getElementById("adminUserList"); if(!wrap) return;
   wrap.innerHTML="";
   const q=adminSearchQ;
   const list=Object.entries(usersMap).filter(([uid,u])=>{
-    if(!q)return true;
+    if(!q) return true;
     return (u.name||"").toLowerCase().includes(q)||uid.toLowerCase().includes(q)||(u.memberNumber||"").includes(q);
   }).sort(([,a],[,b])=>(a.name||"").localeCompare(b.name||"","ja"));
   const cnt=document.getElementById("adminCount");
-  if(cnt)cnt.textContent=`登録ユーザー ${Object.keys(usersMap).length}人 / 表示 ${list.length}人`;
+  if(cnt) cnt.textContent=`登録ユーザー ${Object.keys(usersMap).length}人 / 表示 ${list.length}人`;
   if(!list.length){wrap.innerHTML='<div class="empty">該当するユーザーがいません。</div>';return;}
   list.forEach(([uid,u])=>{
     const isMe=uid===me.uid;
@@ -1344,7 +1472,7 @@ function renderAdmin(){
         ?'<span style="color:var(--ink-soft);font-size:.85rem">（自分）</span>'
         :`<button class="btn btn-sm btn-danger" data-uid="${uid}">🗑 削除</button>`}`;
     const delBtn=row.querySelector('[data-uid]');
-    if(delBtn)delBtn.onclick=()=>adminDeleteUser(uid,u);
+    if(delBtn) delBtn.onclick=()=>adminDeleteUser(uid,u);
     wrap.appendChild(row);
   });
 }
