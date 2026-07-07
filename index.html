@@ -260,17 +260,6 @@
 </head>
 <body>
 
-<div class="overlay hidden" id="memberNumOverlay">
-  <div class="sheet" style="text-align:center">
-    <div style="font-size:2.5rem">🎫</div>
-    <h2>あなたの会員番号</h2>
-    <p style="color:var(--ink-soft);margin:0 0 6px">この番号を控えておいてください。<br>次回から、この番号でアクセスできます。</p>
-    <div class="member-num" id="memberNumDisplay">0000-0000</div>
-    <p class="a11y-note" style="margin-bottom:14px">※ 同じ端末・ブラウザからは自動でログインできます。別の端末や機種変更の際に使います。</p>
-    <button class="btn btn-coral" id="memberNumOK" style="width:100%;justify-content:center">控えました！ OK</button>
-  </div>
-</div>
-
 <div class="overlay hidden" id="login">
   <div class="sheet" style="text-align:center">
     <div style="font-size:3rem">🎪</div>
@@ -281,37 +270,126 @@
       『みんあそくん』は、思いついた遊びのアイデアをサクッとページにして、みんなに「この指止まれ！」ができる場所です。<br>
       <span style="font-size:.85rem">面倒な段取りは抜きにして、まずは「あそぼー！」の一言から、最高のセカンドライフを始めましょう。</span>
     </p>
-    <div class="test-note">⚠ これは開発中のテストサイトです<br>This is a test site under development</div>
-    <p style="font-size:.9rem; color:var(--ink-soft); margin:0 0 10px">ログイン方法を選んでください。<br><span style="font-size:.82rem">Choose how to sign in.</span></p>
-    <div class="login-btns">
-      <button class="btn btn-coral" id="loginGuest">🎫 はじめて利用する（新規登録）</button>
+    <div class="field" style="text-align:left"><label>メールアドレス / Email</label><input type="email" id="loginEmail" placeholder="example@mail.com" autocomplete="username"></div>
+    <div class="field" style="text-align:left;margin-bottom:6px">
+      <label>パスワード / Password</label>
+      <div class="row" style="gap:6px;flex-wrap:nowrap">
+        <input type="password" id="loginPassInput" placeholder="パスワード" style="flex:1" autocomplete="current-password">
+        <button type="button" class="btn btn-ghost btn-sm pw-toggle" data-target="loginPassInput" style="white-space:nowrap">👁 表示</button>
+      </div>
     </div>
-    <div class="divider">会員番号をお持ちの方 / Returning member</div>
-    <input class="num-input" id="memberInput" placeholder="0000-0000" maxlength="9" inputmode="numeric">
-    <input type="password" class="num-input" id="memberPassInput" placeholder="パスワード" style="margin-top:8px;letter-spacing:normal;font-size:1.05rem" autocomplete="current-password">
-    <button class="btn btn-teal" id="memberLogin" style="width:100%;justify-content:center;margin-top:8px">🔑 ログイン</button>
+    <button class="btn btn-teal" id="memberLogin" style="width:100%;justify-content:center;margin-top:4px">🔑 ログイン</button>
     <p class="a11y-note" id="loginErrMsg" style="margin-top:10px;color:#c0392b"></p>
-    <p class="a11y-note" style="margin-top:16px">会員番号とパスワードは初回登録時に決めます。控えておくと、別の端末からもログインできます。</p>
+    <div class="divider">はじめての方 / New here?</div>
+    <button class="btn btn-coral" id="loginGuest" style="width:100%;justify-content:center">🎫 新規登録する</button>
+    <p class="a11y-note" style="margin-top:16px">登録すると、入力したメールアドレスに仮パスワードが届きます。初回ログイン時に新しいパスワードへの変更をお願いします。</p>
   </div>
 </div>
 
 <div class="overlay hidden" id="onboard">
   <div class="sheet">
-    <h2>🌻 プロフィール</h2>
-    <div id="ob-membernum" class="mem-note" style="display:none"></div>
-    <p class="sub">お名前（ニックネーム）と、興味のあることを教えてください。あとから変更できます。</p>
-    <div class="field"><label>ニックネーム / Nickname</label><input id="obName" placeholder="例：たけし" maxlength="20"></div>
-    <div class="field" id="ob-pass-field"><label>パスワード（8文字以上）/ Password</label><input type="password" id="obPass" placeholder="ログイン時に使うパスワード" autocomplete="new-password"></div>
-    <div class="field" id="ob-changepass-field" style="display:none">
-      <label>パスワードを変更する場合のみ入力 / Change password (optional)</label>
-      <input type="password" id="obOldPass" placeholder="現在のパスワード" autocomplete="current-password" style="margin-bottom:8px">
-      <input type="password" id="obNewPass" placeholder="新しいパスワード（8文字以上）" autocomplete="new-password">
-    </div>
+    <h2>🌻 新規登録 / Register</h2>
+    <p class="sub">お名前・ニックネーム・メールアドレス・興味のあることを教えてください。登録すると、入力したメールアドレスに仮パスワードをお送りします。</p>
+    <div class="field"><label>氏名 / Full name</label><input id="obFullName" placeholder="例：山田 太郎" maxlength="40"></div>
+    <div class="field"><label>ニックネーム（他の会員に表示されます）/ Nickname</label><input id="obName" placeholder="例：たけし" maxlength="20"></div>
+    <div class="field"><label>メールアドレス / Email</label><input type="email" id="obEmail" placeholder="example@mail.com" autocomplete="email"></div>
+    <div style="position:absolute;left:-9999px" aria-hidden="true"><label>ここは入力しないでください / Leave this empty</label><input type="text" id="obHp" tabindex="-1" autocomplete="off"></div>
     <div class="field"><label>興味のあること（いくつでも）/ Interests</label>
       <div class="interest-bar" id="obInterests" style="margin-bottom:6px"></div>
       <input id="obCustom" placeholder="ほかにあれば追加（カンマ区切り）例：囲碁, パン作り">
     </div>
-    <button class="btn btn-coral" id="obSave" style="width:100%;justify-content:center">この内容で保存 / Save</button>
+    <div class="divider">利用規約（要約）/ Terms of Use (summary)</div>
+    <div style="max-height:150px;overflow-y:auto;background:#fffaf2;border:2px solid var(--line);border-radius:10px;padding:12px 14px;font-size:.85rem;color:var(--ink-soft);text-align:left;margin-bottom:10px;line-height:1.7">
+      本サービスは無料・ボランティアで運営されています。個人情報は書き込まないでください。投稿・コメント・写真は他の会員に公開されます。<br><br>
+      <b>本サービスを通じて企画・実施されたイベントや、会員間で生じたトラブル（金銭・怪我・事故・物損・人間関係などを含む）は、当事者間の責任と負担で解決するものとし、運営者は関与せず、責任を負いません。</b><br><br>
+      運営者の故意又は重大な過失による場合を除き、本サービスの利用により生じた損害について運営者は責任を負いません。詳しくはページ下部の「利用規約」をご確認ください。
+    </div>
+    <label style="display:flex;align-items:flex-start;gap:8px;font-size:.92rem;margin:0 0 14px;text-align:left;cursor:pointer">
+      <input type="checkbox" id="obAgree" style="margin-top:3px;width:20px;height:20px;flex-shrink:0">
+      <span>ページ下部の「利用規約」（特に、会員間のトラブルは当事者間で解決し運営者は関与しない旨の第3条・免責事項の第4条）に同意します。</span>
+    </label>
+    <p class="a11y-note" id="obErrMsg" style="color:#c0392b"></p>
+    <button class="btn btn-coral" id="obSave" style="width:100%;justify-content:center">登録する / Register</button>
+    <button class="btn btn-ghost" id="obCancel" style="width:100%;justify-content:center;margin-top:8px">ログイン画面に戻る</button>
+  </div>
+</div>
+
+<div class="overlay hidden" id="agreeTerms">
+  <div class="sheet">
+    <h2>📌 利用規約へのご同意</h2>
+    <p class="sub">サービスのご利用には、以下の内容へのご同意が必要です。</p>
+    <div style="max-height:220px;overflow-y:auto;background:#fffaf2;border:2px solid var(--line);border-radius:10px;padding:12px 14px;font-size:.85rem;color:var(--ink-soft);text-align:left;margin-bottom:10px;line-height:1.7">
+      本サービスは無料・ボランティアで運営されています。個人情報は書き込まないでください。投稿・コメント・写真は他の会員に公開されます。<br><br>
+      <b>本サービスを通じて企画・実施されたイベントや、会員間で生じたトラブル（金銭・怪我・事故・物損・人間関係などを含む）は、当事者間の責任と負担で解決するものとし、運営者は関与せず、責任を負いません。</b><br><br>
+      運営者の故意又は重大な過失による場合を除き、本サービスの利用により生じた損害について運営者は責任を負いません。詳しくはページ下部の「利用規約」をご確認ください。
+    </div>
+    <label style="display:flex;align-items:flex-start;gap:8px;font-size:.92rem;margin:0 0 14px;text-align:left;cursor:pointer">
+      <input type="checkbox" id="atAgree" style="margin-top:3px;width:20px;height:20px;flex-shrink:0">
+      <span>ページ下部の「利用規約」（特に、会員間のトラブルは当事者間で解決し運営者は関与しない旨の第3条・免責事項の第4条）に同意します。</span>
+    </label>
+    <p class="a11y-note" id="atErrMsg" style="color:#c0392b"></p>
+    <button class="btn btn-coral" id="atSave" style="width:100%;justify-content:center">同意して利用を開始する</button>
+  </div>
+</div>
+
+<div class="overlay hidden" id="forceChangePassword">
+  <div class="sheet">
+    <h2>🔒 パスワードの変更が必要です</h2>
+    <p class="sub">初回ログインです。メールでお送りした仮パスワードから、新しいパスワードに変更してください。</p>
+    <div class="field">
+      <label>仮パスワード（メールに記載）/ Temporary password</label>
+      <div class="row" style="gap:6px;flex-wrap:nowrap">
+        <input type="password" id="fcpOld" style="flex:1" autocomplete="current-password">
+        <button type="button" class="btn btn-ghost btn-sm pw-toggle" data-target="fcpOld">👁 表示</button>
+      </div>
+    </div>
+    <div class="field">
+      <label>新しいパスワード（8文字以上）/ New password</label>
+      <div class="row" style="gap:6px;flex-wrap:nowrap">
+        <input type="password" id="fcpNew" style="flex:1" autocomplete="new-password">
+        <button type="button" class="btn btn-ghost btn-sm pw-toggle" data-target="fcpNew">👁 表示</button>
+      </div>
+    </div>
+    <div class="field">
+      <label>新しいパスワード（確認）/ Confirm new password</label>
+      <div class="row" style="gap:6px;flex-wrap:nowrap">
+        <input type="password" id="fcpNew2" style="flex:1" autocomplete="new-password">
+        <button type="button" class="btn btn-ghost btn-sm pw-toggle" data-target="fcpNew2">👁 表示</button>
+      </div>
+    </div>
+    <p class="a11y-note" id="fcpErr" style="color:#c0392b"></p>
+    <button class="btn btn-coral" id="fcpSave" style="width:100%;justify-content:center">パスワードを変更する</button>
+  </div>
+</div>
+
+<div class="overlay hidden" id="profileEdit">
+  <div class="sheet">
+    <h2>🌻 プロフィール編集</h2>
+    <p class="sub">ニックネームや興味のあることを変更できます。あとから何度でも変更可能です。</p>
+    <div class="field"><label>氏名 / Full name</label><input id="peFullName" maxlength="40"></div>
+    <div class="field"><label>ニックネーム / Nickname</label><input id="peName" placeholder="例：たけし" maxlength="20"></div>
+    <div class="field"><label>興味のあること（いくつでも）/ Interests</label>
+      <div class="interest-bar" id="peInterests" style="margin-bottom:6px"></div>
+      <input id="peCustom" placeholder="ほかにあれば追加（カンマ区切り）例：囲碁, パン作り">
+    </div>
+    <div class="divider">パスワードを変更する場合のみ入力 / Change password (optional)</div>
+    <div class="field">
+      <label>現在のパスワード</label>
+      <div class="row" style="gap:6px;flex-wrap:nowrap">
+        <input type="password" id="peOldPass" style="flex:1" autocomplete="current-password">
+        <button type="button" class="btn btn-ghost btn-sm pw-toggle" data-target="peOldPass">👁 表示</button>
+      </div>
+    </div>
+    <div class="field">
+      <label>新しいパスワード（8文字以上）</label>
+      <div class="row" style="gap:6px;flex-wrap:nowrap">
+        <input type="password" id="peNewPass" style="flex:1" autocomplete="new-password">
+        <button type="button" class="btn btn-ghost btn-sm pw-toggle" data-target="peNewPass">👁 表示</button>
+      </div>
+    </div>
+    <p class="a11y-note" id="peErrMsg" style="color:#c0392b"></p>
+    <button class="btn btn-coral" id="peSave" style="width:100%;justify-content:center">この内容で保存 / Save</button>
+    <button class="btn btn-ghost" id="peCancel" style="width:100%;justify-content:center;margin-top:8px">キャンセル</button>
   </div>
 </div>
 
@@ -344,7 +422,6 @@
     <div class="logo">🎪 みんあそくん
       <small>～「みんなであそぼー！」がすぐ形になる、大人のイベント企画ツール～</small>
     </div>
-    <span class="test-badge">⚠ テストサイト / TEST SITE</span>
     <button class="font-btn" id="fontToggle">🔤 文字を大きく</button>
     <div class="me" id="meChip" style="display:none">
       <span class="who-name" id="meName">―</span>
@@ -473,8 +550,8 @@
       <p>一括削除はチェックボックスで選択 → 「まとめて削除」ボタンで実行します。</p>
     </div>
     <div class="box">
-      <p style="font-weight:700;margin:0 0 4px">あなたの会員番号・UID</p>
-      <p class="a11y-note" style="margin:0 0 8px">スプレッドシートの <b>Config</b> シート → <b>adminList</b> 行の json 列（例: <code>{"memberNumbers":["00006291"]}</code>）に会員番号（ハイフンなし8桁）を追加すると管理者になれます。</p>
+      <p style="font-weight:700;margin:0 0 4px">あなたのメールアドレス・会員番号</p>
+      <p class="a11y-note" style="margin:0 0 8px">スプレッドシートの <b>Config</b> シート → <b>adminList</b> 行の json 列（例: <code>{"memberNumbers":["00006291"]}</code>）に会員番号（ハイフンなし8桁）を追加すると管理者になれます。会員番号はこの下に表示されます。</p>
       <span class="admin-uid" id="myMemberNumDisplay">―</span>
       <span class="admin-uid" id="myUidDisplay" style="margin-left:6px;font-size:.76rem">―</span>
     </div>
@@ -498,37 +575,65 @@
 </main>
 
 <footer class="site-foot">
-  <div class="test-strip">⚠ これは開発中のテストサイトです。投稿などのデータは予告なく削除・初期化されることがあります。
-    <span class="en">This is a test site under development. Posted data may be deleted or reset without notice.</span></div>
-  <h3>📌 注意事項 / Notes</h3>
+  <h3>📜 利用規約 / Terms of Use</h3>
+  <p style="font-size:.85rem;margin:0 0 14px">本規約は、「みんあそくん」（以下「本サービス」）の利用条件を定めるものです。会員登録の完了をもって、本規約に同意したものとみなします。
+    <span class="en">These Terms govern the use of "Minnasoku-kun" (the "Service"). Completing member registration constitutes agreement to these Terms.</span></p>
+
+  <h3>第1条　サービスの性質</h3>
   <ul>
-    <li>個人情報（本名・電話番号・住所・口座番号など）は書き込まないでください。
-      <span class="en">Do not post personal information (real name, phone number, address, bank details, etc.).</span></li>
-    <li>投稿・コメント・写真は、ログインした他の参加者に公開されます。
-      <span class="en">Your posts, comments and photos are visible to other signed-in participants.</span></li>
-    <li>動作確認のためのサイトのため、機能やデータは予告なく変更されることがあります。
-      <span class="en">As this is a testing site, features and data may change without notice.</span></li>
-    <li>他者を傷つける内容や、法令・公序良俗に反する投稿はお控えください。
-      <span class="en">Please refrain from harmful, unlawful, or otherwise inappropriate content.</span></li>
+    <li>本サービスは、無料で、運営者が個人のボランティアとして提供するものです。
+      <span class="en">The Service is provided free of charge by the operator on a personal, volunteer basis.</span></li>
+    <li>運営者は、本サービスを通じて会員が企画・実施するイベントの主催者ではなく、その内容・実施・結果に関与しません。
+      <span class="en">The operator is not the organizer of any event planned or held using the Service, and does not participate in its content, execution, or outcome.</span></li>
   </ul>
-  <h3>⚖ 免責事項 / Disclaimer</h3>
+
+  <h3>第2条　禁止事項</h3>
   <ul>
-    <li>本サイトはテスト目的で提供されており、内容の正確性・継続性・安全性を保証しません。
-      <span class="en">This site is provided for testing purposes only, with no guarantee of accuracy, continuity, or security.</span></li>
-    <li>本サイトの利用により生じたいかなる損害についても、運営者は一切の責任を負いません。
-      <span class="en">The operator assumes no responsibility for any damage arising from use of this site.</span></li>
-    <li>オンライン会議など外部サービスへのリンクは、各自の責任でご利用ください。
-      <span class="en">Use of links to external services, such as online meetings, is at your own risk.</span></li>
-    <li>予告なくサービスを変更・中止する場合があります。
-      <span class="en">The service may be changed or discontinued without prior notice.</span></li>
+    <li>個人情報（本名・電話番号・住所・口座番号など）を書き込むこと。
+      <span class="en">Posting personal information (real name, phone number, address, bank details, etc.).</span></li>
+    <li>他者を傷つける内容、法令・公序良俗に反する内容を投稿すること。
+      <span class="en">Posting content that harms others or violates laws or public order and morals.</span></li>
+    <li>本サービスの運営を妨げる行為、不正アクセスその他運営者が不適切と判断する行為。
+      <span class="en">Interfering with the operation of the Service, unauthorized access, or any other conduct the operator deems inappropriate.</span></li>
   </ul>
-  <p style="margin-top:20px;font-size:.82rem">© 2026 みんあそくん（テスト版）</p>
+  <p class="a11y-note">投稿・コメント・写真は、ログインした他の会員に公開されます。<span class="en">Posts, comments, and photos are visible to other signed-in members.</span></p>
+
+  <h3>第3条　会員間・イベントに関するトラブルについて</h3>
+  <ul>
+    <li>本サービスを利用して企画・実施されるイベント、および会員間で生じた一切のトラブル（金銭、怪我・事故、物損、人間関係上の紛争等を含みますが、これらに限りません）は、<b>当事者間の責任と負担において解決するもの</b>とし、運営者はこれに関与せず、また責任を負いません。
+      <span class="en">Any disputes arising from events planned or held through the Service, or among members — including but not limited to financial, injury/accident, property, or interpersonal matters — must be resolved at the sole responsibility of the parties involved. The operator will not be involved and assumes no responsibility.</span></li>
+    <li>オンライン会議サービス等、外部サイト・外部サービスへのリンクのご利用は、各自の責任で行ってください。
+      <span class="en">Use of links to external sites or services, such as online meeting tools, is at each user's own risk.</span></li>
+  </ul>
+
+  <h3>第4条　免責事項</h3>
+  <ul>
+    <li>運営者は、本サービスの内容の正確性・完全性・有用性、特定の目的への適合性について、いかなる保証も行いません。
+      <span class="en">The operator makes no warranty as to the accuracy, completeness, usefulness, or fitness for a particular purpose of the Service's content.</span></li>
+    <li>運営者は、本サービスの利用または利用不能により会員に生じた損害について、運営者の故意又は重大な過失による場合を除き、責任を負いません。
+      <span class="en">Except where caused by the operator's willful misconduct or gross negligence, the operator assumes no responsibility for any damage arising from use, or inability to use, the Service.</span></li>
+    <li>運営者の故意又は重大な過失による場合であっても、本サービスが無償であることに鑑み、運営者が負う責任は、通常生じうる直接損害の範囲に限られ、特別な事情によって生じた損害・逸失利益については責任を負わないものとします。
+      <span class="en">Even where the operator's willful misconduct or gross negligence is found, given that the Service is provided free of charge, the operator's liability is limited to ordinary direct damages, and excludes special or consequential damages and lost profits.</span></li>
+  </ul>
+
+  <h3>第5条　サービスの変更・中断・終了</h3>
+  <ul>
+    <li>運営者は、会員への事前の通知なく、本サービスの内容の変更、提供の中断・停止、または終了を行うことができるものとします。
+      <span class="en">The operator may change the content of, suspend, or discontinue the Service without prior notice to members.</span></li>
+    <li>運営者は、本規約に違反した会員に対し、投稿の削除、利用制限、登録抹消等の措置を、事前の通知なく講じることができるものとします。
+      <span class="en">The operator may, without prior notice, remove content, restrict use, or delete the account of any member who violates these Terms.</span></li>
+  </ul>
+
+  <h3>第6条　準拠法</h3>
+  <p style="font-size:.85rem">本規約の解釈にあたっては、日本法を準拠法とします。<span class="en" style="display:block;margin-top:2px">These Terms shall be governed by the laws of Japan.</span></p>
+
+  <p style="margin-top:20px;font-size:.82rem">© 2026 みんあそくん</p>
 </footer>
 
 <div class="flash" id="flash"></div>
 
 <script>
-const GAS_URL = "https://script.google.com/macros/s/AKfycbz7uF4Nx-xgfBG-uYH2agY6R13_TwjRCeYxj0G5NG4KJgXusgpivY08ahpNeFg0Vhwddw/exec";
+const GAS_URL = "https://script.google.com/macros/s/AKfycbwMdyqPllR_MpheIIez54cYreqSvrknzvjrGjBm_R0Iyd4hH2KDNaoT_Oi1PpLGqZkb-Q/exec";
 
 if(!GAS_URL || GAS_URL.indexOf("PASTE")>=0 || GAS_URL.indexOf("%%")>=0){
   document.getElementById("needConfig").classList.remove("hidden");
@@ -603,108 +708,219 @@ function showLogin(){
   document.getElementById("loading").style.display="none";
   document.getElementById("app").style.display="none";
   document.getElementById("meChip").style.display="none";
+  document.getElementById("onboard").classList.add("hidden");
+  document.getElementById("profileEdit").classList.add("hidden");
+  document.getElementById("forceChangePassword").classList.add("hidden");
+  document.getElementById("agreeTerms").classList.add("hidden");
   document.getElementById("login").classList.remove("hidden");
 }
 
-document.getElementById("loginGuest").onclick=()=>{
-  document.getElementById("login").classList.add("hidden");
-  me={_isFirst:true, name:"", interests:[], color:null};
-  openOnboard();
-};
+/* パスワード表示/非表示トグル（全パスワード欄で共通） */
+document.querySelectorAll(".pw-toggle").forEach(btn=>{
+  btn.onclick=()=>{
+    const inp=document.getElementById(btn.dataset.target);
+    if(!inp)return;
+    const show = inp.type==="password";
+    inp.type = show ? "text" : "password";
+    btn.textContent = show ? "🙈 隠す" : "👁 表示";
+  };
+});
 
+/* =========================================================
+   ログイン
+========================================================= */
 document.getElementById("memberLogin").onclick=async ()=>{
-  const raw=document.getElementById("memberInput").value;
-  const num=raw.replace(/\D/g,"");
-  const pass=document.getElementById("memberPassInput").value;
+  const email=document.getElementById("loginEmail").value.trim();
+  const pass=document.getElementById("loginPassInput").value;
   const errEl=document.getElementById("loginErrMsg");
   errEl.textContent="";
-  if(num.length!==8){errEl.textContent="8桁の会員番号を入力してください（例：1234-5678）";return;}
+  if(!email){errEl.textContent="メールアドレスを入力してください";return;}
   if(!pass){errEl.textContent="パスワードを入力してください";return;}
   const btn=document.getElementById("memberLogin");
   btn.disabled=true; btn.textContent="確認中…";
   try{
-    const data=await api("login",{memberNumber:num,password:pass});
+    const data=await api("login",{email,password:pass});
     sessionToken=data.token; localStorage.setItem("wa60_token",sessionToken);
     me=data.me;
     document.getElementById("login").classList.add("hidden");
     document.getElementById("loading").style.display="flex";
     await afterLogin();
   }catch(e){
-    errEl.textContent = e.code==="not_found"||e.code==="unauthorized" ? "会員番号またはパスワードが正しくありません" : "ログインに失敗しました（"+(e.code||"")+"）";
+    errEl.textContent = e.code==="unauthorized" ? "メールアドレスまたはパスワードが正しくありません"
+      : e.code==="locked" ? "試行回数が多すぎます。15分ほど待ってから再度お試しください"
+      : "ログインに失敗しました（"+(e.code||"")+"）";
   }
   btn.disabled=false; btn.textContent="🔑 ログイン";
 };
 
+/* =========================================================
+   新規登録
+========================================================= */
 let obSelected=new Set();
-function openOnboard(){
-  document.getElementById("loading").style.display="none";
-  document.getElementById("onboard").classList.remove("hidden");
-  document.getElementById("obName").value=me.name||"";
-  document.getElementById("obPass").value="";
-  document.getElementById("ob-pass-field").style.display = me._isFirst ? "block" : "none";
-  document.getElementById("ob-changepass-field").style.display = me._isFirst ? "none" : "block";
-  document.getElementById("obOldPass").value=""; document.getElementById("obNewPass").value="";
-  obSelected=new Set(me.interests||[]);
-  const mnDiv=document.getElementById("ob-membernum");
-  if(mnDiv){
-    if(me.memberNumber && !me._isFirst){mnDiv.textContent="🎫 あなたの会員番号："+formatMemberNum(me.memberNumber);mnDiv.style.display="block";}
-    else mnDiv.style.display="none";
-  }
+document.getElementById("loginGuest").onclick=()=>{
+  document.getElementById("login").classList.add("hidden");
+  document.getElementById("obFullName").value="";
+  document.getElementById("obName").value="";
+  document.getElementById("obEmail").value="";
+  document.getElementById("obCustom").value="";
+  document.getElementById("obErrMsg").textContent="";
+  obSelected=new Set();
   const bar=document.getElementById("obInterests");bar.innerHTML="";
   PRESET.forEach(it=>{
     const b=document.createElement("button");
-    b.className="ipill"+(obSelected.has(it)?" on":"");
+    b.className="ipill";
     b.textContent=it;
     b.onclick=()=>{obSelected.has(it)?obSelected.delete(it):obSelected.add(it);b.classList.toggle("on");};
     bar.appendChild(b);
   });
-}
-function formatMemberNum(n){return String(n).slice(0,4)+"-"+String(n).slice(4);}
-
+  document.getElementById("onboard").classList.remove("hidden");
+};
+document.getElementById("obCancel").onclick=()=>{
+  document.getElementById("onboard").classList.add("hidden");
+  document.getElementById("login").classList.remove("hidden");
+};
 document.getElementById("obSave").onclick=async ()=>{
+  const fullName=document.getElementById("obFullName").value.trim();
   const name=document.getElementById("obName").value.trim();
-  if(!name){flash("ニックネームを入力してください");return;}
+  const email=document.getElementById("obEmail").value.trim();
+  const errEl=document.getElementById("obErrMsg");
+  errEl.textContent="";
+  if(!fullName){errEl.textContent="氏名を入力してください";return;}
+  if(!name){errEl.textContent="ニックネームを入力してください";return;}
+  if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){errEl.textContent="正しいメールアドレスを入力してください";return;}
+  if(!document.getElementById("obAgree").checked){errEl.textContent="利用規約へのご同意が必要です";return;}
   const custom=document.getElementById("obCustom").value.split(/[,、]/).map(s=>s.trim()).filter(Boolean);
   const interests=[...new Set([...obSelected,...custom])];
   const btn=document.getElementById("obSave");
   btn.disabled=true;
   try{
-    if(me._isFirst){
-      const pass=document.getElementById("obPass").value;
-      if(pass.length<8){flash("パスワードは8文字以上にしてください");btn.disabled=false;return;}
-      const data=await api("register",{name,password:pass,interests});
-      sessionToken=data.token; localStorage.setItem("wa60_token",sessionToken);
-      me=data.me;
-      document.getElementById("onboard").classList.add("hidden");
-      document.getElementById("obCustom").value="";
-      flash("登録しました、"+name+" さん！");
-      document.getElementById("loading").style.display="flex";
-      await afterLogin();
-      document.getElementById("memberNumDisplay").textContent=formatMemberNum(me.memberNumber);
-      document.getElementById("memberNumOverlay").classList.remove("hidden");
-    }else{
-      const oldPass=document.getElementById("obOldPass").value;
-      const newPass=document.getElementById("obNewPass").value;
-      if(newPass || oldPass){
-        if(!oldPass){flash("現在のパスワードを入力してください");btn.disabled=false;return;}
-        if(newPass.length<8){flash("新しいパスワードは8文字以上にしてください");btn.disabled=false;return;}
-        const pdata=await api("changePassword",{oldPassword:oldPass,newPassword:newPass});
-        sessionToken=pdata.token; localStorage.setItem("wa60_token",sessionToken);
-        me=pdata.me;
-      }
-      const data=await api("updateProfile",{name,interests,color:me.color});
-      me=data.me;
-      document.getElementById("onboard").classList.add("hidden");
-      document.getElementById("obCustom").value="";
-      flash((newPass?"パスワードとプロフィールを":"")+"保存しました、"+name+" さん！");
-      refreshChip();renderAll();
-    }
+    await api("register",{fullName,name,email,interests,agreedTerms:true,hp:document.getElementById("obHp").value});
+    document.getElementById("onboard").classList.add("hidden");
+    document.getElementById("login").classList.remove("hidden");
+    document.getElementById("loginEmail").value=email;
+    flash("登録が完了しました。メールに届く仮パスワードでログインしてください。");
   }catch(e){
-    flash("保存に失敗しました（"+(e.code||"")+"）");
+    errEl.textContent = e.code==="rate_limited" ? "しばらく時間をおいてから、もう一度お試しください"
+      : e.code==="mail_failed" ? "メールの送信に失敗しました。時間をおいて再度お試しください"
+      : (e.message||"登録に失敗しました（"+(e.code||"")+"）");
   }
   btn.disabled=false;
 };
-document.getElementById("editProfile").onclick=()=>{me._isFirst=false;openOnboard();};
+
+/* =========================================================
+   初回ログイン時の強制パスワード変更
+========================================================= */
+function showForceChangePassword(){
+  document.getElementById("loading").style.display="none";
+  document.getElementById("fcpOld").value="";
+  document.getElementById("fcpNew").value="";
+  document.getElementById("fcpNew2").value="";
+  document.getElementById("fcpErr").textContent="";
+  document.getElementById("forceChangePassword").classList.remove("hidden");
+}
+document.getElementById("fcpSave").onclick=async ()=>{
+  const oldP=document.getElementById("fcpOld").value;
+  const newP=document.getElementById("fcpNew").value;
+  const newP2=document.getElementById("fcpNew2").value;
+  const err=document.getElementById("fcpErr"); err.textContent="";
+  if(!oldP){err.textContent="仮パスワードを入力してください";return;}
+  if(newP.length<8){err.textContent="新しいパスワードは8文字以上にしてください";return;}
+  if(newP!==newP2){err.textContent="新しいパスワードが一致しません";return;}
+  const btn=document.getElementById("fcpSave"); btn.disabled=true;
+  try{
+    const data=await api("changePassword",{oldPassword:oldP,newPassword:newP});
+    sessionToken=data.token; localStorage.setItem("wa60_token",sessionToken);
+    me=data.me;
+    document.getElementById("forceChangePassword").classList.add("hidden");
+    flash("パスワードを変更しました");
+    document.getElementById("loading").style.display="flex";
+    await afterLogin();
+  }catch(e){
+    err.textContent = e.code==="unauthorized" ? "仮パスワードが正しくありません" : "変更に失敗しました（"+(e.code||"")+"）";
+  }
+  btn.disabled=false;
+};
+
+/* =========================================================
+   注意事項・免責事項への同意（未同意の既存アカウント向けの保険）
+========================================================= */
+function showAgreeTerms(){
+  document.getElementById("loading").style.display="none";
+  document.getElementById("atAgree").checked=false;
+  document.getElementById("atErrMsg").textContent="";
+  document.getElementById("agreeTerms").classList.remove("hidden");
+}
+document.getElementById("atSave").onclick=async ()=>{
+  const err=document.getElementById("atErrMsg"); err.textContent="";
+  if(!document.getElementById("atAgree").checked){err.textContent="同意のチェックを入れてください";return;}
+  const btn=document.getElementById("atSave"); btn.disabled=true;
+  try{
+    const data=await api("agreeToTerms",{});
+    me=Object.assign({},me,data.me);
+    document.getElementById("agreeTerms").classList.add("hidden");
+    document.getElementById("loading").style.display="flex";
+    await afterLogin();
+  }catch(e){
+    err.textContent="処理に失敗しました（"+(e.code||"")+"）";
+  }
+  btn.disabled=false;
+};
+
+/* =========================================================
+   プロフィール編集（ログイン後、いつでも変更可能）
+========================================================= */
+let peSelected=new Set();
+function openProfileEdit(){
+  document.getElementById("peFullName").value=me.fullName||"";
+  document.getElementById("peName").value=me.name||"";
+  document.getElementById("peOldPass").value="";
+  document.getElementById("peNewPass").value="";
+  document.getElementById("peErrMsg").textContent="";
+  document.getElementById("peCustom").value="";
+  peSelected=new Set(me.interests||[]);
+  const bar=document.getElementById("peInterests");bar.innerHTML="";
+  PRESET.forEach(it=>{
+    const b=document.createElement("button");
+    b.className="ipill"+(peSelected.has(it)?" on":"");
+    b.textContent=it;
+    b.onclick=()=>{peSelected.has(it)?peSelected.delete(it):peSelected.add(it);b.classList.toggle("on");};
+    bar.appendChild(b);
+  });
+  document.getElementById("profileEdit").classList.remove("hidden");
+}
+document.getElementById("editProfile").onclick=openProfileEdit;
+document.getElementById("peCancel").onclick=()=>document.getElementById("profileEdit").classList.add("hidden");
+document.getElementById("peSave").onclick=async ()=>{
+  const fullName=document.getElementById("peFullName").value.trim();
+  const name=document.getElementById("peName").value.trim();
+  const errEl=document.getElementById("peErrMsg");
+  errEl.textContent="";
+  if(!name){errEl.textContent="ニックネームを入力してください";return;}
+  const custom=document.getElementById("peCustom").value.split(/[,、]/).map(s=>s.trim()).filter(Boolean);
+  const interests=[...new Set([...peSelected,...custom])];
+  const btn=document.getElementById("peSave");
+  btn.disabled=true;
+  try{
+    const oldPass=document.getElementById("peOldPass").value;
+    const newPass=document.getElementById("peNewPass").value;
+    if(newPass || oldPass){
+      if(!oldPass){errEl.textContent="現在のパスワードを入力してください";btn.disabled=false;return;}
+      if(newPass.length<8){errEl.textContent="新しいパスワードは8文字以上にしてください";btn.disabled=false;return;}
+      const pdata=await api("changePassword",{oldPassword:oldPass,newPassword:newPass});
+      sessionToken=pdata.token; localStorage.setItem("wa60_token",sessionToken);
+      me=pdata.me;
+    }
+    const data=await api("updateProfile",{fullName,name,interests,color:me.color});
+    me=Object.assign({},me,data.me);
+    document.getElementById("profileEdit").classList.add("hidden");
+    flash((newPass?"パスワードとプロフィールを":"プロフィールを")+"保存しました");
+    refreshChip();renderAll();
+  }catch(e){
+    errEl.textContent = e.code==="unauthorized" ? "現在のパスワードが正しくありません" : "保存に失敗しました（"+(e.code||"")+"）";
+  }
+  btn.disabled=false;
+};
+
 document.getElementById("logoutBtn").onclick=()=>{
   if(!confirm("ログアウトしますか？"))return;
   api("logout",{}).catch(()=>{});
@@ -719,7 +935,6 @@ document.getElementById("dbLogout").onclick=()=>{
   sessionToken=null; localStorage.removeItem("wa60_token"); me=null;
   showLogin();
 };
-document.getElementById("memberNumOK").onclick=()=>document.getElementById("memberNumOverlay").classList.add("hidden");
 
 /* =========================================================
    起動処理
@@ -741,10 +956,27 @@ async function afterLogin(){
   const data = await api("getState",{});
   if(!data.me){ throw {code:"unauthorized"}; }
   applyState(data);
+  if(me && me.mustChangePassword){
+    showForceChangePassword();
+    return;
+  }
+  if(me && me.mustAgreeToTerms){
+    showAgreeTerms();
+    return;
+  }
   startApp();
   if(!pollTimer){
     pollTimer = setInterval(()=>{
-      api("getState",{}).then(applyState).catch(err=>{ if(err.code==="unauthorized"){clearInterval(pollTimer);pollTimer=null;me=null;showLogin();} });
+      api("getState",{}).then(d=>{
+        applyState(d);
+        if(me && me.mustChangePassword){
+          if(pollTimer){clearInterval(pollTimer);pollTimer=null;}
+          showForceChangePassword();
+        }else if(me && me.mustAgreeToTerms){
+          if(pollTimer){clearInterval(pollTimer);pollTimer=null;}
+          showAgreeTerms();
+        }
+      }).catch(err=>{ if(err.code==="unauthorized"){clearInterval(pollTimer);pollTimer=null;me=null;showLogin();} });
     }, 7000);
   }
 }
@@ -1374,8 +1606,8 @@ function renderAdmin(){
   const mnd=document.getElementById('myMemberNumDisplay');
   const udp=document.getElementById('myUidDisplay');
   const mn = me.memberNumber || me.uid || me.id;
-  if(mnd&&mn) mnd.textContent='会員番号: '+mn.slice(0,4)+'-'+mn.slice(4);
-  if(udp) udp.textContent='';
+  if(mnd) mnd.textContent = me.email || '(メール未設定)';
+  if(udp&&mn) udp.textContent='会員番号: '+mn.slice(0,4)+'-'+mn.slice(4);
   document.getElementById('adminCheckAll').checked=false;
   updateBulkBar();
   const q=adminSearchQ;
@@ -1398,8 +1630,8 @@ function renderAdminUsers(q,area){
     row.className='urow'+(isMe?' is-me':'')+(adminSelected.has(uid)?' selected':'');
     row.appendChild(mkCb(uid));
     const info=document.createElement('div'); info.className='urow-info';
-    info.innerHTML=`<div class="urow-name">${avatarHTML(uid,'mini-av')} ${esc(u.name)} さん ${isMe?'<span class="pill-stat">あなた</span>':''}</div>
-      <div class="urow-sub"><span class="uid-chip">${esc(uid)}</span>${u.memberNumber?' ／ 会員番号: '+esc(u.memberNumber.slice(0,4)+'-'+u.memberNumber.slice(4)):''}</div>`;
+    info.innerHTML=`<div class="urow-name">${avatarHTML(uid,'mini-av')} ${esc(u.name)} さん ${u.fullName?'（'+esc(u.fullName)+'）':''} ${isMe?'<span class="pill-stat">あなた</span>':''}</div>
+      <div class="urow-sub">${u.email?esc(u.email):'<span class="uid-chip">'+esc(uid)+'</span>'}</div>`;
     row.appendChild(info);
     if(!isMe){
       const del=document.createElement('button'); del.className='btn btn-sm btn-danger'; del.textContent='🗑 削除';
