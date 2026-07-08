@@ -280,9 +280,23 @@
     </div>
     <button class="btn btn-teal" id="memberLogin" style="width:100%;justify-content:center;margin-top:4px">🔑 ログイン</button>
     <p class="a11y-note" id="loginErrMsg" style="margin-top:10px;color:#c0392b"></p>
+    <button type="button" class="btn btn-ghost btn-sm" id="openForgotPassword" style="margin-top:6px">パスワードをお忘れの方はこちら</button>
     <div class="divider">はじめての方 / New here?</div>
     <button class="btn btn-coral" id="loginGuest" style="width:100%;justify-content:center">🎫 新規登録する</button>
     <p class="a11y-note" style="margin-top:16px">登録すると、入力したメールアドレスに仮パスワードが届きます。初回ログイン時に新しいパスワードへの変更をお願いします。</p>
+  </div>
+</div>
+
+<div class="overlay hidden" id="forgotPassword">
+  <div class="sheet">
+    <h2>🔑 パスワードの再発行</h2>
+    <p class="sub">ご登録のメールアドレスを入力してください。登録済みのアドレスであれば、新しい仮パスワードをお送りします。</p>
+    <div class="field"><label>メールアドレス / Email</label><input type="email" id="fpEmail" placeholder="example@mail.com" autocomplete="username"></div>
+    <div style="position:absolute;left:-9999px" aria-hidden="true"><label>ここは入力しないでください / Leave this empty</label><input type="text" id="fpHp" tabindex="-1" autocomplete="off"></div>
+    <p class="a11y-note" id="fpErrMsg" style="color:#c0392b"></p>
+    <p class="a11y-note" id="fpDoneMsg" style="color:var(--teal-d);font-weight:700"></p>
+    <button class="btn btn-coral" id="fpSave" style="width:100%;justify-content:center">仮パスワードを送る</button>
+    <button class="btn btn-ghost" id="fpCancel" style="width:100%;justify-content:center;margin-top:8px">ログイン画面に戻る</button>
   </div>
 </div>
 
@@ -633,7 +647,7 @@
 <div class="flash" id="flash"></div>
 
 <script>
-const GAS_URL = "https://script.google.com/macros/s/AKfycbwMdyqPllR_MpheIIez54cYreqSvrknzvjrGjBm_R0Iyd4hH2KDNaoT_Oi1PpLGqZkb-Q/exec";
+const GAS_URL = "https://script.google.com/macros/s/AKfycby4WWQ_TQ6oiWdXhU2U1WYqIvjXzlod88g0QSad1j9cYrCfUe_-Pka5E4mpitGPXL4/exec";
 
 if(!GAS_URL || GAS_URL.indexOf("PASTE")>=0 || GAS_URL.indexOf("%%")>=0){
   document.getElementById("needConfig").classList.remove("hidden");
@@ -712,6 +726,7 @@ function showLogin(){
   document.getElementById("profileEdit").classList.add("hidden");
   document.getElementById("forceChangePassword").classList.add("hidden");
   document.getElementById("agreeTerms").classList.add("hidden");
+  document.getElementById("forgotPassword").classList.add("hidden");
   document.getElementById("login").classList.remove("hidden");
 }
 
@@ -751,6 +766,41 @@ document.getElementById("memberLogin").onclick=async ()=>{
       : "ログインに失敗しました（"+(e.code||"")+"）";
   }
   btn.disabled=false; btn.textContent="🔑 ログイン";
+};
+
+/* =========================================================
+   パスワードの再発行
+========================================================= */
+document.getElementById("openForgotPassword").onclick=()=>{
+  document.getElementById("login").classList.add("hidden");
+  document.getElementById("fpEmail").value=document.getElementById("loginEmail").value.trim();
+  document.getElementById("fpHp").value="";
+  document.getElementById("fpErrMsg").textContent="";
+  document.getElementById("fpDoneMsg").textContent="";
+  document.getElementById("fpSave").style.display="";
+  document.getElementById("forgotPassword").classList.remove("hidden");
+};
+document.getElementById("fpCancel").onclick=()=>{
+  document.getElementById("forgotPassword").classList.add("hidden");
+  document.getElementById("login").classList.remove("hidden");
+};
+document.getElementById("fpSave").onclick=async ()=>{
+  const email=document.getElementById("fpEmail").value.trim();
+  const errEl=document.getElementById("fpErrMsg");
+  const doneEl=document.getElementById("fpDoneMsg");
+  errEl.textContent=""; doneEl.textContent="";
+  if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){errEl.textContent="正しいメールアドレスを入力してください";return;}
+  const btn=document.getElementById("fpSave");
+  btn.disabled=true;
+  try{
+    await api("forgotPassword",{email,hp:document.getElementById("fpHp").value});
+    doneEl.textContent="ご入力のメールアドレスが登録済みであれば、新しい仮パスワードをお送りしました。メールをご確認のうえ、ログインしてください。";
+    document.getElementById("loginEmail").value=email;
+    btn.style.display="none";
+  }catch(e){
+    errEl.textContent = e.code==="rate_limited" ? "しばらく時間をおいてから、もう一度お試しください" : "処理に失敗しました（"+(e.code||"")+"）";
+  }
+  btn.disabled=false;
 };
 
 /* =========================================================
